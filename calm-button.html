@@ -1,17 +1,28 @@
 <polymer-element name="calm-button">
 	<template>
 		<style>
-			button {
-				border: 1px solid rgba(0, 0, 0, 0.2);
-				border-radius: 4px;
-				background: transparent;
-				padding: 16px 32px;
-				outline: 0;
+			:host {
+				display: inline-block;
+				vertical-align: top;
 			}
 
-			button.active {
-				padding: 17px 32px 15px;
-				box-shadow: inset 0 1px rgba(0, 0, 0, 0.2);
+			#btn {
+				font: inherit;
+				color: inherit;
+				box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px rgba(255, 255, 255, 0.1);
+				border: 1px solid rgba(0, 0, 0, 0.3);
+				border-radius: 4px;
+				background: inherit;
+				padding: 12px 24px;
+				outline: 0;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				cursor: pointer;
+			}
+
+			#btn.active, :host(.toggled) > #btn {
+				padding: 13px 24px 11px;
+				box-shadow: inset 0 1px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
 				background: rgba(0, 0, 0, 0.1);
 			}
 		</style>
@@ -21,7 +32,9 @@
 
 	<script>
 		Polymer({
-			domReady: function() { handleActive(this.$.btn); }
-		})
+			domReady: function() {
+				handleActive(this.$.btn);
+			}
+		});
 	</script>
 </polymer-element>

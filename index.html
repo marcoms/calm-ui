@@ -6,9 +6,56 @@
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
 		<link rel="import" href="bower_components/polymer/polymer.html">
 		<link rel="import" href="calm-ui.html">
+		<style>
+			::selection {
+				background: rgba(0, 0, 0, 0.2);
+			}
+
+			html, body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				font-family: roboto, sans;
+				color: #212121;
+				display: flex;
+				flex-direction: row;
+				-webkit-tap-highlight-color: transparent;
+			}
+
+			body > * {
+				flex: 1;
+				padding: 2rem;
+			}
+
+			#dark {
+				background: #444;
+				color: #fff;
+				text-shadow: 0 -1px #000;
+			}
+
+			section > *:not(:last-child) {
+				margin-bottom: 2rem;
+				display: block;
+			}
+		</style>
 	</head>
 
-	<body>
-		<calm-button>Button</calm-button>
+	<body unresolved>
+		<section id="light">
+			<h1>Light</h1>
+
+			<calm-button>Button</calm-button>
+			<calm-input>Input</calm-input>
+		</section>
+
+		<section id="dark">
+			<h1>Dark</h1>
+
+			<calm-button>Button</calm-button>
+			<calm-input>Input</calm-input>
+		</section>
 	</body>
 </html>
