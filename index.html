@@ -8,7 +8,7 @@
 		<link rel="import" href="calm-ui.html">
 		<style>
 			::selection {
-				background: rgba(0, 0, 0, 0.2);
+				background: rgba(0, 0, 0, 0.5);
 			}
 
 			html, body {
@@ -40,19 +40,27 @@
 				margin-bottom: 2rem;
 				display: block;
 			}
+
+			@media (max-width: 600px) {
+				body {
+					display: initial;
+				}
+			}
 		</style>
 	</head>
 
 	<body unresolved>
-		<section id="light">
-			<h1>Light</h1>
+		<section id="dark">
+			<header><h1>Calm UI</h1></header>
+
+			<h2>Dark</h2>
 
 			<calm-button>Button</calm-button>
 			<calm-input>Input</calm-input>
 		</section>
 
-		<section id="dark">
-			<h1>Dark</h1>
+		<section id="light">
+			<h2>Light</h2>
 
 			<calm-button>Button</calm-button>
 			<calm-input>Input</calm-input>
