@@ -5,8 +5,22 @@
 		<title>Calm UI</title>
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
 		<script src="bundle.js"></script>
+		<style>
+			body {
+				margin: 0;
+				padding: calc(56px + 16px) 16px 0 16px;
+			}
+
+			calm-bar {
+				background: #00BCD4;
+				color: #fff;
+			}
+		</style>
 	</head>
 	<body>
+		<calm-bar class="sticky">
+			<header>Calm UI</header>
+		</calm-bar>
 		<calm-btn>LOL</calm-btn>
 	</body>
 </html>
