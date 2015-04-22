@@ -4,66 +4,9 @@
 		<meta charset="utf-8">
 		<title>Calm UI</title>
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-		<link rel="import" href="bower_components/polymer/polymer.html">
-		<link rel="import" href="calm-ui.html">
-		<style>
-			::selection {
-				background: rgba(0, 0, 0, 0.5);
-			}
-
-			html, body {
-				height: 100%;
-				margin: 0;
-				padding: 0;
-			}
-
-			body {
-				font-family: roboto, sans;
-				color: #212121;
-				display: flex;
-				flex-direction: row;
-				-webkit-tap-highlight-color: transparent;
-			}
-
-			body > * {
-				flex: 1;
-				padding: 2rem;
-			}
-
-			#dark {
-				background: #444;
-				color: #fff;
-				text-shadow: 0 -1px #000;
-			}
-
-			section > *:not(:last-child) {
-				margin-bottom: 2rem;
-				display: block;
-			}
-
-			@media (max-width: 600px) {
-				body {
-					display: initial;
-				}
-			}
-		</style>
+		<script src="bundle.js"></script>
 	</head>
-
-	<body unresolved>
-		<section id="dark">
-			<header><h1>Calm UI</h1></header>
-
-			<h2>Dark</h2>
-
-			<calm-button>Button</calm-button>
-			<calm-input>Input</calm-input>
-		</section>
-
-		<section id="light">
-			<h2>Light</h2>
-
-			<calm-button>Button</calm-button>
-			<calm-input>Input</calm-input>
-		</section>
+	<body>
+		<calm-btn>LOL</calm-btn>
 	</body>
 </html>
