@@ -8,7 +8,7 @@ export default skate("calm-btn", {
 				:host {
 					display: inline-block;
 				}
-	
+
 				#btn {
 					font: inherit;
 					color: #fff;
