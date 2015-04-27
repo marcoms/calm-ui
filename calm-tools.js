@@ -10,9 +10,12 @@ export default {
 
 		let targets = el.shadowRoot.querySelectorAll(".handle-active")
 		Array.prototype.forEach.call(targets, function(target) {
-			target.addEventListener("touchstart", activate);
-			target.addEventListener("touchend", deactivate);
-			target.addEventListener("touchcancel", deactivate);
+			if("ontouchstart" in window) {
+				target.addEventListener("touchstart", activate);
+				target.addEventListener("touchend", deactivate);
+				target.addEventListener("touchcancel", deactivate);
+			}
+
 			target.addEventListener("mousedown", activate);
 			target.addEventListener("mouseup", deactivate);
 			target.addEventListener("mouseleave", deactivate);
