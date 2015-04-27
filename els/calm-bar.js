@@ -6,21 +6,15 @@ export default skate("calm-bar", {
 		calm.init(el, `
 			<style>
 				:host {
-					display: block;
-					background: #fff;
-				}
-
-				#bar {
 					display: flex;
 					align-items: stretch;
-					background: inherit;
 					width: 100%;
 					height: 56px;
 					line-height: 56px;
-					box-shadow: 0 2px rgba(0, 0, 0, 0.15);
+					box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 				}
 
-				:host(.sticky) > #bar {
+				:host(.sticky) {
 					position: fixed;
 					top: 0;
 					left: 0;
@@ -33,7 +27,7 @@ export default skate("calm-bar", {
 				}
 			</style>
 
-			<div id="bar"><content></content></div>
+			<content></content>
 		`);
 	}
 });
