@@ -7,20 +7,26 @@
 		<script src="bundle.js"></script>
 		<style>
 			body {
+				font-family: roboto, sans-serif;
 				margin: 0;
 				padding: calc(56px + 16px) 16px 0 16px;
+				color: #212121;
 			}
 
 			calm-bar {
 				background: #00BCD4;
 				color: #fff;
 			}
+
+			#content * { display: block; margin-bottom: 16px; }
 		</style>
 	</head>
 	<body>
 		<calm-bar class="sticky">
 			<header>Calm UI</header>
 		</calm-bar>
-		<calm-btn>LOL</calm-btn>
+		<section id="content">
+			<calm-btn>Button</calm-btn>
+		</section>
 	</body>
 </html>

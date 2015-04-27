@@ -11,21 +11,23 @@ export default skate("calm-btn", {
 
 				#btn {
 					font: inherit;
-					color: #fff;
-					border-radius: 4px;
+					color: #212121;
 					border: 0;
+					box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+					border-radius: 2px;
 					outline: 0;
-					background: rgb(160, 160, 160);
+					background: #fff;
 					padding: 12px 24px;
 					-webkit-user-select: none;
 					-webkit-tap-highlight-color: transparent;
 					cursor: pointer;
-					transition: opacity 240ms linear;
+					transition: background 160ms linear;
+					will-change: background;
 				}
 
 				#btn.active {
 					transition: none;
-					opacity: 0.4;
+					background: #eee;
 				}
 			</style>
 
