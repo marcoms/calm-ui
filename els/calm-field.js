@@ -31,16 +31,16 @@ export default skate("calm-field", {
 					color: inherit;
 					background: transparent;
 					padding: 8px 0;
-					transition: box-shadow 160ms linear;
+					transition: box-shadow ${calm.time.short} linear;
 				}
 
 				#field.active {
 					transition: none;
-					box-shadow: inset 0 -2px #00f;
+					box-shadow: inset 0 -2px #00bcd4;
 				}
 
 				#field:focus {
-					box-shadow: inset 0 -2px #00f;
+					box-shadow: inset 0 -2px #00bcd4;
 				}
 			</style>
 
