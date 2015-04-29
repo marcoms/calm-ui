@@ -6,3 +6,6 @@ bundle-min:
 
 bundle-dev:
 	jspm bundle-sfx --skip-source-maps calm-ui bundle.js
+
+clean:
+	rm -rf bundle.js{,.map}
