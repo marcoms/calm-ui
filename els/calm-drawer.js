@@ -32,7 +32,7 @@ export default skate("calm-drawer", {
 					transform: translateX(-100%);
 					visibility: hidden;
 					background: #fff;
-					box-shadow: ${calm.shadow[1]};
+					box-shadow: ${calm.shadow[2]};
 
 					transition: transform ${calm.time.long} ${calm.ease.out}, visibility ${calm.time.long} linear;
 					will-change: transform, visibility;
@@ -61,6 +61,10 @@ export default skate("calm-drawer", {
 			<div id="drawer"><content></content></div>
 			<div id="overlay"></div>
 		`);
+
+		el.shadowRoot.querySelector("#overlay").addEventListener("click", () => {
+			el.close();
+		});
 	},
 
 	prototype: {
