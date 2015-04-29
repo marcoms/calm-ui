@@ -14,7 +14,7 @@
 			}
 
 			calm-bar {
-				background: #00BCD4;
+				background: #00bcd4;
 				color: #fff;
 			}
 
@@ -22,9 +22,16 @@
 		</style>
 	</head>
 	<body>
-		<calm-bar class="sticky">
+		<calm-bar class="bar-sticky">
+			<calm-btn class="btn-bar" onclick="document.querySelector('#drawer').open()">DRAWER</calm-btn>
 			<header>Calm UI</header>
 		</calm-bar>
+		<calm-drawer id="drawer">
+			<calm-bar>
+				<calm-btn class="btn-bar" onclick="document.querySelector('#drawer').close()">Close</calm-btn>
+				<header>Calm UI</header>
+			</calm-bar>
+		</calm-drawer>
 		<section id="content">
 			<calm-btn>Button</calm-btn>
 			<calm-field placeholder="Text field"></calm-field>
