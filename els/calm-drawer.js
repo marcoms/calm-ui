@@ -32,7 +32,7 @@ export default skate("calm-drawer", {
 					transform: translateX(-100%);
 					visibility: hidden;
 					background: #fff;
-					box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+					box-shadow: ${calm.shadow[1]};
 
 					transition: transform ${calm.time.long} ${calm.ease.out}, visibility ${calm.time.long} linear;
 					will-change: transform, visibility;
