@@ -22,16 +22,17 @@
 		</style>
 	</head>
 	<body>
-		<calm-bar class="bar-sticky">
-			<calm-btn class="btn-bar" onclick="document.querySelector('#drawer').open()">DRAWER</calm-btn>
-			<header>Calm UI</header>
-		</calm-bar>
 		<calm-drawer id="drawer">
 			<calm-bar>
 				<calm-btn class="btn-bar" onclick="document.querySelector('#drawer').close()">Close</calm-btn>
 				<header>Calm UI</header>
 			</calm-bar>
 		</calm-drawer>
+
+		<calm-bar class="bar-sticky">
+			<calm-btn class="btn-bar" onclick="document.querySelector('#drawer').open()">Drawer</calm-btn>
+			<header>Demo</header>
+		</calm-bar>
 		<section id="content">
 			<calm-btn>Button</calm-btn>
 			<calm-field placeholder="Text field"></calm-field>
