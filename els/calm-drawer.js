@@ -58,7 +58,7 @@ export default skate("calm-drawer", {
 				}
 			</style>
 
-			<div id="drawer"><content></content></div>
+			<div id="drawer"><content select="*"></content></div>
 			<div id="overlay"></div>
 		`);
 
