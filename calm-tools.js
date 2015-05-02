@@ -1,25 +1,41 @@
 export default {
 	handleActive(el) {
-		function activate(e) {
-			e.target.classList.add("active");
+		let handlee = el.shadowRoot.querySelector(".handle-active");
+
+		function activate() {
+			handlee.classList.add("active");
 		}
 
-		function deactivate(e) {
-			e.target.classList.remove("active");
+		function deactivate() {
+			handlee.classList.remove("active");
 		}
 
-		let targets = el.shadowRoot.querySelectorAll(".handle-active");
-		Array.prototype.forEach.call(targets, function(target) {
-			if("ontouchstart" in window) {
-				target.addEventListener("touchstart", activate);
-				target.addEventListener("touchend", deactivate);
-				target.addEventListener("touchcancel", deactivate);
-			}
+		let hasTouch = "ontouchstart" in window;
 
+		function addListeners(target) {
 			target.addEventListener("mousedown", activate);
 			target.addEventListener("mouseup", deactivate);
 			target.addEventListener("mouseleave", deactivate);
-		});
+
+			if(!hasTouch) return;
+			target.addEventListener("touchstart", activate);
+			target.addEventListener("touchend", deactivate);
+			target.addEventListener("touchcancel", deactivate);
+		}
+
+		let insertions = handlee.querySelectorAll("content");
+		if(insertions) {
+			let distributedNodes;
+
+			Array.prototype.forEach.call(insertions, (insertion) => {
+				distributedNodes = insertion.getDistributedNodes();
+				Array.prototype.forEach.call(distributedNodes, (distributedNode) => {
+					addListeners(distributedNode);
+				});
+			});
+		}
+
+		addListeners(handlee);
 	},
 
 	init(el, tmpl) {
