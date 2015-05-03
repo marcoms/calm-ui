@@ -3,7 +3,7 @@ import skate from "skatejs";
 
 export default skate("calm-field", {
 	attributes: {
-		"placeholder": {
+		placeholder: {
 			value: "",
 
 			updated(el, diff) {
