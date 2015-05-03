@@ -14,9 +14,21 @@ export default skate("calm-icon", {
 
 	prototype: {
 		setIcon(icon) {
-			let newIcon = document.getElementsByTagName("calm-icons")[0].getIcon(icon);
+			if(!this.iconProvider) this.findIconProvider();
+
+			let newIcon = this.iconProvider.getIcon(icon);
 			let svg = this.shadowRoot.getElementById("icon");
 			svg.replaceChild(newIcon, svg.getElementsByTagName("g")[0]);
+		},
+
+		findIconProvider() {
+			let documentIconProvider = document.getElementsByTagName("calm-icons")[0];
+			if(documentIconProvider) {
+				this.iconProvider = documentIconProvider;
+			} else {
+				if(!window.calmIcons) window.calmIcons = document.createElement("calm-icons");
+				this.iconProvider = window.calmIcons;
+			}
 		}
 	},
 
@@ -33,6 +45,10 @@ export default skate("calm-icon", {
 			</svg>
 		`);
 
-		if(el.icon) el.setIcon(el.icon);
+		el.findIconProvider();
+
+		if(el.icon) {
+			el.setIcon(el.icon);
+		}
 	}
 });
