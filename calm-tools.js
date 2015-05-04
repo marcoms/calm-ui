@@ -5,39 +5,14 @@ export default {
 		function activate() { handlee.classList.add("active"); }
 		function deactivate() { handlee.classList.remove("active"); }
 
-		let hasTouch = "ontouchstart" in window;
+		handlee.addEventListener("mousedown", activate);
+		handlee.addEventListener("mouseup", deactivate);
+		handlee.addEventListener("mouseleave", deactivate);
 
-		function addListeners(target) {
-			target.addEventListener("mousedown", activate);
-			target.addEventListener("mouseup", deactivate);
-			target.addEventListener("mouseleave", deactivate);
-
-			if(!hasTouch) return;
-			target.addEventListener("touchstart", activate);
-			target.addEventListener("touchend", deactivate);
-			target.addEventListener("touchcancel", deactivate);
-		}
-
-		let insertionPoints = handlee.querySelectorAll("content");
-		if(insertionPoints[0]) {
-			let distributedNodes;
-			let distributedEls;
-
-			Array.prototype.forEach.call(insertionPoints, (insertionPoint) => {
-				distributedNodes = insertionPoint.getDistributedNodes();
-				distributedEls = Array.prototype.filter.call(distributedNodes, (distributedNode) => {
-					return distributedNode instanceof HTMLElement;
-				});
-
-				if(distributedEls[0]) {
-					Array.prototype.forEach.call(distributedEls, (distributedEl) => {
-						addListeners(distributedEl);
-					});
-				}
-			});
-		}
-
-		addListeners(handlee);
+		if(!("ontouchstart" in window)) return;
+		handlee.addEventListener("touchstart", activate);
+		handlee.addEventListener("touchend", deactivate);
+		handlee.addEventListener("touchcancel", deactivate);
 	},
 
 	init(el, tmpl) {
