@@ -19,32 +19,34 @@
 				fill: currentColor;
 			}
 
-			.btn-bar svg {
-				vertical-align: middle;
-				fill: #fff;
+			.spacer {
+				flex: 1;
 			}
 
-			#content * { display: block; margin-bottom: 16px; }
+			#content > * { display: block; margin-bottom: 16px; }
 		</style>
 	</head>
 	<body>
 		<calm-drawer id="drawer">
 			<calm-bar>
-				<calm-btn class="btn-bar" onclick="document.querySelector('#drawer').close()">
-					<calm-icon icon="arrow-back"></calm-icon>
-				</calm-btn>
+				<calm-icon-btn icon="arrow-back" onclick="document.querySelector('#drawer').close()"></calm-icon-btn>
 				<header>Calm UI</header>
 			</calm-bar>
 		</calm-drawer>
 
 		<calm-bar class="bar-sticky">
-			<calm-btn class="btn-bar" onclick="document.querySelector('#drawer').open()">
-				<calm-icon icon="menu"></calm-icon>
-			</calm-btn>
+			<calm-icon-btn icon="menu" onclick="document.querySelector('#drawer').open()"></calm-icon-btn>
 			<header>Demo</header>
+			<div class="spacer"></div>
+			<calm-icon-btn icon="favorite"></calm-icon-btn>
+			<calm-icon-btn icon="more-vert"></calm-icon-btn>
 		</calm-bar>
 		<section id="content">
 			<calm-btn>Button</calm-btn>
+			<div>
+				<calm-icon-btn class="icon-btn-light-bg" icon="refresh"></calm-icon-btn>
+				<calm-icon-btn class="icon-btn-light-bg" icon="reply"></calm-icon-btn>
+			</div>
 			<calm-field placeholder="Text field"></calm-field>
 		</section>
 	</body>
