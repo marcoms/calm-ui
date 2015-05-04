@@ -2,13 +2,8 @@ export default {
 	handleActive(el) {
 		let handlee = el.shadowRoot.querySelector(".handle-active");
 
-		function activate() {
-			handlee.classList.add("active");
-		}
-
-		function deactivate() {
-			handlee.classList.remove("active");
-		}
+		function activate() { handlee.classList.add("active"); }
+		function deactivate() { handlee.classList.remove("active"); }
 
 		let hasTouch = "ontouchstart" in window;
 
@@ -23,15 +18,22 @@ export default {
 			target.addEventListener("touchcancel", deactivate);
 		}
 
-		let insertions = handlee.querySelectorAll("content");
-		if(insertions) {
+		let insertionPoints = handlee.querySelectorAll("content");
+		if(insertionPoints[0]) {
 			let distributedNodes;
+			let distributedEls;
 
-			Array.prototype.forEach.call(insertions, (insertion) => {
-				distributedNodes = insertion.getDistributedNodes();
-				Array.prototype.forEach.call(distributedNodes, (distributedNode) => {
-					addListeners(distributedNode);
+			Array.prototype.forEach.call(insertionPoints, (insertionPoint) => {
+				distributedNodes = insertionPoint.getDistributedNodes();
+				distributedEls = Array.prototype.filter.call(distributedNodes, (distributedNode) => {
+					return distributedNode instanceof HTMLElement;
 				});
+
+				if(distributedEls[0]) {
+					Array.prototype.forEach.call(distributedEls, (distributedEl) => {
+						addListeners(distributedEl);
+					});
+				}
 			});
 		}
 
