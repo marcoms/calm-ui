@@ -12,8 +12,7 @@ export default skate("calm-bar", {
 					width: 100%;
 					height: 56px;
 
-					line-height: 56px;
-
+					overflow: hidden;
 					box-shadow: ${calm.shadow[1]};
 				}
 
@@ -26,9 +25,8 @@ export default skate("calm-bar", {
 				}
 
 				::content > header {
-					margin-left: 16px;
-
 					font-size: 20px;
+					line-height: 56px;
 				}
 			</style>
 
