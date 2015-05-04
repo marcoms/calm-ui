@@ -6,16 +6,11 @@ export default skate("calm-btn", {
 		calm.init(el, `
 			<style>
 				:host {
-					display: inline-flex;
-					flex-direction: column;
-
 					background: #fff;
 					color: #212121;
 				}
 
 				#btn {
-					flex: 1;
-
 					text-transform: uppercase;
 					font: inherit;
 					color: inherit;
@@ -38,27 +33,9 @@ export default skate("calm-btn", {
 					transition: none;
 					background: #eee;
 				}
-
-				/* .btn-bar */
-
-				:host(.btn-bar) {
-					background: transparent;
-					color: inherit;
-				}
-
-				:host(.btn-bar) #btn {
-					height: 100%;
-					box-shadow: none;
-					border-radius: 0;
-					padding: 0 16px;
-				}
-
-				:host(.btn-bar) #btn.active {
-					background: rgba(255, 255, 255, 0.25);
-				}
 			</style>
 
-			<button class="handle-active" id="btn"><content select="*"></content></button>
+			<button class="handle-active" id="btn"><content></content></button>
 		`);
 
 		calm.handleActive(el);
