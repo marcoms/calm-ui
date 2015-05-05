@@ -47,7 +47,7 @@ export default skate("calm-icon-btn", {
 				}
 			</style>
 
-			<button class="handle-active" id="btn"><calm-icon id="icon"></calm-icon></btn>
+			<button data-handle-active id="btn"><calm-icon id="icon"></calm-icon></btn>
 		`);
 
 		if(el.icon) el.setIcon(el.icon);

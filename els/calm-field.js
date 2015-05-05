@@ -44,7 +44,7 @@ export default skate("calm-field", {
 				}
 			</style>
 
-			<input class="handle-active" id="field" type="text">
+			<input data-handle-active id="field" type="text">
 		`);
 
 		el.shadowRoot.querySelector("#field").placeholder = el.placeholder;

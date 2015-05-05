@@ -2,7 +2,7 @@ export default {
 	init(el, tmpl) {
 		el.createShadowRoot().innerHTML = tmpl;
 
-		let handlee = el.shadowRoot.querySelector(".handle-active");
+		let handlee = el.shadowRoot.querySelector("[data-handle-active]");
 		if(!handlee) return;
 
 		function activate() { handlee.classList.add("active"); }
