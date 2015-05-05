@@ -1,6 +1,9 @@
 export default {
-	handleActive(el) {
+	init(el, tmpl) {
+		el.createShadowRoot().innerHTML = tmpl;
+
 		let handlee = el.shadowRoot.querySelector(".handle-active");
+		if(!handlee) return;
 
 		function activate() { handlee.classList.add("active"); }
 		function deactivate() { handlee.classList.remove("active"); }
@@ -13,10 +16,6 @@ export default {
 		handlee.addEventListener("touchstart", activate);
 		handlee.addEventListener("touchend", deactivate);
 		handlee.addEventListener("touchcancel", deactivate);
-	},
-
-	init(el, tmpl) {
-		el.createShadowRoot().innerHTML = tmpl;
 	},
 
 	// -quart easings

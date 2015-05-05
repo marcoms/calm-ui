@@ -37,7 +37,5 @@ export default skate("calm-btn", {
 
 			<button class="handle-active" id="btn"><content></content></button>
 		`);
-
-		calm.handleActive(el);
 	}
 });

@@ -48,6 +48,5 @@ export default skate("calm-field", {
 		`);
 
 		el.shadowRoot.querySelector("#field").placeholder = el.placeholder;
-		calm.handleActive(el);
 	}
 })
