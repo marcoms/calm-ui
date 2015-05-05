@@ -30,7 +30,7 @@ export default skate("calm-bar", {
 				}
 			</style>
 
-			<content select="*"></content>
+			<content></content>
 		`);
 	}
 });
