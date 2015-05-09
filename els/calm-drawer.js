@@ -18,6 +18,7 @@ export default skate("calm-drawer", {
 				:host {
 					height: 100%;
 					width: 320px;
+					display: block;
 				}
 
 				#drawer {

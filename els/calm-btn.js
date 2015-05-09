@@ -6,6 +6,7 @@ export default skate("calm-btn", {
 		calm.init(el, `
 			<style>
 				:host {
+					display: inline-block;
 					background: #fff;
 					color: #212121;
 				}

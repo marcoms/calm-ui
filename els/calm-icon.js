@@ -35,6 +35,10 @@ export default skate("calm-icon", {
 	created(el) {
 		calm.init(el, `
 			<style>
+				:host {
+					display: inline-block;
+				}
+
 				svg {
 					vertical-align: middle;
 				}

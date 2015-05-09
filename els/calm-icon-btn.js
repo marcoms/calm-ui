@@ -21,7 +21,12 @@ export default skate("calm-icon-btn", {
 		calm.init(el, `
 			<style>
 				:host {
+					display: inline-block;
 					align-self: center;
+				}
+
+				:host-context(calm-bar) #btn {
+					margin: 0 -4px;
 				}
 
 				#btn {
@@ -32,7 +37,6 @@ export default skate("calm-icon-btn", {
 					box-shadow: none;
 					border-radius: 50%;
 					padding: 20px;
-					margin: 0 -4px;
 					transition: background ${calm.time.short} linear;
 					-webkit-tap-highlight-color: transparent;
 				}
