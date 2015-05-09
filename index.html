@@ -23,6 +23,12 @@
 				flex: 1;
 			}
 
+			#fs-toggle {
+				position: absolute;
+				bottom: 32px;
+				right: 32px;
+			}
+
 			#content > * { display: block; margin-bottom: 16px; }
 		</style>
 	</head>
@@ -46,8 +52,24 @@
 			<div>
 				<calm-icon-btn class="icon-btn-light-bg" icon="refresh"></calm-icon-btn>
 				<calm-icon-btn class="icon-btn-light-bg" icon="reply"></calm-icon-btn>
+				<calm-fab id="fs-toggle" icon="fullscreen"></calm-fab>
 			</div>
 			<calm-field placeholder="Text field"></calm-field>
 		</section>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/2.0.0/screenfull.min.js"></script>
+		<script>
+			var fsToggle = document.getElementById("fs-toggle");
+
+			document.addEventListener(screenfull.raw.fullscreenchange, function() {
+				fsToggle.icon = (screenfull.isFullscreen ? "fullscreen-exit" : "fullscreen");
+			})
+
+			fsToggle.addEventListener("click", function() {
+				if(screenfull.enabled) {
+					(screenfull.isFullscreen ? screenfull.exit() : screenfull.request());
+				}
+			});
+		</script>
 	</body>
 </html>
