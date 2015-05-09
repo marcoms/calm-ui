@@ -4,6 +4,7 @@ import CalmBtn from "els/calm-btn";
 import CalmIconBtn from "els/calm-icon-btn";
 import CalmField from "els/calm-field";
 import CalmIcon from "els/calm-icon";
+import CalmFab from "els/calm-fab";
 
 export default {
 	CalmDrawer,
@@ -11,5 +12,6 @@ export default {
 	CalmBtn,
 	CalmIconBtn,
 	CalmField,
-	CalmIcon
+	CalmIcon,
+	CalmFab
 };
