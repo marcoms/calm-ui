@@ -7,7 +7,6 @@ export default skate("calm-icon", {
 		icon: {
 			updated(el, diff) {
 				el.setIcon(diff.newValue);
-
 			}
 		}
 	},
