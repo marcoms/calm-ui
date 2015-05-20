@@ -21,10 +21,13 @@ export default skate("calm-fab", {
 		calm.init(el, `
 			<style>
 				:host {
+					z-index: 99;
+
 					display: block;
-					border-radius: 50%;
 					width: 64px;
 					height: 64px;
+
+					border-radius: 50%;
 					background: ${calm.color};
 					box-shadow: ${calm.shadow[2]};
 					fill: #fff;
