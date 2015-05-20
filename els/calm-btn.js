@@ -31,8 +31,8 @@ export default skate("calm-btn", {
 				}
 
 				#btn.active {
+					background: rgb(90%, 90%, 90%);
 					transition: none;
-					background: #eee;
 				}
 			</style>
 
