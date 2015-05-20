@@ -12,10 +12,11 @@ export default {
 			handlee.addEventListener("mouseup", deactivate);
 			handlee.addEventListener("mouseleave", deactivate);
 
-			if(!window.ontouchstart) return;
-			handlee.addEventListener("touchstart", activate);
-			handlee.addEventListener("touchend", deactivate);
-			handlee.addEventListener("touchcancel", deactivate);
+			if("ontouchstart" in window) {
+				handlee.addEventListener("touchstart", activate);
+				handlee.addEventListener("touchend", deactivate);
+				handlee.addEventListener("touchcancel", deactivate);
+			}
 		}
 
 		if(node instanceof HTMLElement && node.dataset.dataHandleActive) addListeners(node);
