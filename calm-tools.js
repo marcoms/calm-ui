@@ -1,21 +1,29 @@
 export default {
 	init(el, tmpl) {
 		el.createShadowRoot().innerHTML = tmpl;
+		this.handleActive(el.shadowRoot);
+	},
 
-		let handlee = el.shadowRoot.querySelector("[data-handle-active]");
-		if(!handlee) return;
+	handleActive(node) {
+		function activate(evt) { evt.currentTarget.classList.add("active"); }
+		function deactivate(evt) { evt.currentTarget.classList.remove("active"); }
+		function addListeners(handlee) {
+			handlee.addEventListener("mousedown", activate);
+			handlee.addEventListener("mouseup", deactivate);
+			handlee.addEventListener("mouseleave", deactivate);
 
-		function activate() { handlee.classList.add("active"); }
-		function deactivate() { handlee.classList.remove("active"); }
+			if(!window.ontouchstart) return;
+			handlee.addEventListener("touchstart", activate);
+			handlee.addEventListener("touchend", deactivate);
+			handlee.addEventListener("touchcancel", deactivate);
+		}
 
-		handlee.addEventListener("mousedown", activate);
-		handlee.addEventListener("mouseup", deactivate);
-		handlee.addEventListener("mouseleave", deactivate);
+		if(node instanceof HTMLElement && node.dataset.dataHandleActive) addListeners(node);
 
-		if(!("ontouchstart" in window)) return;
-		handlee.addEventListener("touchstart", activate);
-		handlee.addEventListener("touchend", deactivate);
-		handlee.addEventListener("touchcancel", deactivate);
+		let handlees = node.querySelectorAll("[data-handle-active]");
+		if(!handlees[0]) return;
+		for(let handlee of handlees) addListeners(handlee);
+
 	},
 
 	// -quart easings
