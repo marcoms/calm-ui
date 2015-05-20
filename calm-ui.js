@@ -6,6 +6,7 @@ import CalmField from "els/calm-field";
 import CalmIcon from "els/calm-icon";
 import CalmFab from "els/calm-fab";
 import CalmTabs from "els/calm-tabs";
+import CalmSpinner from "els/calm-spinner";
 
 export default {
 	CalmDrawer,
@@ -16,4 +17,5 @@ export default {
 	CalmIcon,
 	CalmFab,
 	CalmTabs,
+	CalmSpinner,
 };
