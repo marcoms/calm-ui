@@ -23,6 +23,8 @@ export default skate("calm-icon-btn", {
 				:host {
 					display: inline-block;
 					align-self: center;
+
+					border-radius: 50%;
 				}
 
 				:host-context(calm-bar) #btn {
@@ -31,6 +33,7 @@ export default skate("calm-icon-btn", {
 
 				#btn {
 					border: 0;
+
 					outline: 0;
 					cursor: pointer;
 					background: transparent;
