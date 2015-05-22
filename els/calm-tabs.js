@@ -104,6 +104,7 @@ export default skate("calm-tabs", {
 					cursor: pointer;
 
 					transition: background ${calm.time.short} linear;
+					-webkit-tap-highlight-color: transparent;
 				}
 
 				.tab.active {
