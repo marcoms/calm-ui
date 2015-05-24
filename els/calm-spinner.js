@@ -2,52 +2,50 @@ import calm from "calm-tools";
 import skate from "skatejs";
 
 export default skate("calm-spinner", {
-	created(el) {
-		calm.init(el, `
-			<style>
-				@-webkit-keyframes spin {
-					0% {
-						transform: rotateZ(0);
-					}
-
-					100% {
-						transform: rotateZ(360deg);
-					}
+	template: calm.shadowDOM(`
+		<style>
+			@-webkit-keyframes spin {
+				0% {
+					transform: rotateZ(0);
 				}
 
-				:host {
-					display: block;
-					width: 24px;
-					height: 24px;
-
-					color: ${calm.color};
-					border-color: currentColor;
+				100% {
+					transform: rotateZ(360deg);
 				}
+			}
 
-				:host(.spinner-small) {
-					width: 16px;
-					height: 16px;
-				}
+			:host {
+				display: block;
+				width: 24px;
+				height: 24px;
 
-				:host(.spinner-small) > #spinner {
-					// animation-duration: ${calm.time.med};
-				}
+				color: ${calm.color};
+				border-color: currentColor;
+			}
 
-				#spinner {
-					width: inherit;
-					height: inherit;
+			:host(.spinner-small) {
+				width: 16px;
+				height: 16px;
+			}
 
-					border-radius: 50%;
-					border-color: inherit;
-					border: 2px solid;
-					border-top: 2px solid transparent;
-					border-right: 2px solid transparent;
+			:host(.spinner-small) > #spinner {
+				// animation-duration: ${calm.time.med};
+			}
 
-					animation: spin ${calm.time.long} linear infinite;
-				}
-			</style>
+			#spinner {
+				width: inherit;
+				height: inherit;
 
-			<div id="spinner"></div>
-		`)
-	}
+				border-radius: 50%;
+				border-color: inherit;
+				border: 2px solid;
+				border-top: 2px solid transparent;
+				border-right: 2px solid transparent;
+
+				animation: spin ${calm.time.long} linear infinite;
+			}
+		</style>
+
+		<div id="spinner"></div>
+	`),
 });

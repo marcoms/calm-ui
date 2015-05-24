@@ -1,7 +1,6 @@
 export default {
-	init(el, tmpl) {
-		el.createShadowRoot().innerHTML = tmpl;
-		this.handleActive(el.shadowRoot);
+	shadowDOM(html) {
+		return (el) => { el.createShadowRoot().innerHTML = html; };
 	},
 
 	handleActive(node) {
@@ -19,11 +18,10 @@ export default {
 			}
 		}
 
-		if(node instanceof HTMLElement && node.dataset.dataHandleActive) addListeners(node);
+		if(node instanceof HTMLElement && node.dataset.handleActive === "") addListeners(node);
 
 		let handlees = node.querySelectorAll("[data-handle-active]");
-		if(!handlees[0]) return;
-		for(let handlee of handlees) addListeners(handlee);
+		if(handlees[0]) for(let handlee of handlees) addListeners(handlee);
 
 	},
 
@@ -53,5 +51,5 @@ export default {
 		5: "0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22)"
 	},
 
-	color: "#00bcd4"
+	color: "#00bcd4",
 };
