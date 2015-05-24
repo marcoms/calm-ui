@@ -54,8 +54,4 @@ export default skate("calm-field", {
 
 		<input data-handle-active id="field" type="text">
 	`),
-
-	created(el) {
-		el.shadowRoot.querySelector("#field").placeholder = el.placeholder;
-	},
 });
