@@ -24,7 +24,7 @@ export default skate("calm-fab", {
 	template: calm.shadowDOM(`
 		<style>
 			:host {
-				z-index: 99;
+				z-index: 97;
 
 				display: block;
 				width: 64px;
