@@ -91,9 +91,9 @@
 			window.setInterval(function() {
 				value = Number.parseInt(progress.value, 10);
 				nextValue = Math.min(value + (Math.random() * 32), 100);
-				progress.value = (isFinished ? 0 : nextValue);
+				progress.value = (isFinished ? nextValue = 0 : nextValue);
 				isFinished = nextValue === 100;
-			}, 500);
+			}, 1000);
 		</script>
 	</body>
 </html>
