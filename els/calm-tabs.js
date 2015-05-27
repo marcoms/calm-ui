@@ -76,7 +76,7 @@ export default skate("calm-tabs", {
 			}
 
 			:host(.tabs-fixed) > #tabs {
-				width: inherit;
+				width: 100%;
 			}
 
 			:host(.tabs-fixed) > #tabs > .tab {
@@ -87,7 +87,7 @@ export default skate("calm-tabs", {
 			#tabs {
 				display: inline-flex;
 				flex-direction: row;
-				height: inherit;
+				height: 100%;
 			}
 
 			.tab {
