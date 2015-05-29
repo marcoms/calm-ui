@@ -4,14 +4,9 @@ import skate from "skatejs";
 export default skate("calm-spinner", {
 	template: calm.shadowDOM(`
 		<style>
-			@-webkit-keyframes spin {
-				0% {
-					transform: rotateZ(0);
-				}
-
-				100% {
-					transform: rotateZ(360deg);
-				}
+			@keyframes spin {
+				from { transform: none; }
+				to { transform: rotateZ(360deg); }
 			}
 
 			:host {
@@ -28,13 +23,9 @@ export default skate("calm-spinner", {
 				height: 16px;
 			}
 
-			:host(.spinner-small) > #spinner {
-				// animation-duration: ${calm.time.med};
-			}
-
 			#spinner {
-				width: inherit;
-				height: inherit;
+				width: 100%;
+				height: 100%;
 
 				border-radius: 50%;
 				border-color: inherit;
