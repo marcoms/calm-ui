@@ -4,12 +4,13 @@
       "packages": "jspm-pkg"
     },
     "dependencies": {
+      "core-js": "npm:core-js@^0.9.13",
       "skatejs": "npm:skatejs@^0.13.2"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",
       "babel-runtime": "npm:babel-runtime@^5.1.13",
-      "core-js": "npm:core-js@^0.9.4"
+      "core-js": "npm:core-js@^0.9.13"
     }
   }
 }
