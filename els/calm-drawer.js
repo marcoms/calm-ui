@@ -43,7 +43,7 @@ export default skate("calm-drawer", {
 				height: inherit;
 				width: inherit;
 
-				transform: translateX(-100%);
+				transform: translate3d(-100%, 0, 0);
 				visibility: hidden;
 				background: #fff;
 				box-shadow: ${calm.shadow[2]};
