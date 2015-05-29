@@ -3,24 +3,24 @@ import skate from "skatejs";
 
 export default skate("calm-field", {
 	attributes: {
-		placeholder: {
+		label: {
 			created(el, diff) {
-				el.setPlaceholder(diff.newValue);
+				el.setLabel(diff.newValue);
 			},
 
 			updated(el, diff) {
-				el.setPlaceholder(diff.newValue);
+				el.setLabel(diff.newValue);
 			},
 
 			removed(el) {
-				el.setPlaceholder("");
+				el.setLabel("");
 			},
 		},
 	},
 
 	prototype: {
-		setPlaceholder(placeholder) {
-			this.shadowRoot.getElementById("field").placeholder = placeholder;
+		setLabel(label) {
+			this.shadowRoot.getElementById("field").placeholder = label;
 		},
 	},
 
@@ -52,6 +52,6 @@ export default skate("calm-field", {
 			}
 		</style>
 
-		<input data-handle-active id="field" type="text">
+		<input data-handle-active id="field" type="text" value="">
 	`),
 });
