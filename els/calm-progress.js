@@ -13,12 +13,14 @@ export default skate("calm-progress", {
 			},
 		},
 
-		max: {},
+		max: { value: "100" },
 		indeterminate: {},
 	},
 
 	prototype: {
 		setValue(value) {
+			if(this.indeterminate || this.indeterminate == "") return;
+
 			let max = Number.parseFloat(this.max, 10);
 
 			if(value < 0 || value > this.max) return;
@@ -30,14 +32,9 @@ export default skate("calm-progress", {
 
 	template: calm.shadowDOM(`
 		<style>
-			@-webkit-keyframes indeterminate {
-				from {
-					transform: translate3d(-100%, 0, 0);
-				}
-
-				to {
-					transform: translate3d(200%, 0, 0);
-				}
+			@keyframes indeterminate {
+				from { transform: translate3d(-100%, 0, 0); }
+				to { transform: translate3d(100%, 0, 0); }
 			}
 
 			:host {
@@ -51,33 +48,12 @@ export default skate("calm-progress", {
 			}
 
 			:host([indeterminate]) #progress {
-				display: none;
-			}
+				width: 100%;
 
-			#progress-indeterminate {
-				display: none;
-			}
-
-			:host([indeterminate]) #progress-indeterminate {
-				position: absolute;
-				top: 0;
-				left: 0;
-
-				display: initial;
-				width: 50%;
-				height: 100%;
-
-				background: currentColor;
-
-				backface-visibility: hidden;
 				animation: indeterminate ${calm.time.extreme} ${calm.ease.inOut} infinite;
 			}
 
 			#bar {
-				position: absolute;
-				top: 0;
-				left: 0;
-
 				width: 100%;
 				height: 100%;
 
@@ -88,7 +64,6 @@ export default skate("calm-progress", {
 			#progress {
 				position: absolute;
 				top: 0;
-				left: 0;
 
 				height: 100%;
 
@@ -100,6 +75,5 @@ export default skate("calm-progress", {
 
 		<div id="bar"></div>
 		<div id="progress"></div>
-		<div id="progress-indeterminate"></div>
 	`),
 });
