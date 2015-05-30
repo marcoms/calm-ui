@@ -66,6 +66,8 @@
 			<calm-spinner class="spinner-small"></calm-spinner>
 			<calm-progress id="progress" value="0"></calm-progress>
 			<calm-progress indeterminate></calm-progress>
+			<calm-btn id="toast-toggle">Toggle toast</calm-btn>
+			<calm-toast id="toast">Toast notification</calm-toast>
 		</section>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/2.0.0/screenfull.min.js"></script>
@@ -95,6 +97,10 @@
 				progress.value = (isFinished ? nextValue = 0 : nextValue);
 				isFinished = nextValue === 100;
 			}, 1000);
+
+			var toastToggle = $("#toast-toggle");
+			var toast = $("#toast");
+			toastToggle.addEventListener("click", function() { toast.toggle(); });
 		</script>
 	</body>
 </html>
