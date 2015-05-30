@@ -19,12 +19,12 @@ export default skate("calm-drawer", {
 	template: calm.shadowDOM(`
 		<style>
 			:host(.drawer-open) #drawer {
-				transform: none;
+				transform: translateX(100%);
 				visibility: visible;
 			}
 
 			:host(.drawer-open) #overlay {
-				opacity: 0.4;
+				opacity: 0.25;
 				visibility: visible;
 			}
 
@@ -37,13 +37,13 @@ export default skate("calm-drawer", {
 			#drawer {
 				position: fixed;
 				top: 0;
-				left: 0;
+				right: 100%;
 				z-index: 99;
 
 				height: inherit;
 				width: inherit;
 
-				transform: translate3d(-100%, 0, 0);
+				transform: none;
 				visibility: hidden;
 				background: #fff;
 				box-shadow: ${calm.shadow[2]};
