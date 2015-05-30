@@ -8,6 +8,7 @@ import CalmFab from "els/calm-fab";
 import CalmTabs from "els/calm-tabs";
 import CalmSpinner from "els/calm-spinner";
 import CalmProgress from "els/calm-progress";
+import CalmToast from "els/calm-toast";
 
 export default {
 	CalmDrawer,
@@ -20,4 +21,5 @@ export default {
 	CalmTabs,
 	CalmSpinner,
 	CalmProgress,
+	CalmToast,
 };
