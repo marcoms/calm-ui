@@ -16,12 +16,14 @@ export default skate("calm-field", {
 				el.setLabel("");
 			},
 		},
+
+		floatingLabel: {},
 	},
 
 	prototype: {
 		setLabel(label) {
-			if(this.classList.contains("field-floating-label")) {
-				this.shadowRoot.getElementById("label-floating").textContent = label;
+			if(this.floatingLabel === "")  {
+				this.shadowRoot.getElementById("label").textContent = label;
 			} else {
 				this.shadowRoot.getElementById("field").placeholder = label;
 			}
@@ -40,7 +42,7 @@ export default skate("calm-field", {
 			::-moz-placeholder { color: rgba(0, 0, 0, 0.5); }
 			:-ms-input-placeholder { color: rgba(0, 0, 0, 0.5); }
 
-			:host(.field-floating-label) #label-floating {
+			:host([floatinglabel]) #label {
 				position: absolute;
 				top: 16px;
 				z-index: -1;
@@ -53,14 +55,14 @@ export default skate("calm-field", {
 				transition: transform ${calm.time.med} ${calm.ease.out}, color ${calm.time.med} linear;
 			}
 
-			:host(.field-floating-label) #field.active ~ #label-floating,
-			:host(.field-floating-label) #field:focus ~ #label-floating,
-			:host(.field-floating-label) #field:not(.empty) ~ #label-floating {
+			:host([floatinglabel]) #field.active ~ #label,
+			:host([floatinglabel]) #field:focus ~ #label,
+			:host([floatinglabel]) #field:not(.empty) ~ #label {
 				transform: translateY(-100%) scale(0.75);
 			}
 
-			:host(.field-floating-label) #field.active ~ #label-floating,
-			:host(.field-floating-label) #field:focus ~ #label-floating {
+			:host([floatinglabel]) #field.active ~ #label,
+			:host([floatinglabel]) #field:focus ~ #label {
 				color: ${calm.color};
 
 				transition: transform ${calm.time.med} ${calm.ease.out}, color 0ms linear;
@@ -88,7 +90,7 @@ export default skate("calm-field", {
 		</style>
 
 		<input class="empty" data-handle-active id="field" type="text">
-		<div id="label-floating"></div>
+		<div id="label"></div>
 	`),
 
 	created(el) {

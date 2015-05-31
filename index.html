@@ -44,7 +44,7 @@
 			</calm-bar>
 		</calm-drawer>
 
-		<calm-bar class="bar-sticky">
+		<calm-bar sticky>
 			<calm-icon-btn icon="menu" onclick="document.querySelector('#drawer').open()"></calm-icon-btn>
 			<header>Demo</header>
 			<div class="spacer"></div>
@@ -54,16 +54,16 @@
 		<section id="content">
 			<calm-btn>Button</calm-btn>
 			<div>
-				<calm-icon-btn class="icon-btn-light-bg" icon="refresh"></calm-icon-btn>
-				<calm-icon-btn class="icon-btn-light-bg" icon="reply"></calm-icon-btn>
+				<calm-icon-btn lightbg icon="refresh"></calm-icon-btn>
+				<calm-icon-btn lightbg icon="reply"></calm-icon-btn>
 				<calm-fab id="fs-toggle" icon="fullscreen"></calm-fab>
 			</div>
 			<calm-field label="Text field"></calm-field>
-			<calm-field label="Floating label" class="field-floating-label"></calm-field>
+			<calm-field floatinglabel label="Floating label"></calm-field>
 			<calm-tabs tabs="item one, item two, item three" selected="item one"></calm-tabs>
-			<calm-tabs id="tabs-fixed" class="tabs-fixed" tabs="short, long string of text, medium text" selected="short"></calm-tabs>
+			<calm-tabs id="tabs-fixed" fixed tabs="short, long string of text, medium text" selected="short"></calm-tabs>
 			<calm-spinner></calm-spinner>
-			<calm-spinner class="spinner-small"></calm-spinner>
+			<calm-spinner small></calm-spinner>
 			<calm-progress id="progress" value="0"></calm-progress>
 			<calm-progress indeterminate></calm-progress>
 			<calm-btn id="toast-toggle">Toggle toast</calm-btn>

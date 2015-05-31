@@ -2,6 +2,8 @@ import calm from "calm-tools";
 import skate from "skatejs";
 
 export default skate("calm-spinner", {
+	attributes: { small: {}, },
+
 	template: calm.shadowDOM(`
 		<style>
 			@keyframes spin {
@@ -18,7 +20,7 @@ export default skate("calm-spinner", {
 				border-color: currentColor;
 			}
 
-			:host(.spinner-small) {
+			:host([small]) {
 				width: 16px;
 				height: 16px;
 			}

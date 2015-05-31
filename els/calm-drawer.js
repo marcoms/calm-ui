@@ -2,28 +2,33 @@ import calm from "calm-tools";
 import skate from "skatejs";
 
 export default skate("calm-drawer", {
+	attributes: {
+		state: { value: "closed", },
+		nodim: {},
+	},
+
 	prototype: {
 		open() {
-			this.classList.add("drawer-open");
+			this.state = "open";
 		},
 
 		close() {
-			this.classList.remove("drawer-open");
+			this.state = "closed";
 		},
 
 		toggle() {
-			this.classList.toggle("drawer-open");
+			this.state = (this.state === "open" ? "closed" : "open");
 		},
 	},
 
 	template: calm.shadowDOM(`
 		<style>
-			:host(.drawer-open) #drawer {
+			:host([state=open]) #drawer {
 				transform: translateX(100%);
 				visibility: visible;
 			}
 
-			:host(.drawer-open) #overlay {
+			:host([state=open]) #overlay {
 				opacity: 0.25;
 				visibility: visible;
 			}
@@ -67,7 +72,7 @@ export default skate("calm-drawer", {
 				transition: opacity ${calm.time.long} ${calm.ease.out}, visibility ${calm.time.long} linear;
 			}
 
-			:host(.drawer-no-dim) #overlay {
+			:host([nodim]) #overlay {
 				background: transparent;
 			}
 		</style>

@@ -22,6 +22,8 @@ export default skate("calm-tabs", {
 				el.setSelected(diff.newValue);
 			},
 		},
+
+		fixed: {},
 	},
 
 	prototype: {
@@ -75,11 +77,11 @@ export default skate("calm-tabs", {
 				overflow-y: hidden;
 			}
 
-			:host(.tabs-fixed) > #tabs {
+			:host([fixed]) > #tabs {
 				width: 100%;
 			}
 
-			:host(.tabs-fixed) > #tabs > .tab {
+			:host([fixed]) > #tabs > .tab {
 				flex: 1;
 				justify-content: center;
 			}

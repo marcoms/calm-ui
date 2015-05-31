@@ -2,6 +2,8 @@ import calm from "calm-tools";
 import skate from "skatejs";
 
 export default skate("calm-bar", {
+	attributes: { sticky: {}, },
+
 	template: calm.shadowDOM(`
 		<style>
 			:host {
@@ -15,7 +17,7 @@ export default skate("calm-bar", {
 				box-shadow: ${calm.shadow[1]};
 			}
 
-			:host(.bar-sticky) {
+			:host([sticky]) {
 				position: fixed;
 				top: 0;
 				left: 0;

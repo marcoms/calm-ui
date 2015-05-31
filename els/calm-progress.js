@@ -19,7 +19,7 @@ export default skate("calm-progress", {
 
 	prototype: {
 		setValue(value) {
-			if(this.indeterminate || this.indeterminate == "") return;
+			if(this.indeterminate === "") return;
 
 			let max = Number.parseFloat(this.max, 10);
 

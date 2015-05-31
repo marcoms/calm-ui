@@ -3,27 +3,28 @@ import skate from "skatejs";
 
 export default skate("calm-toast", {
 	attributes: {
+		state: { value: "hidden", },
 		duration: { value: "3200", },
 	},
 
 	prototype: {
 		show() {
-			this.classList.add("toast-visible");
+			this.state = "visible";
 			window.setTimeout(() => { this.hide(); }, Number.parseInt(this.duration, 10));
 		},
 
 		hide() {
-			this.classList.remove("toast-visible");
+			this.state = "hidden";
 		},
 
 		toggle() {
-			this.classList.toggle("toast-visible");
+			this.state = (this.sate === "visible" ? "hidden": "visible");
 			if(this.pendingHide !== undefined) {
 				window.clearTimeout(this.pendingHide);
 				this.pendingHide = undefined;
 			}
 
-			if(this.classList.contains("toast-visible")) {
+			if(this.state === "visible") {
 				this.pendingHide = window.setTimeout(() => { this.hide(); }, Number.parseInt(this.duration, 10));
 			}
 		},
@@ -49,7 +50,7 @@ export default skate("calm-toast", {
 				transition: transform ${calm.time.med} ${calm.ease.out};
 			}
 
-			:host(.toast-visible) {
+			:host([state=visible]) {
 				transform: translateY(-100%);
 			}
 		</style>

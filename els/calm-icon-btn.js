@@ -13,6 +13,8 @@ export default skate("calm-icon-btn", {
 				el.setIcon(diff.newValue);
 			},
 		},
+
+		lightbg: {},
 	},
 
 	prototype: {
@@ -52,7 +54,7 @@ export default skate("calm-icon-btn", {
 				background: rgba(255, 255, 255, 0.25);
 			}
 
-			:host(.icon-btn-light-bg) #btn.active {
+			:host([lightbg]) #btn.active {
 				background: rgba(0, 0, 0, 0.1);
 			}
 		</style>
