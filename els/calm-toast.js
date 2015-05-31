@@ -35,6 +35,7 @@ export default skate("calm-toast", {
 				position: fixed;
 				top: 100%;
 				left: 0;
+				z-index: 99;
 
 				box-sizing: border-box;
 				width: 100%;
