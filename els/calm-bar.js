@@ -26,6 +26,8 @@ export default skate("calm-bar", {
 			}
 
 			::content > header {
+				margin-left: 16px;
+
 				font-size: 20px;
 				line-height: 56px;
 			}
