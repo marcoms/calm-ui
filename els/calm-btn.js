@@ -2,6 +2,11 @@ import calm from "calm-tools";
 import skate from "skatejs";
 
 export default skate("calm-btn", {
+	attributes: {
+		flat: {},
+		darkbg: {},
+	},
+
 	template: calm.shadowDOM(`
 		<style>
 			:host {
@@ -9,6 +14,12 @@ export default skate("calm-btn", {
 				background: #fff;
 				color: #212121;
 			}
+
+			:host([flat]) { background: transparent; }
+			:host([flat]) #btn { box-shadow: none; }
+			:host([flat]) #btn.active { background: rgba(0, 0, 0, 0.1); }
+			:host([flat][darkbg]) { color: #fff; }
+			:host([flat][darkbg]) #btn.active { background: rgba(255, 255, 255, 0.25); }
 
 			#btn {
 				text-transform: uppercase;
@@ -31,6 +42,7 @@ export default skate("calm-btn", {
 
 			#btn.active {
 				background: rgb(90%, 90%, 90%);
+
 				transition: none;
 			}
 		</style>
