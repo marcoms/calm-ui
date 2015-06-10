@@ -27,7 +27,7 @@ export default skate("calm-btn", {
 				color: inherit;
 
 				border: 0;
-				padding: 12px 24px;
+				padding: 14px 24px;
 
 				box-shadow: ${calm.shadow[1]};
 				border-radius: 2px;
