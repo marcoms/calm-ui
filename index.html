@@ -39,13 +39,13 @@
 	<body>
 		<calm-drawer id="drawer">
 			<calm-bar>
-				<calm-icon-btn icon="arrow-back" onclick="document.querySelector('#drawer').close()"></calm-icon-btn>
+				<calm-icon-btn drawerhide icon="arrow-back"></calm-icon-btn>
 				<header>Calm UI</header>
 			</calm-bar>
 		</calm-drawer>
 
 		<calm-bar sticky>
-			<calm-icon-btn icon="menu" onclick="document.querySelector('#drawer').open()"></calm-icon-btn>
+			<calm-icon-btn icon="menu" onclick="document.querySelector('#drawer').show()"></calm-icon-btn>
 			<header>Demo</header>
 			<div class="spacer"></div>
 			<calm-icon-btn icon="favorite"></calm-icon-btn>
@@ -53,6 +53,7 @@
 		</calm-bar>
 		<section id="content">
 			<calm-btn>Button</calm-btn>
+			<calm-btn flat>Flat button</calm-btn>
 			<div>
 				<calm-icon-btn lightbg icon="refresh"></calm-icon-btn>
 				<calm-icon-btn lightbg icon="reply"></calm-icon-btn>
@@ -67,18 +68,18 @@
 			<calm-progress id="progress" value="0"></calm-progress>
 			<calm-progress indeterminate></calm-progress>
 			<calm-btn id="toast-toggle">Toggle toast</calm-btn>
-			<calm-toast id="toast">Toast notification</calm-toast>
 		</section>
+
+		<calm-toast shown id="toast">Toast notification<calm-btn flat darkbg>ok</calm-btn></calm-toast>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/2.0.0/screenfull.min.js"></script>
 		<script>
 			var $ = document.querySelector.bind(document), $$ = document.querySelectorAll.bind(document);
 
 			var fsToggle = $("#fs-toggle");
-
 			document.addEventListener(screenfull.raw.fullscreenchange, function() {
 				fsToggle.icon = (screenfull.isFullscreen ? "fullscreen-exit" : "fullscreen");
-			})
+			});
 
 			fsToggle.addEventListener("click", function() {
 				if(screenfull.enabled) {
