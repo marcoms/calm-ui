@@ -133,9 +133,6 @@ export default skate("calm-tabs", {
 	`),
 
 	created(el) {
-		el.shadowRoot.getElementById("tabs").addEventListener("click", (evt) => {
-			let targetTab = el.shadowRoot.elementFromPoint(evt.clientX, evt.clientY);
-			el.setSelected(targetTab.textContent);
-		});
+		el.shadowRoot.getElementById("tabs").addEventListener("click", (evt) => { el.selected = evt.target.textContent; });
 	},
 });
