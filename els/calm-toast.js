@@ -3,30 +3,33 @@ import skate from "skatejs";
 
 export default skate("calm-toast", {
 	attributes: {
-		state: { value: "hidden", },
+		shown: {},
 		duration: { value: "3200", },
 	},
 
 	prototype: {
 		show() {
-			this.state = "visible";
-			window.setTimeout(() => { this.hide(); }, Number.parseInt(this.duration, 10));
+			this.shown = "";
+			this._setPendingHide();
 		},
 
 		hide() {
-			this.state = "hidden";
+			this.shown = undefined;
+			this._clearPendingHide();
 		},
 
 		toggle() {
-			this.state = (this.sate === "visible" ? "hidden": "visible");
-			if(this.pendingHide !== undefined) {
-				window.clearTimeout(this.pendingHide);
-				this.pendingHide = undefined;
-			}
+			this.shown = (this.shown === "" ? undefined : "");
+			(this.shown === "" ? this._setPendingHide() : this._clearPendingHide());
+		},
 
-			if(this.state === "visible") {
-				this.pendingHide = window.setTimeout(() => { this.hide(); }, Number.parseInt(this.duration, 10));
-			}
+		_setPendingHide() {
+			this._pendingHide = window.setTimeout(() => { this.hide(); }, Number.parseInt(this.duration, 10));
+		},
+
+		_clearPendingHide() {
+			window.clearTimeout(this._pendingHide);
+			this._pendingHide = undefined;
 		},
 	},
 
@@ -34,27 +37,75 @@ export default skate("calm-toast", {
 		<style>
 			:host {
 				position: fixed;
-				top: 100%;
+				bottom: 0;
 				left: 0;
 				z-index: 99;
 
+				display: flex;
+				flex-direction: row;
+				width: 100%;
+				height: 0;
+
+				align-items: flex-end;
+				justify-content: center;
+				overflow: visible;
+			}
+
+			#toast {
+				display: flex;
+				flex-direction: row-reverse;
+				align-items: center;
 				box-sizing: border-box;
 				width: 100%;
-				padding: 14px 24px;
-				margin: 0 0 0 0;
+				min-height: 32px;
 
 				color: #fff;
 				background: #323232;
 
-				transform: none;
+				transform: translateY(100%);
 				transition: transform ${calm.time.med} ${calm.ease.out};
+				touch-action: none;
 			}
 
-			:host([state=visible]) {
-				transform: translateY(-100%);
+			#text {
+				padding: 12px 24px;
+			}
+
+			::content calm-btn::shadow #btn {
+				border-radius: 0;
+				color: #4dd0e1;
+			}
+
+			@media (min-width: 768px) {
+				:host { justify-content: center; }
+
+				#toast {
+					width: auto;
+					min-width: 280px;
+					max-width: 640px;
+
+					border-radius: 3px 3px 0 0;
+				}
+			}
+
+			#spacer {
+				flex: 1;
+			}
+
+			:host([shown]) #toast {
+				transform: none;
 			}
 		</style>
 
-		<content></content>
+		<div id="toast">
+		` /* layout is reversed since an empty <content> will include <calm-btn> before anything afterwards */ + `
+			<div id="btns"><content select="calm-btn"></content></div>
+			<div id="spacer"></div>
+			<div id="text"><content></content></div>
+		</div>
 	`),
-})
+
+	created(el) {
+		el.addEventListener("click", (evt) => { if(evt.target.tagName === "CALM-BTN") el.hide(); });
+	},
+});
