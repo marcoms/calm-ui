@@ -6,21 +6,21 @@
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
 		<script src="bundle.js"></script>
 		<style>
-			body {
+			:root {
+				font-size: 16px;
 				font-family: roboto, sans-serif;
+				color: #212121;
+			}
+
+			body {
 				margin: 0;
 				padding: calc(56px + 16px) 16px 0 16px;
-				color: #212121;
 			}
 
 			calm-bar {
 				background: #00bcd4;
 				color: #fff;
 				fill: currentColor;
-			}
-
-			.spacer {
-				flex: 1;
 			}
 
 			#fs-toggle {
@@ -47,9 +47,6 @@
 		<calm-bar sticky>
 			<calm-icon-btn icon="menu" onclick="document.querySelector('#drawer').show()"></calm-icon-btn>
 			<header>Demo</header>
-			<div class="spacer"></div>
-			<calm-icon-btn icon="favorite"></calm-icon-btn>
-			<calm-icon-btn icon="more-vert"></calm-icon-btn>
 		</calm-bar>
 		<section id="content">
 			<calm-btn>Button</calm-btn>
