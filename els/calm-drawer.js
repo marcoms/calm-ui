@@ -3,32 +3,32 @@ import skate from "skatejs";
 
 export default skate("calm-drawer", {
 	attributes: {
-		state: { value: "closed", },
 		nodim: {},
+		shown: {},
 	},
 
 	prototype: {
-		open() {
-			this.state = "open";
+		show() {
+			this.shown = "";
 		},
 
-		close() {
-			this.state = "closed";
+		hide() {
+			this.shown = undefined;
 		},
 
 		toggle() {
-			this.state = (this.state === "open" ? "closed" : "open");
+			this.shown = (this.shown === "" ? undefined : "");
 		},
 	},
 
 	template: calm.shadowDOM(`
 		<style>
-			:host([state=open]) #drawer {
+			:host([shown]) #drawer {
 				transform: translateX(100%);
 				visibility: visible;
 			}
 
-			:host([state=open]) #overlay {
+			:host([shown]) #overlay {
 				opacity: 0.25;
 				visibility: visible;
 			}
@@ -82,6 +82,24 @@ export default skate("calm-drawer", {
 	`),
 
 	created(el) {
-		el.shadowRoot.querySelector("#overlay").addEventListener("click", () => { el.close(); });
+		el.shadowRoot.querySelector("#overlay").addEventListener("click", () => el.hide());
 	},
 });
+
+skate("drawerhide", {
+	type: skate.type.ATTRIBUTE,
+	created(el) {
+		let parent = el.parentElement;
+		let drawerParent;
+		while(parent) {
+			if(parent.tagName === "CALM-DRAWER") {
+				drawerParent = parent;
+				break;
+			}
+
+			parent = parent.parentElement;
+		}
+
+		el.addEventListener("click", () => { if(drawerParent) drawerParent.hide(); });
+	}
+})
