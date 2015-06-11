@@ -54,7 +54,7 @@ export default skate("calm-toast", {
 			#toast {
 				display: flex;
 				flex-direction: row-reverse;
-				align-items: center;
+				align-items: stretch;
 				box-sizing: border-box;
 				width: 100%;
 				min-height: calc((14px * 2) + 1em);
@@ -69,6 +69,11 @@ export default skate("calm-toast", {
 
 			#text {
 				padding: 14px 24px;
+			}
+
+			#btns {
+				display: flex;
+				align-items: stretch;
 			}
 
 			::content calm-btn::shadow #btn {
