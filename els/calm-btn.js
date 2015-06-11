@@ -7,7 +7,7 @@ export default skate("calm-btn", {
 		darkbg: {},
 	},
 
-	template: calm.shadowDOM(`
+	template: calm.shadowDom(`
 		<style>
 			:host {
 				display: inline-flex;

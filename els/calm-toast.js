@@ -33,7 +33,7 @@ export default skate("calm-toast", {
 		},
 	},
 
-	template: calm.shadowDOM(`
+	template: calm.shadowDom(`
 		<style>
 			:host {
 				position: fixed;

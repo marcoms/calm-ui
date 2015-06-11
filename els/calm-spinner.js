@@ -4,7 +4,7 @@ import skate from "skatejs";
 export default skate("calm-spinner", {
 	attributes: { small: {}, },
 
-	template: calm.shadowDOM(`
+	template: calm.shadowDom(`
 		<style>
 			@keyframes spin {
 				from { transform: none; }

@@ -1,5 +1,5 @@
 export default {
-	shadowDOM(html) {
+	shadowDom(html) {
 		return (el) => { el.createShadowRoot().innerHTML = html; };
 	},
 

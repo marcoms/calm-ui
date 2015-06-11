@@ -21,7 +21,7 @@ export default skate("calm-drawer", {
 		},
 	},
 
-	template: calm.shadowDOM(`
+	template: calm.shadowDom(`
 		<style>
 			:host([shown]) #drawer {
 				transform: translateX(100%);

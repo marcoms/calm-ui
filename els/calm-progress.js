@@ -30,7 +30,7 @@ export default skate("calm-progress", {
 		},
 	},
 
-	template: calm.shadowDOM(`
+	template: calm.shadowDom(`
 		<style>
 			@keyframes indeterminate {
 				from { transform: translate3d(-100%, 0, 0); }

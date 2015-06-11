@@ -30,7 +30,7 @@ export default skate("calm-field", {
 		},
 	},
 
-	template: calm.shadowDOM(`
+	template: calm.shadowDom(`
 		<style>
 			:host {
 				position: relative;

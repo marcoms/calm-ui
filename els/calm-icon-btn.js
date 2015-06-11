@@ -23,7 +23,7 @@ export default skate("calm-icon-btn", {
 		},
 	},
 
-	template: calm.shadowDOM(`
+	template: calm.shadowDom(`
 		<style>
 			:host {
 				display: inline-block;

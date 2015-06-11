@@ -4,7 +4,7 @@ import skate from "skatejs";
 export default skate("calm-bar", {
 	attributes: { sticky: {}, },
 
-	template: calm.shadowDOM(`
+	template: calm.shadowDom(`
 		<style>
 			:host {
 				display: flex;

@@ -65,7 +65,7 @@ export default skate("calm-tabs", {
 		},
 	},
 
-	template: calm.shadowDOM(`
+	template: calm.shadowDom(`
 		<style>
 			:host {
 				position: relative;

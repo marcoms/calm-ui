@@ -21,7 +21,7 @@ export default skate("calm-fab", {
 		},
 	},
 
-	template: calm.shadowDOM(`
+	template: calm.shadowDom(`
 		<style>
 			:host {
 				z-index: 97;
