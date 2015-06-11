@@ -10,7 +10,9 @@ export default skate("calm-btn", {
 	template: calm.shadowDOM(`
 		<style>
 			:host {
-				display: inline-block;
+				display: inline-flex;
+				align-items: stretch;
+
 				background: #fff;
 				color: #212121;
 			}
@@ -22,10 +24,6 @@ export default skate("calm-btn", {
 			:host([flat][darkbg]) #btn.active { background: rgba(255, 255, 255, 0.25); }
 
 			#btn {
-				text-transform: uppercase;
-				font: inherit;
-				color: inherit;
-
 				border: 0;
 				padding: 14px 24px;
 
@@ -33,6 +31,9 @@ export default skate("calm-btn", {
 				border-radius: 2px;
 				outline: 0;
 				background: inherit;
+				text-transform: uppercase;
+				font: inherit;
+				color: inherit;
 
 				-webkit-user-select: none;
 				-webkit-tap-highlight-color: transparent;
