@@ -86,7 +86,7 @@ export default skate("calm-drawer", {
 	},
 });
 
-skate("data-drawer-hide", {
+skate("data-drawerhide", {
 	type: skate.type.ATTRIBUTE,
 	created(el) {
 		let parent = el.parentElement;
