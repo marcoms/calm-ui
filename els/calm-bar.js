@@ -4,6 +4,7 @@ import skate from "skatejs";
 export default skate("calm-bar", {
 	properties: {
 		sticky: { attr: true },
+		flat: { attr: true },
 	},
 
 	template: calm.shadowDom(`
@@ -36,6 +37,12 @@ export default skate("calm-bar", {
 				left: 0;
 
 				z-index: 97;
+			}
+
+			/* TODO: add auto-raising attribute */
+			:host([flat]) {
+				box-shadow: none;
+				overflow: visible;
 			}
 		</style>
 

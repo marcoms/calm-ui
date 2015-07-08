@@ -39,6 +39,11 @@
 			#tabs-fixed {
 				width: 768px;
 			}
+
+			#drawer-bar {
+				background: transparent;
+				color: #212121;
+			}
 		</style>
 
 		<script src="bundle.js"></script>
@@ -52,8 +57,8 @@
 	</head>
 	<body>
 		<calm-drawer id="drawer">
-			<calm-bar>
-				<calm-icon-btn id="drawer-hide" darkbg icon="arrow-back"></calm-icon-btn>
+			<calm-bar id="drawer-bar" flat>
+				<calm-icon-btn id="drawer-hide" icon="arrow-back"></calm-icon-btn>
 				<header>Calm UI</header>
 			</calm-bar>
 
