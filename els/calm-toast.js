@@ -1,10 +1,15 @@
-import calm from "calm-tools";
+import calm from "calm-tools.js";
 import skate from "skatejs";
 
 export default skate("calm-toast", {
-	attributes: {
-		shown: {},
-		duration: { value: "3200", },
+	properties: {
+		shown: { attr: true },
+		duration: {
+			attr: true,
+			value: 3200,
+		},
+
+		_pendingHide: {},
 	},
 
 	prototype: {
@@ -18,13 +23,14 @@ export default skate("calm-toast", {
 			this._clearPendingHide();
 		},
 
-		toggle() {
-			this.shown = (this.shown === "" ? undefined : "");
-			(this.shown === "" ? this._setPendingHide() : this._clearPendingHide());
-		},
+		toggle() { (this.shown === "" ? this.hide() : this.show()); },
 
 		_setPendingHide() {
-			this._pendingHide = window.setTimeout(() => { this.hide(); }, Number.parseInt(this.duration, 10));
+			calm.ready(() => {
+				this._pendingHide = window.setTimeout(() => {
+					this.hide();
+				}, Number.parseInt(this.duration, 10));
+			});
 		},
 
 		_clearPendingHide() {
@@ -76,7 +82,7 @@ export default skate("calm-toast", {
 				align-items: stretch;
 			}
 
-			::content calm-btn::shadow #btn {
+			::content calm-btn {
 				border-radius: 0;
 				color: #4dd0e1;
 			}
@@ -110,7 +116,9 @@ export default skate("calm-toast", {
 		</div>
 	`),
 
-	created(el) {
-		el.addEventListener("click", (evt) => { if(evt.target.tagName === "CALM-BTN") el.hide(); });
+	created() {
+		this.addEventListener("click", (evt) => {
+			if(evt.target.tagName === "CALM-BTN") this.hide();
+		});
 	},
 });

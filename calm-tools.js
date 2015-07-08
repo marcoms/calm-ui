@@ -1,29 +1,7 @@
 export default {
-	shadowDom(html) {
-		return (el) => { el.createShadowRoot().innerHTML = html; };
-	},
-
-	handleActive(node) {
-		function activate(evt) { evt.currentTarget.classList.add("active"); }
-		function deactivate(evt) { evt.currentTarget.classList.remove("active"); }
-		function addListeners(handlee) {
-			handlee.addEventListener("mousedown", activate);
-			handlee.addEventListener("mouseup", deactivate);
-			handlee.addEventListener("mouseleave", deactivate);
-
-			if("ontouchstart" in window) {
-				handlee.addEventListener("touchstart", activate);
-				handlee.addEventListener("touchend", deactivate);
-				handlee.addEventListener("touchcancel", deactivate);
-			}
-		}
-
-		if(node instanceof HTMLElement && node.dataset.handleActive === "") addListeners(node);
-
-		let handlees = node.querySelectorAll("[data-handle-active]");
-		if(handlees[0]) for(let handlee of handlees) addListeners(handlee);
-
-	},
+	shadowDom(html) { return function() {
+		this.createShadowRoot().innerHTML = html;
+	}; },
 
 	// -quart easings
 
@@ -31,6 +9,18 @@ export default {
 		out: "cubic-bezier(0.165, 0.84, 0.44, 1)",
 		in: "cubic-bezier(0.895, 0.03, 0.685, 0.22)",
 		inOut: "cubic-bezier(0.77, 0, 0.175, 1)",
+	},
+
+	ready(fn) {
+		if(document.readyState === "interactive" || document.readyState === "complete") {
+			fn();
+		} else {
+			document.addEventListener("DOMContentLoaded", fn);
+		}
+	},
+
+	emit(src, name) {
+		this.ready(() => src.dispatchEvent(new Event(name)));
 	},
 
 	// durations for transitions

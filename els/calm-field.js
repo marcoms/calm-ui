@@ -1,33 +1,28 @@
-import calm from "calm-tools";
+import calm from "calm-tools.js";
 import skate from "skatejs";
 
 export default skate("calm-field", {
-	attributes: {
+	properties: {
 		label: {
-			created(el, diff) {
-				el.setLabel(diff.newValue);
-			},
-
-			updated(el, diff) {
-				el.setLabel(diff.newValue);
-			},
-
-			removed(el) {
-				el.setLabel("");
+			attr: true,
+			deps: "floatinglabel",
+			set(label) {
+				calm.ready(() => {
+					if(this.floatinglabel === "") {
+						this._field.removeAttribute("placeholder");
+						this._label.textContent = label;
+					} else {
+						this._label.textContent = "";
+						this._field.placeholder = label;
+					}
+				});
 			},
 		},
 
-		floatingLabel: {},
-	},
+		floatinglabel: { attr: true },
 
-	prototype: {
-		setLabel(label) {
-			if(this.floatingLabel === "")  {
-				this.shadowRoot.getElementById("label").textContent = label;
-			} else {
-				this.shadowRoot.getElementById("field").placeholder = label;
-			}
-		},
+		_label: {},
+		_field: {},
 	},
 
 	template: calm.shadowDom(`
@@ -36,6 +31,26 @@ export default skate("calm-field", {
 				position: relative;
 
 				display: inline-block;
+			}
+
+			#field {
+				padding: 16px 0 8px 0;
+
+				outline: 0;
+				border: 0;
+				box-shadow: inset 0 -1px rgba(0, 0, 0, 0.2);
+				font: inherit;
+				color: inherit;
+				background: transparent;
+
+				transition: box-shadow ${calm.time.short} linear;
+			}
+
+			#field[active],
+			#field:focus {
+				box-shadow: inset 0 -2px #00bcd4;
+
+				transition: none;
 			}
 
 			::-webkit-input-placeholder { color: rgba(0, 0, 0, 0.5); }
@@ -55,46 +70,27 @@ export default skate("calm-field", {
 				transition: transform ${calm.time.med} ${calm.ease.out}, color ${calm.time.med} linear;
 			}
 
-			:host([floatinglabel]) #field.active ~ #label,
+			:host([floatinglabel]) #field[active] ~ #label,
 			:host([floatinglabel]) #field:focus ~ #label,
-			:host([floatinglabel]) #field:not(.empty) ~ #label {
-				transform: translateY(-100%) scale(0.75);
-			}
+			:host([floatinglabel]) #field:not(.empty) ~ #label { transform: translateY(-100%) scale(0.75); }
 
-			:host([floatinglabel]) #field.active ~ #label,
+			:host([floatinglabel]) #field[active] ~ #label,
 			:host([floatinglabel]) #field:focus ~ #label {
 				color: ${calm.color};
 
 				transition: transform ${calm.time.med} ${calm.ease.out}, color 0ms linear;
 			}
-
-			#field {
-				padding: 16px 0 8px 0;
-
-				outline: 0;
-				border: 0;
-				box-shadow: inset 0 -1px rgba(0, 0, 0, 0.2);
-				font: inherit;
-				color: inherit;
-				background: transparent;
-
-				transition: box-shadow ${calm.time.short} linear;
-			}
-
-			#field.active,
-			#field:focus {
-				box-shadow: inset 0 -2px #00bcd4;
-
-				transition: none;
-			}
 		</style>
 
-		<input class="empty" data-handle-active id="field" type="text">
+		<input class="empty" id="field" type="text">
 		<div id="label"></div>
 	`),
 
-	created(el) {
-		el.shadowRoot.getElementById("field").addEventListener("blur", (evt) => {
+	created() {
+		this._label = this.shadowRoot.getElementById("label");
+		this._field = this.shadowRoot.getElementById("field");
+
+		this.shadowRoot.getElementById("field").addEventListener("blur", (evt) => {
 			if(evt.currentTarget.value === "") {
 				evt.currentTarget.classList.add("empty");
 			} else {

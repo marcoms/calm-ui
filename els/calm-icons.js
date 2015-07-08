@@ -1,4 +1,4 @@
-import calm from "calm-tools";
+import calm from "calm-tools.js";
 import skate from "skatejs";
 
 export default skate("calm-icons", {

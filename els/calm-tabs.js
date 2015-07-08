@@ -1,68 +1,40 @@
-import calm from "calm-tools";
+import calm from "calm-tools.js";
 import skate from "skatejs";
 
+import CalmTab from "els/calm-tab.js";
+
 export default skate("calm-tabs", {
-	attributes: {
-		tabs: {
-			created(el, diff) {
-				el.setTabs(diff.newValue);
-			},
-
-			updated(el, diff) {
-				el.setTabs(diff.newValue);
-			},
-		},
-
+	properties: {
 		selected: {
-			created(el, diff) {
-				el.setSelected(diff.newValue);
+			attr: true,
+			set(name) {
+				calm.ready(() => {
+					let tabs = Array.from(this._tabs.getDistributedNodes());
+
+					let targetTab, prevSelected;
+					for(let tab of tabs) {
+						if(targetTab && prevSelected) break;
+						if(tab.name === name)  targetTab = tab;
+						if(tab.selected === "") prevSelected = tab;
+					}
+
+					if(!targetTab) return;
+
+					if(prevSelected) prevSelected.selected = undefined;
+					targetTab.selected = "";
+
+					this._indicator.style.width = `${targetTab.offsetWidth}px`;
+					this._indicator.style.transform = `translate3d(${targetTab.offsetLeft}px, 0, 0)`;
+
+					calm.emit(this, "select");
+				});
 			},
-
-			updated(el, diff) {
-				el.setSelected(diff.newValue);
-			},
 		},
 
-		fixed: {},
-	},
+		fixed: { attr: true },
 
-	prototype: {
-		setTabs(labels) {
-			let labelsList = labels.split(",");
-			if(!labelsList[0]) return;
-
-			let tabs = this.shadowRoot.getElementById("tabs");
-			while(tabs.firstChild) tabs.removeChild(tabs.firstChild);
-			let tab;
-			for(var label of labelsList) {
-				label = label.trim();
-
-				tab = document.createElement("div");
-				tab.classList.add("tab");
-				tab.dataset.handleActive = "";
-				tab.textContent = label;
-				tabs.appendChild(tab);
-			}
-
-			calm.handleActive(tabs);
-		},
-
-		setSelected(selected) {
-			let targetTab;
-			let tabs = Array.prototype.slice.call(this.shadowRoot.getElementById("tabs").children);
-			for(let tab of tabs) {
-				if(tab.textContent === selected) {
-					targetTab = tab;
-					break;
-				}
-			}
-
-			if(!targetTab) return;
-
-			let indicator = this.shadowRoot.getElementById("indicator");
-			indicator.style.width = `${targetTab.offsetWidth}px`;
-			indicator.style.transform = `translate3d(${targetTab.offsetLeft}px, 0, 0)`;
-		},
+		_indicator: {},
+		_tabs: {},
 	},
 
 	template: calm.shadowDom(`
@@ -77,39 +49,13 @@ export default skate("calm-tabs", {
 				overflow-y: hidden;
 			}
 
-			:host([fixed]) > #tabs {
-				width: 100%;
-			}
+			:host([fixed]) #container { width: 100%; }
+			:host([fixed]) ::content calm-tab { flex: 1; }
 
-			:host([fixed]) > #tabs > .tab {
-				flex: 1;
-				justify-content: center;
-			}
-
-			#tabs {
-				display: inline-flex;
+			#container {
+				display: flex;
 				flex-direction: row;
 				height: 100%;
-			}
-
-			.tab {
-				display: flex;
-				align-items: center;
-				padding: 0 16px;
-
-				text-transform: uppercase;
-				white-space: nowrap;
-
-				cursor: pointer;
-
-				transition: background ${calm.time.short} linear;
-				-webkit-tap-highlight-color: transparent;
-			}
-
-			.tab.active {
-				background: rgba(0, 0, 0, 0.1);
-
-				transition: none;
 			}
 
 			#indicator {
@@ -121,18 +67,21 @@ export default skate("calm-tabs", {
 
 				background: currentColor;
 
-				transition-property: transform width;
+				transition-property: transform, width;
 				transition-duration: ${calm.time.med};
 				transition-timing-function: ${calm.ease.out};
-				will-change: transform width;
+				will-change: transform, width;
 			}
 		</style>
 
-		<div id="tabs"></div>
+		<div id="container"><content id="tabs" select="calm-tab"></content></div>
 		<div id="indicator"></div>
 	`),
 
-	created(el) {
-		el.shadowRoot.getElementById("tabs").addEventListener("click", (evt) => { el.selected = evt.target.textContent; });
+	created() {
+		this._indicator = this.shadowRoot.getElementById("indicator");
+		this._tabs = this.shadowRoot.getElementById("tabs");
+
+		this.shadowRoot.getElementById("container").addEventListener("click", (evt) => { this.selected = evt.target.name; });
 	},
 });

@@ -1,33 +1,39 @@
-import calm from "calm-tools";
+import calm from "calm-tools.js";
 import skate from "skatejs";
-import CalmIcon from "els/calm-icon";
+
+import CalmIcon from "els/calm-icon.js";
+import CalmTappable from "els/calm-tappable.js";
 
 export default skate("calm-icon-btn", {
-	attributes: {
+	properties: {
 		icon: {
-			created(el, diff) {
-				el.setIcon(diff.newValue);
-			},
-
-			updated(el, diff) {
-				el.setIcon(diff.newValue);
+			attr: true,
+			set(icon) {
+				calm.ready(() => {
+					this._icon.icon = icon;
+				});
 			},
 		},
 
-		lightbg: {},
-	},
-
-	prototype: {
-		setIcon(icon) {
-			this.shadowRoot.getElementById("icon").icon = icon;
+		darkbg: {
+			attr: true,
+			set(value) {
+				calm.ready(() => {
+					this._btn.darkbg = value;
+				});
+			},
 		},
+
+		_btn: {},
+		_icon: {},
 	},
 
 	template: calm.shadowDom(`
 		<style>
 			:host {
 				display: inline-block;
-				align-self: center;
+				width: 64px;
+				height: 64px;
 
 				border-radius: 50%;
 			}
@@ -37,32 +43,24 @@ export default skate("calm-icon-btn", {
 			}
 
 			#btn {
+				height: 100%;
+				width: 100%;
+				justify-content: center;
+
 				border: 0;
 
 				outline: 0;
-				cursor: pointer;
 				background: transparent;
 				box-shadow: none;
 				border-radius: 50%;
-				padding: 20px;
-				transition: background ${calm.time.short} linear;
-				-webkit-tap-highlight-color: transparent;
-			}
-
-			#btn.active {
-				transition: none;
-				background: rgba(255, 255, 255, 0.25);
-			}
-
-			:host([lightbg]) #btn.active {
-				background: rgba(0, 0, 0, 0.1);
 			}
 		</style>
 
-		<button data-handle-active id="btn"><calm-icon id="icon"></calm-icon></btn>
+		<calm-tappable id="btn"><calm-icon id="icon"></calm-icon></calm-tappable>
 	`),
 
-	created(el) {
-		calm.handleActive(el.shadowRoot.getElementById("btn"));
-	},
+	created() {
+		this._btn = this.shadowRoot.getElementById("btn");
+		this._icon = this.shadowRoot.getElementById("icon");
+	}
 });

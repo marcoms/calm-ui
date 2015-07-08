@@ -1,29 +1,47 @@
-import calm from "calm-tools";
+import calm from "calm-tools.js";
 import skate from "skatejs";
 
-export default skate("calm-pages", {
-	attributes: {
-		selected: {
-			created(el, diff) { el.setSelected(diff.newValue); },
-			updated(el, diff) { el.setSelected(diff.newValue); },
-		}
-	},
+import CalmPage from "els/calm-page.js";
 
-	prototype: {
-		setSelected(selected) {
-			const prevSelected = this.querySelector("[data-selected]");
-			if(prevSelected) prevSelected.removeAttribute("data-selected");
-			document.getElementById(selected).dataset.selected = "";
+export default skate("calm-pages", {
+	properties: {
+		selected: {
+			attr: true,
+			set(name) {
+				// TODO: calm-selector/smth for dry++
+
+				calm.ready(() => {
+					let pages = Array.from(this._pages.getDistributedNodes());
+
+					let targetPage, prevSelected;
+					for(let page of pages) {
+						if(targetPage && prevSelected) break;
+						if(page.name === name) targetPage = page;
+						if(page.selected === "") prevSelected = page;
+					}
+
+					if(!targetPage) return;
+
+					if(prevSelected) prevSelected.selected = undefined;
+					targetPage.selected = "";
+
+					calm.emit(this, "select");
+				});
+			},
 		},
+
+		_pages: {},
 	},
 
 	template: calm.shadowDom(`
 		<style>
 			:host { display: block; }
-			::content > div { display: none; }
-			::content > div[data-selected] { display: initial; }
 		</style>
 
-		<content select="div"></content>
+		<content id="pages" select="calm-page"></content>
 	`),
+
+	created() {
+		this._pages = this.shadowRoot.getElementById("pages");
+	}
 });

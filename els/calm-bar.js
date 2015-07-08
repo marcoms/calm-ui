@@ -1,14 +1,16 @@
-import calm from "calm-tools";
+import calm from "calm-tools.js";
 import skate from "skatejs";
 
 export default skate("calm-bar", {
-	attributes: { sticky: {}, },
+	properties: {
+		sticky: { attr: true },
+	},
 
 	template: calm.shadowDom(`
 		<style>
 			:host {
 				display: flex;
-				align-items: stretch;
+				align-items: center;
 
 				width: 100%;
 				height: 56px;
@@ -17,19 +19,23 @@ export default skate("calm-bar", {
 				box-shadow: ${calm.shadow[1]};
 			}
 
+			::content > header {
+				margin-left: 16px;
+
+				font-size: 20px;
+				line-height: 56px;
+			}
+
+			::content > calm-icon-btn {
+				margin: 0 -4px;
+			}
+
 			:host([sticky]) {
 				position: fixed;
 				top: 0;
 				left: 0;
 
 				z-index: 97;
-			}
-
-			::content > header {
-				margin-left: 16px;
-
-				font-size: 20px;
-				line-height: 56px;
 			}
 		</style>
 

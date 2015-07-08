@@ -4,7 +4,6 @@
 		<meta charset="utf-8">
 		<title>Calm UI</title>
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-		<script src="bundle.js"></script>
 		<style>
 			:root {
 				font-size: 16px;
@@ -14,7 +13,7 @@
 
 			body {
 				margin: 0;
-				padding: calc(56px + 16px) 16px 0 16px;
+				padding: calc(56px + 16px) 16px;
 			}
 
 			calm-bar {
@@ -23,82 +22,141 @@
 				fill: currentColor;
 			}
 
-			#fs-toggle {
-				position: fixed;
-				bottom: 32px;
-				right: 32px;
+			calm-page {
+				display: flex;
+				align-items: flex-start;
+				flex-direction: column;
+			}
+
+			calm-page > * {
+				margin-bottom: 16px;
+			}
+
+			#btn-custom-bg {
+				background: #836;
 			}
 
 			#tabs-fixed {
-				width: 640px;
+				width: 768px;
 			}
-
-			#content > * { display: block; margin-bottom: 16px; }
 		</style>
+
+		<script src="bundle.js"></script>
+
+<!--
+		<script src="jspm-pkg/system.js"></script>
+		<script src="config.js"></script>
+		<script>
+			System.import("calm-ui.js");
+		</script> -->
 	</head>
 	<body>
 		<calm-drawer id="drawer">
 			<calm-bar>
-				<calm-icon-btn drawerhide icon="arrow-back"></calm-icon-btn>
+				<calm-icon-btn id="drawer-hide" darkbg icon="arrow-back"></calm-icon-btn>
 				<header>Calm UI</header>
 			</calm-bar>
+
+			<calm-menu id="nav" selected="tabs">
+				<calm-item name="btn">calm-btn</calm-item>
+				<calm-item name="icon-btn">calm-icon-btn</calm-item>
+				<calm-item name="fab">calm-fab</calm-item>
+				<calm-item name="field">calm-field</calm-item>
+				<calm-item name="tabs">calm-tabs</calm-item>
+				<calm-item name="spinner">calm-spinner</calm-item>
+				<calm-item name="progress">calm-progress</calm-item>
+				<calm-item name="toast">calm-toast</calm-item>
+			</calm-menu>
 		</calm-drawer>
 
 		<calm-bar sticky>
-			<calm-icon-btn icon="menu" onclick="document.querySelector('#drawer').show()"></calm-icon-btn>
-			<header>Demo</header>
+			<calm-icon-btn icon="menu" darkbg id="drawer-show"></calm-icon-btn>
+			<header id="title">Demo</header>
 		</calm-bar>
-		<section id="content">
-			<calm-btn>Button</calm-btn>
-			<calm-btn flat>Flat button</calm-btn>
-			<div>
-				<calm-icon-btn lightbg icon="refresh"></calm-icon-btn>
-				<calm-icon-btn lightbg icon="reply"></calm-icon-btn>
-				<calm-fab id="fs-toggle" icon="fullscreen"></calm-fab>
-			</div>
-			<calm-field label="Text field"></calm-field>
-			<calm-field floatinglabel label="Floating label"></calm-field>
-			<calm-tabs tabs="short, long string of text, medium text" selected="short"></calm-tabs>
-			<calm-tabs id="tabs-fixed" fixed tabs="short, long string of text, medium text" selected="short"></calm-tabs>
-			<calm-spinner></calm-spinner>
-			<calm-spinner small></calm-spinner>
-			<calm-progress id="progress" value="0"></calm-progress>
-			<calm-progress indeterminate></calm-progress>
-			<calm-btn id="toast-toggle">Toggle toast</calm-btn>
-		</section>
 
-		<calm-toast shown id="toast">Toast notification<calm-btn flat darkbg>ok</calm-btn></calm-toast>
+		<calm-pages id="pages">
+			<calm-page name="btn">
+				<calm-btn>Button</calm-btn>
+				<calm-btn flat>Flat button</calm-btn>
+				<calm-btn id="btn-custom-bg" darkbg>Styled button</calm-btn>
+			</calm-page>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/2.0.0/screenfull.min.js"></script>
+			<calm-page name="icon-btn">
+				<calm-icon-btn icon="star"></calm-icon-btn>
+			</calm-page>
+
+			<calm-page name="fab">
+				<calm-fab darkbg icon="add"></calm-fab>
+			</calm-page>
+
+			<calm-page name="field">
+				<calm-field label="Text field"></calm-field>
+				<calm-field label="Floating label" floatinglabel></calm-field>
+			</calm-page>
+
+			<calm-page name="tabs">
+				<calm-tabs selected="1">
+					<calm-tab name="1">Tab one</calm-tab>
+					<calm-tab name="2">Tab number two</calm-tab>
+					<calm-tab name="3">Tab 3</calm-tab>
+					<calm-tab name="4">The final tab</calm-tab>
+				</calm-tabs>
+
+				<calm-tabs id="tabs-fixed" fixed selected="1">
+					<calm-tab name="1">Tab one</calm-tab>
+					<calm-tab name="2">Second tab</calm-tab>
+					<calm-tab name="3">Tab 3</calm-tab>
+					<calm-tab name="4">The final tab</calm-tab>
+				</calm-tabs>
+			</calm-page>
+
+			<calm-page name="spinner">
+				<calm-spinner></calm-spinner>
+				<calm-spinner small></calm-spinner>
+			</calm-page>
+
+			<calm-page name="progress">
+				<calm-progress></calm-progress>
+				<calm-progress indeterminate></calm-progress>
+			</calm-page>
+
+			<calm-page name="toast">
+				<calm-btn id="toast-toggle" id="toast-toggle">Toggle toast</calm-btn>
+			</calm-page>
+		</calm-pages>
+
+		<calm-toast id="toast">Toast notification<calm-btn flat darkbg>ok</calm-btn></calm-toast>
+
 		<script>
 			var $ = document.querySelector.bind(document), $$ = document.querySelectorAll.bind(document);
+			Node.prototype.on = Node.prototype.addEventListener;
 
-			var fsToggle = $("#fs-toggle");
-			document.addEventListener(screenfull.raw.fullscreenchange, function() {
-				fsToggle.icon = (screenfull.isFullscreen ? "fullscreen-exit" : "fullscreen");
-			});
-
-			fsToggle.addEventListener("click", function() {
-				if(screenfull.enabled) {
-					(screenfull.isFullscreen ? screenfull.exit() : screenfull.request());
-				}
-			});
-
-			var progress = $("#progress");
-
-			var value;
-			var nextValue;
-			var isFinished;
-			window.setInterval(function() {
-				value = Number.parseInt(progress.value, 10);
-				nextValue = Math.min(value + (Math.random() * 32), 100);
-				progress.value = (isFinished ? nextValue = 0 : nextValue);
-				isFinished = nextValue === 100;
-			}, 1000);
-
+			var drawer = $("#drawer");
+			var nav = $("#nav");
+			var pages = $("#pages");
+			var drawerShow = $("#drawer-show");
+			var drawerHide = $("#drawer-hide");
 			var toastToggle = $("#toast-toggle");
 			var toast = $("#toast");
-			toastToggle.addEventListener("click", function() { toast.toggle(); });
+			var title = $("#title");
+
+			drawerShow.on("click", function() {
+				drawer.show();
+			});
+
+			drawerHide.on("click", function() {
+				drawer.hide();
+			});
+
+			nav.on("select", function() {
+				pages.selected = nav.selected;
+				title.textContent = nav.querySelector("[selected]").textContent;
+				drawer.hide();
+			});
+
+			toastToggle.on("click", function() {
+				toast.toggle();
+			});
 		</script>
 	</body>
 </html>

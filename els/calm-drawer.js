@@ -1,10 +1,10 @@
-import calm from "calm-tools";
+import calm from "calm-tools.js";
 import skate from "skatejs";
 
 export default skate("calm-drawer", {
-	attributes: {
-		nodim: {},
-		shown: {},
+	properties: {
+		nodim: { attr: true },
+		shown: { attr: true },
 	},
 
 	prototype: {
@@ -23,18 +23,7 @@ export default skate("calm-drawer", {
 
 	template: calm.shadowDom(`
 		<style>
-			:host([shown]) #drawer {
-				transform: translateX(100%);
-				visibility: visible;
-			}
-
-			:host([shown]) #overlay {
-				opacity: 0.25;
-				visibility: visible;
-			}
-
 			:host {
-				height: 100%;
 				width: 320px;
 				display: block;
 			}
@@ -45,17 +34,19 @@ export default skate("calm-drawer", {
 				right: 100%;
 				z-index: 99;
 
-				height: inherit;
+				height: 100%;
 				width: inherit;
 
-				transform: none;
 				visibility: hidden;
 				background: #fff;
 				box-shadow: ${calm.shadow[2]};
+				overflow: auto;
 
 				transition: transform ${calm.time.long} ${calm.ease.out}, visibility ${calm.time.long} linear;
 				will-change: transform, visibility;
 			}
+
+			::content > calm-menu { width: 100%; }
 
 			#overlay {
 				position: fixed;
@@ -72,34 +63,24 @@ export default skate("calm-drawer", {
 				transition: opacity ${calm.time.long} ${calm.ease.out}, visibility ${calm.time.long} linear;
 			}
 
-			:host([nodim]) #overlay {
-				background: transparent;
+			:host([shown]) #drawer {
+				transform: translateX(100%);
+				visibility: visible;
 			}
+
+			:host([shown]) #overlay {
+				opacity: 0.25;
+				visibility: visible;
+			}
+
+			:host([nodim]) #overlay { background: transparent; }
 		</style>
 
 		<div id="drawer"><content></content></div>
 		<div id="overlay"></div>
 	`),
 
-	created(el) {
-		el.shadowRoot.querySelector("#overlay").addEventListener("click", () => el.hide());
+	created() {
+		this.shadowRoot.getElementById("overlay").addEventListener("click", () => this.hide());
 	},
 });
-
-skate("data-drawerhide", {
-	type: skate.type.ATTRIBUTE,
-	created(el) {
-		let parent = el.parentElement;
-		let drawerParent;
-		while(parent) {
-			if(parent.tagName === "CALM-DRAWER") {
-				drawerParent = parent;
-				break;
-			}
-
-			parent = parent.parentElement;
-		}
-
-		el.addEventListener("click", () => { if(drawerParent) drawerParent.hide(); });
-	}
-})

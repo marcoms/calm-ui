@@ -1,38 +1,22 @@
-import calm from "calm-tools";
+import calm from "calm-tools.js";
 import skate from "skatejs";
-import CalmIcons from "els/calm-icons";
+
+import CalmIcons from "els/calm-icons.js";
 
 export default skate("calm-icon", {
-	attributes: {
+	properties: {
 		icon: {
-			created(el, diff) {
-				el.setIcon(diff.newValue);
-			},
-
-			updated(el, diff) {
-				el.setIcon(diff.newValue);
-			},
-		},
-	},
-
-	prototype: {
-		setIcon(icon) {
-			if(!this.iconProvider) this.findIconProvider();
-
-			let newIcon = this.iconProvider.getIcon(icon);
-			let svg = this.shadowRoot.getElementById("icon");
-			svg.replaceChild(newIcon, svg.getElementsByTagName("g")[0]);
-		},
-
-		findIconProvider() {
-			let documentIconProvider = document.getElementsByTagName("calm-icons")[0];  // TODO: remove document icon providers - no real use case
-			if(documentIconProvider) {
-				this.iconProvider = documentIconProvider;
-			} else {
+			attr: true,
+			set(icon) {
 				if(!window.calmIcons) window.calmIcons = document.createElement("calm-icons");
-				this.iconProvider = window.calmIcons;
-			}
+
+				calm.ready(() => {
+					this._frame.replaceChild(window.calmIcons.getIcon(icon), this._frame.children[0]);
+				});
+			},
 		},
+
+		_frame: {},
 	},
 
 	template: calm.shadowDom(`
@@ -41,8 +25,12 @@ export default skate("calm-icon", {
 			svg { vertical-align: middle; }
 		</style>
 
-		<svg id="icon" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<svg id="frame" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 			<g></g>
 		</svg>
 	`),
+
+	created() {
+		this._frame = this.shadowRoot.getElementById("frame");
+	},
 });

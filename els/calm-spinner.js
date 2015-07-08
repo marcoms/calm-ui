@@ -1,8 +1,10 @@
-import calm from "calm-tools";
+import calm from "calm-tools.js";
 import skate from "skatejs";
 
 export default skate("calm-spinner", {
-	attributes: { small: {}, },
+	properties: {
+		small: { attr: true },
+	},
 
 	template: calm.shadowDom(`
 		<style>

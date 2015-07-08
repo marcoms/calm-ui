@@ -1,24 +1,29 @@
-import calm from "calm-tools";
+import calm from "calm-tools.js";
 import skate from "skatejs";
-import CalmIconBtn from "els/calm-icon-btn";
+
+import CalmIconBtn from "els/calm-icon-btn.js";
 
 export default skate("calm-fab", {
-	attributes: {
+	properties: {
 		icon: {
-			created(el, diff) {
-				el.setIcon(diff.newValue);
-			},
-
-			updated(el, diff) {
-				el.setIcon(diff.newValue);
+			attr: true,
+			set(icon) {
+				calm.ready(() => {
+					this._btn.icon = icon;
+				});
 			},
 		},
-	},
 
-	prototype: {
-		setIcon(icon) {
-			this.shadowRoot.getElementById("btn").setIcon(icon);
+		darkbg: {
+			attr: true,
+			set(value) {
+				calm.ready(() => {
+					this._btn.darkbg = value;
+				});
+			},
 		},
+
+		_btn: {},
 	},
 
 	template: calm.shadowDom(`
@@ -39,4 +44,8 @@ export default skate("calm-fab", {
 
 		<calm-icon-btn id="btn"></calm-icon-btn>
 	`),
+
+	created() {
+		this._btn = this.shadowRoot.getElementById("btn");
+	}
 });

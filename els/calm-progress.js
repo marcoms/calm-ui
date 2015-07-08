@@ -1,33 +1,31 @@
-import calm from "calm-tools";
+import calm from "calm-tools.js";
 import skate from "skatejs";
 
 export default skate("calm-progress", {
-	attributes: {
+	properties: {
 		value: {
-			created(el, diff) {
-				el.setValue(Number.parseFloat(diff.newValue, 10));
-			},
+			attr: true,
+			set(value) {
+				calm.ready(() => {
+					if(this.indeterminate === "") return;
 
-			updated(el, diff) {
-				el.setValue(Number.parseFloat(diff.newValue, 10));
+					value = Number.parseFloat(value, 10);
+					let max = Number.parseFloat(this.max, 10);
+					if(value < 0 || value > max) return;
+
+					this._progress.style.width = `${(value / max) * 100}%`;
+				});
 			},
 		},
 
-		max: { value: "100" },
-		indeterminate: {},
-	},
-
-	prototype: {
-		setValue(value) {
-			if(this.indeterminate === "") return;
-
-			let max = Number.parseFloat(this.max, 10);
-
-			if(value < 0 || value > this.max) return;
-
-			let progress = this.shadowRoot.getElementById("progress");
-			progress.style.width = `${(value / max) * 100}%`;
+		max: {
+			attr: true,
+			value: "100",
 		},
+
+		indeterminate: { attr: true },
+
+		_progress: {},
 	},
 
 	template: calm.shadowDom(`
@@ -40,6 +38,7 @@ export default skate("calm-progress", {
 			:host {
 				position: relative;
 
+				display: block;
 				width: 256px;
 				height: 2px;
 
@@ -76,4 +75,8 @@ export default skate("calm-progress", {
 		<div id="bar"></div>
 		<div id="progress"></div>
 	`),
+
+	created() {
+		this._progress = this.shadowRoot.getElementById("progress");
+	}
 });
