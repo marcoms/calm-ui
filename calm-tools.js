@@ -19,8 +19,8 @@ export default {
 		}
 	},
 
-	emit(src, name) {
-		this.ready(() => src.dispatchEvent(new Event(name)));
+	emit(src, name, opts={}) {
+		this.ready(() => src.dispatchEvent(new CustomEvent(name, opts)));
 	},
 
 	// durations for transitions
