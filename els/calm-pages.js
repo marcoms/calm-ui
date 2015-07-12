@@ -2,35 +2,20 @@ import calm from "calm-tools.js";
 import skate from "skatejs";
 
 import CalmPage from "els/calm-page.js";
+import CalmSelection from "els/calm-selection.js";
 
 export default skate("calm-pages", {
 	properties: {
 		selected: {
 			attr: true,
 			set(name) {
-				// TODO: calm-selector/smth for dry++
-
 				calm.ready(() => {
-					let pages = Array.from(this._pages.getDistributedNodes());
-
-					let targetPage, prevSelected;
-					for(let page of pages) {
-						if(targetPage && prevSelected) break;
-						if(page.name === name) targetPage = page;
-						if(page.selected === "") prevSelected = page;
-					}
-
-					if(!targetPage) return;
-
-					if(prevSelected) prevSelected.selected = undefined;
-					targetPage.selected = "";
-
-					calm.emit(this, "select");
+					this._selection.selected = name;
 				});
 			},
 		},
 
-		_pages: {},
+		_selection: {},
 	},
 
 	template: calm.shadowDom(`
@@ -38,10 +23,15 @@ export default skate("calm-pages", {
 			:host { display: block; }
 		</style>
 
-		<content id="pages" select="calm-page"></content>
+		<calm-selection id="selection">
+			<content select="calm-page"></content>
+		</calm-selection>
 	`),
 
 	created() {
-		this._pages = this.shadowRoot.getElementById("pages");
+		this._selection = this.shadowRoot.getElementById("selection");
+		this._selection.addEventListener("select", (evt) => {
+			calm.emit(this, "select", { detail: evt.detail });
+		});
 	}
 });

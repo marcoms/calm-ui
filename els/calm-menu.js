@@ -2,6 +2,7 @@ import calm from "calm-tools.js";
 import skate from "skatejs";
 
 import CalmItem from "els/calm-item.js";
+import CalmSelection from "els/calm-selection.js";
 
 export default skate("calm-menu", {
 	properties: {
@@ -9,30 +10,27 @@ export default skate("calm-menu", {
 			attr: true,
 			set(name) {
 				calm.ready(() => {
-					if(this.noselect === "") return;
-
-					let items = Array.from(this._items.getDistributedNodes());
-
-					let targetItem, prevSelected;
-					for(let item of items) {
-						if(targetItem && prevSelected) break;
-						if(item.name === name) targetItem = item;
-						if(item.selected === "") prevSelected = item;
-					}
-
-					if(!targetItem) return;
-
-					if(prevSelected) prevSelected.selected = undefined;
-					targetItem.selected = "";
-
-					calm.emit(this, "select");
+					if(this._noSelect === "") return;
+					this._selection.selected = name;
 				});
 			},
 		},
 
-		noselect: { attr: true },
+		noSelect: {
+			attr: true,
+			set(value) {
+				calm.ready(() => {
+					if(value === "") {
+						this._selection.tapSelect = undefined;
+						this.selected = undefined;
+					} else {
+						this._selection.tapSelect = "";
+					}
+				});
+			},
+		},
 
-		_items: {},
+		_selection: {},
 	},
 
 	template: calm.shadowDom(`
@@ -44,11 +42,16 @@ export default skate("calm-menu", {
 			}
 		</style>
 
-		<content id="items" select="calm-item"></content>
+		<calm-selection tap-select id="selection">
+			<content select="calm-item"></content>
+		</calm-selection>
 	`),
 
 	created() {
-		this._items = this.shadowRoot.getElementById("items");
-		this.addEventListener("click", (evt) => { this.selected = evt.target.name; });
+		this._selection = this.shadowRoot.getElementById("selection");
+		this._selection.addEventListener("select", (evt) => {
+			this.selected = evt.detail.name;
+			calm.emit(this, "select", { detail: evt.detail });
+		});
 	},
 });

@@ -16,6 +16,7 @@ import CalmMenu from "els/calm-menu";
 import CalmTappable from "els/calm-tappable";
 import CalmItem from "els/calm-item";
 import CalmPage from "els/calm-page";
+import CalmSelection from "els/calm-selection";
 
 export default {
 	CalmDrawer,
@@ -36,6 +37,7 @@ export default {
 	CalmTappable,
 	CalmItem,
 	CalmPage,
+	CalmSelection,
 };
 
 export {
@@ -57,4 +59,5 @@ export {
 	CalmTappable,
 	CalmItem,
 	CalmPage,
+	CalmSelection,
 };

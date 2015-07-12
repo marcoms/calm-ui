@@ -2,6 +2,7 @@ import calm from "calm-tools.js";
 import skate from "skatejs";
 
 import CalmTab from "els/calm-tab.js";
+import CalmSelection from "els/calm-selection.js";
 
 export default skate("calm-tabs", {
 	properties: {
@@ -9,24 +10,7 @@ export default skate("calm-tabs", {
 			attr: true,
 			set(name) {
 				calm.ready(() => {
-					let tabs = Array.from(this._tabs.getDistributedNodes());
-
-					let targetTab, prevSelected;
-					for(let tab of tabs) {
-						if(targetTab && prevSelected) break;
-						if(tab.name === name)  targetTab = tab;
-						if(tab.selected === "") prevSelected = tab;
-					}
-
-					if(!targetTab) return;
-
-					if(prevSelected) prevSelected.selected = undefined;
-					targetTab.selected = "";
-
-					this._indicator.style.width = `${targetTab.offsetWidth}px`;
-					this._indicator.style.transform = `translate3d(${targetTab.offsetLeft}px, 0, 0)`;
-
-					calm.emit(this, "select");
+					this._selection.selected = name;
 				});
 			},
 		},
@@ -34,7 +18,7 @@ export default skate("calm-tabs", {
 		fixed: { attr: true },
 
 		_indicator: {},
-		_tabs: {},
+		_selection: {},
 	},
 
 	template: calm.shadowDom(`
@@ -49,10 +33,9 @@ export default skate("calm-tabs", {
 				overflow-y: hidden;
 			}
 
-			:host([fixed]) #container { width: 100%; }
 			:host([fixed]) ::content calm-tab { flex: 1; }
 
-			#container {
+			#selection {
 				display: flex;
 				flex-direction: row;
 				height: 100%;
@@ -70,18 +53,29 @@ export default skate("calm-tabs", {
 				transition-property: transform, width;
 				transition-duration: ${calm.time.med};
 				transition-timing-function: ${calm.ease.out};
-				will-change: transform, width;
 			}
 		</style>
 
-		<div id="container"><content id="tabs" select="calm-tab"></content></div>
+		<calm-selection tap-select id="selection">
+			<content select="calm-tab"></content>
+		</calm-selection>
+
 		<div id="indicator"></div>
 	`),
 
 	created() {
 		this._indicator = this.shadowRoot.getElementById("indicator");
-		this._tabs = this.shadowRoot.getElementById("tabs");
+		this._selection = this.shadowRoot.getElementById("selection");
 
-		this.shadowRoot.getElementById("container").addEventListener("click", (evt) => { this.selected = evt.target.name; });
+		this._selection.addEventListener("select", (evt) => {
+			const { name, target } = evt.detail;
+
+			this.selected = name;
+
+			this._indicator.style.width = `${target.offsetWidth}px`;
+			this._indicator.style.transform = `translateX(${target.offsetLeft}px)`;
+
+			calm.emit(this, "select", { detail: evt.detail });
+		});
 	},
 });
