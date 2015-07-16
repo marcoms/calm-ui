@@ -15,6 +15,7 @@ export default skate("calm-tab", {
 				display: flex;
 				align-items: stretch;
 				text-transform: uppercase;
+				white-space: nowrap;
 			}
 
 			#tab {
