@@ -5,7 +5,6 @@ export default skate("calm-field", {
 	properties: {
 		label: {
 			attr: true,
-			deps: "floatinglabel",
 			set(label) {
 				calm.ready(() => {
 					if(this.floatinglabel === "") {
@@ -19,7 +18,12 @@ export default skate("calm-field", {
 			},
 		},
 
-		floatinglabel: { attr: true },
+		floatinglabel: {
+			attr: true,
+			set(value) {
+				this.label = this.label;
+			}
+		},
 
 		_label: {},
 		_field: {},
