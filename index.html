@@ -32,6 +32,16 @@
 				margin-bottom: 16px;
 			}
 
+			.tag-snippet {
+				background: #eee;
+				padding: 4px;
+				border-radius: 4px;
+				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+			}
+
+			.tag-snippet::before { content: "<"; }
+			.tag-snippet::after { content: ">"; }
+
 			#btn-custom-bg {
 				background: #836;
 			}
@@ -74,25 +84,38 @@
 
 		<calm-pages id="pages">
 			<calm-page name="btn">
+				<code class="tag-snippet">calm-btn</code>
 				<calm-btn>Button</calm-btn>
+
+				<code class="tag-snippet">calm-btn flat</code>
 				<calm-btn flat>Flat button</calm-btn>
+
+				<code class="tag-snippet">calm-btn style="background: #836"</code>
 				<calm-btn id="btn-custom-bg" darkbg>Styled button</calm-btn>
 			</calm-page>
 
 			<calm-page name="icon-btn">
+				<code class="tag-snippet">calm-icon-btn icon="star"</code>
 				<calm-icon-btn icon="star"></calm-icon-btn>
 			</calm-page>
 
 			<calm-page name="fab">
+				<code class="tag-snippet">calm-fab icon="add"</code>
 				<calm-fab darkbg icon="add"></calm-fab>
 			</calm-page>
 
 			<calm-page name="field">
+				<code class="tag-snippet">calm-field label="Text field"</code>
 				<calm-field label="Text field"></calm-field>
+
+				<code class="tag-snippet">calm-field label="Text field" floatinglabel</code>
 				<calm-field label="Floating label" floatinglabel></calm-field>
 			</calm-page>
 
 			<calm-page name="tabs">
+				<h2>Regular tabs</h2>
+
+				<code class="tag-snippet">calm-tabs</code>
 				<calm-tabs selected="1">
 					<calm-tab name="1">Tab one</calm-tab>
 					<calm-tab name="2">Tab number two</calm-tab>
@@ -100,6 +123,9 @@
 					<calm-tab name="4">The final tab</calm-tab>
 				</calm-tabs>
 
+				<h2>Fixed tabs</h2>
+
+				<code class="tag-snippet">calm-tabs fixed</code>
 				<calm-tabs id="tabs-fixed" fixed selected="1">
 					<calm-tab name="1">Tab one</calm-tab>
 					<calm-tab name="2">Second tab</calm-tab>
@@ -109,16 +135,32 @@
 			</calm-page>
 
 			<calm-page name="spinner">
+				<h2>Regular spinner</h2>
+
+				<code class="tag-snippet">calm-spinner</code>
 				<calm-spinner></calm-spinner>
+
+				<h2>Small spinner</h2>
+
+				<code class="tag-snippet">calm-spinner small</code>
 				<calm-spinner small></calm-spinner>
 			</calm-page>
 
 			<calm-page name="progress">
+				<h2>Regular progress bar</h2>
+
+				<code class="tag-snippet">calm-progress</code>
 				<calm-progress></calm-progress>
+
+				<h2>Indeterminate progress bar</h2>
+
+				<code class="tag-snippet">calm-progress indeterminate</code>
 				<calm-progress indeterminate></calm-progress>
 			</calm-page>
 
 			<calm-page name="toast">
+				<code class="tag-snippet">calm-toast</code>
+
 				<calm-btn id="toast-toggle" id="toast-toggle">Toggle toast</calm-btn>
 			</calm-page>
 		</calm-pages>
