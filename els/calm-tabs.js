@@ -68,14 +68,35 @@ export default skate("calm-tabs", {
 		this._selection = this.shadowRoot.getElementById("selection");
 
 		this._selection.addEventListener("select", (evt) => {
-			const { name, target } = evt.detail;
+			calm.ready(() => {
+				const { name, node } = evt.detail;
 
-			this.selected = name;
+				this.selected = name;
 
-			this._indicator.style.width = `${target.offsetWidth}px`;
-			this._indicator.style.transform = `translateX(${target.offsetLeft}px)`;
+				let selectedWidth, selectedLeft;
+				if(this.offsetWidth > 0) {
+					selectedWidth = node.offsetWidth;
+					selectedLeft = node.offsetLeft;
+				} else {
+					let clone = this.cloneNode(true);
+					clone.style.display = "block";
+					clone.style.position = "absolute";
+					clone.style.right = "100%";
+					document.body.appendChild(clone);
 
-			calm.emit(this, "select", { detail: evt.detail });
+					clone.selected = clone.selected;
+					let cloneSelected = clone._selection.selectedNode;
+					selectedWidth = cloneSelected.offsetWidth;
+					selectedLeft = cloneSelected.offsetLeft;
+
+					clone.remove();
+				}
+
+				this._indicator.style.width = `${selectedWidth}px`;
+				this._indicator.style.transform = `translateX(${selectedLeft}px)`;
+
+				calm.emit(this, "select", { detail: evt.detail });
+			});
 		});
 	},
 });
