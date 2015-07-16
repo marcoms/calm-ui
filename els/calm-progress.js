@@ -20,7 +20,7 @@ export default skate("calm-progress", {
 
 		max: {
 			attr: true,
-			value: "100",
+			init: 100,
 		},
 
 		indeterminate: { attr: true },

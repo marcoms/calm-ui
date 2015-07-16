@@ -11,24 +11,28 @@ export default skate("calm-selection", {
 
 					let selectables = Array.from(this._selectables.getDistributedNodes());
 
-					let target, prevSelected;
+					let targetNode, prevSelected;
 					for(let selectable of selectables) {
 						if(selectable.selected === "") prevSelected = selectable;
-						if(selectable.name === name) target = selectable;
+						if(selectable.name === name) targetNode = selectable;
 
 						if(name === undefined && prevSelected) break;
-						if(target && prevSelected) break;
+						if(targetNode && prevSelected) break;
 					}
 
-					if(!target && name !== undefined) return;
+					if(!targetNode && name !== undefined) return;
 
 					if(prevSelected) prevSelected.selected = undefined;
-					if(target) {
-						this._existingName = target.name;
-						target.selected = "";
-					}
+					if(targetNode) {
+						this.selectedNode = targetNode;
+						this._existingName = targetNode.name;
+						targetNode.selected = "";
 
-					if(target) calm.emit(this, "select", { detail: { name, target } });
+						calm.emit(this, "select", { detail: {
+							name,
+							node: targetNode,
+						} });
+					}
 				});
 			},
 		},
@@ -46,10 +50,12 @@ export default skate("calm-selection", {
 			},
 		},
 
+		selectedNode: {},
+
 		_selectables: {},
 		_existingName: {},
 		_tapListener: {
-			value() {
+			init() {
 				return (evt) => {
 					this.selected = evt.target.name;
 				};

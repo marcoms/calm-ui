@@ -6,7 +6,7 @@ export default skate("calm-toast", {
 		shown: { attr: true },
 		duration: {
 			attr: true,
-			value: 3200,
+			init: 3200,
 		},
 
 		_pendingHide: {},
