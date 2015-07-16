@@ -37,7 +37,7 @@ export default skate("calm-selection", {
 			},
 		},
 
-		tapSelect: {
+		tapselect: {
 			attr: true,
 			set(value) {
 				calm.ready(() => {

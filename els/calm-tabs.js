@@ -56,7 +56,7 @@ export default skate("calm-tabs", {
 			}
 		</style>
 
-		<calm-selection tap-select id="selection">
+		<calm-selection tapselect id="selection">
 			<content select="calm-tab"></content>
 		</calm-selection>
 

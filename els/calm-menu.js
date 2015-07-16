@@ -16,15 +16,15 @@ export default skate("calm-menu", {
 			},
 		},
 
-		noSelect: {
+		noselect: {
 			attr: true,
 			set(value) {
 				calm.ready(() => {
 					if(value === "") {
-						this._selection.tapSelect = undefined;
+						this._selection.tapselect = undefined;
 						this.selected = undefined;
 					} else {
-						this._selection.tapSelect = "";
+						this._selection.tapselect = "";
 					}
 				});
 			},
@@ -42,7 +42,7 @@ export default skate("calm-menu", {
 			}
 		</style>
 
-		<calm-selection tap-select id="selection">
+		<calm-selection tapselect id="selection">
 			<content select="calm-item"></content>
 		</calm-selection>
 	`),
