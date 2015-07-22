@@ -1,7 +1,7 @@
 import calm from "calm-tools.js";
 import skate from "skatejs";
 
-import CalmIcons from "els/calm-icons.js";
+import "els/calm-icons.js";
 
 export default skate("calm-icon", {
 	properties: {

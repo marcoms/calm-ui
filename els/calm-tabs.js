@@ -1,8 +1,8 @@
 import calm from "calm-tools.js";
 import skate from "skatejs";
 
-import CalmTab from "els/calm-tab.js";
-import CalmSelection from "els/calm-selection.js";
+import "els/calm-tab.js";
+import "els/calm-selection.js";
 
 export default skate("calm-tabs", {
 	properties: {
