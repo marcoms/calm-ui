@@ -36,8 +36,15 @@ export default skate("calm-tappable", {
 	`),
 
 	created() {
-		function activate() { this.active = ""; }
-		function deactivate() { this.active = undefined; }
+		function activate() {
+			this.active = "";
+			this.dispatchEvent(new Event("activate"));
+		}
+
+		function deactivate() {
+			this.active = undefined;
+			this.dispatchEvent(new Event("deactivate"));
+		}
 
 		this.addEventListener("mousedown", activate);
 		this.addEventListener("touchstart", activate);
