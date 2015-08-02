@@ -15,15 +15,15 @@ System.config({
 
 System.config({
   "map": {
-    "babel": "npm:babel-core@5.7.0",
-    "babel-runtime": "npm:babel-runtime@5.7.0",
+    "babel": "npm:babel-core@5.8.20",
+    "babel-runtime": "npm:babel-runtime@5.8.20",
     "core-js": "npm:core-js@0.9.18",
     "dedent": "npm:dedent@0.4.0",
     "skatejs": "github:skatejs/skatejs@master",
     "github:jspm/nodelibs-process@0.1.1": {
       "process": "npm:process@0.10.1"
     },
-    "npm:babel-runtime@5.7.0": {
+    "npm:babel-runtime@5.8.20": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:core-js@0.9.18": {

@@ -4,7 +4,7 @@
       "packages": "jspm-pkg"
     },
     "dependencies": {
-      "core-js": "npm:core-js@^0.9.17",
+      "core-js": "npm:core-js@^0.9.4",
       "dedent": "npm:dedent@^0.4.0",
       "skatejs": "github:skatejs/skatejs@master"
     },
