@@ -24,6 +24,10 @@ export default skate("calm-tab", {
 				padding: 0 16px;
 				width: 100%;
 			}
+
+			::content * {
+				pointer-events: none;
+			}
 		</style>
 
 		<calm-tappable id="tab"><content></content></calm-tappable>
