@@ -19,7 +19,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.20",
     "core-js": "npm:core-js@0.9.18",
     "dedent": "npm:dedent@0.4.0",
-    "skatejs": "github:skatejs/skatejs@master",
+    "skatejs": "github:skatejs/skatejs@lifecycle-exploration",
     "github:jspm/nodelibs-process@0.1.1": {
       "process": "npm:process@0.10.1"
     },
