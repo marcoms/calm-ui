@@ -3,7 +3,9 @@ import skate from "skatejs";
 
 export default skate("calm-spinner", {
 	properties: {
-		small: { attr: true },
+		small: {
+			attr: true,
+		},
 	},
 
 	template: calm.shadowDom(`

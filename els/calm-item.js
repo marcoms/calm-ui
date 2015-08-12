@@ -5,8 +5,13 @@ import "els/calm-tappable.js";
 
 export default skate("calm-item", {
 	properties: {
-		name: { attr: true },
-		selected: { attr: true },
+		name: {
+			attr: true,
+		},
+
+		selected: {
+			attr: true,
+		},
 	},
 
 	template: calm.shadowDom(`

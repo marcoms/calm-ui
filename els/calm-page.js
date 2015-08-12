@@ -3,8 +3,13 @@ import skate from "skatejs";
 
 export default skate("calm-page", {
 	properties: {
-		selected: { attr: true },
-		name: { attr: true },
+		selected: {
+			attr: true,
+		},
+
+		name: {
+			attr: true,
+		},
 	},
 
 	template: calm.shadowDom(`
