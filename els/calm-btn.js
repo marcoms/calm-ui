@@ -1,25 +1,27 @@
 import calm from "calm-tools.js";
 import skate from "skatejs";
 
+import "els/calm-card.js";
 import "els/calm-tappable.js";
 
 export default skate("calm-btn", {
 	properties: {
-		flat: { attr: true },
+		flat: {
+			attr: true,
+			set(value) {
+				this._card.z = (value !== undefined ? 0 : 1);
+			},
+		},
+
 		darkbg: {
 			attr: true,
 			set(value) {
-				calm.ready(() => {
-					if(value === "") {
-						this._btn.darkbg = "";
-					} else {
-						this._btn.darkbg = undefined;
-					}
-				});
+				this._btn.darkbg = (value === "" ? "" : undefined);
 			},
 		},
 
 		_btn: {},
+		_card: {},
 	},
 
 	template: calm.shadowDom(`
@@ -30,35 +32,33 @@ export default skate("calm-btn", {
 
 				background: #fff;
 				color: #212121;
-				border-radius: 2px;
+				border-radius: ${calm.borderRadius};
+			}
+
+			#card {
+				background: inherit;
+				overflow: hidden;
 			}
 
 			#btn {
-				justify-content: center;
-				border: 0;
 				padding: 14px 24px;
-				width: 100%;
 
-				background: inherit;
-				box-shadow: ${calm.shadow[1]};
-				border-radius: inherit;
-				outline: 0;
 				text-transform: uppercase;
-				font: inherit;
-				color: inherit;
 
 				cursor: pointer;
 			}
 
 			:host([flat]) { background: transparent; }
-			:host([flat]) #btn { box-shadow: none; }
 			:host([darkbg]) { color: #fff; }
 		</style>
 
-		<calm-tappable id="btn"><content></content></calm-tappable>
+		<calm-card z="1" id="card">
+			<calm-tappable id="btn"><content></content></calm-tappable>
+		</calm-card>
 	`),
 
 	created() {
 		this._btn = this.shadowRoot.getElementById("btn");
+		this._card = this.shadowRoot.getElementById("card");
 	},
 });

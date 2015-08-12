@@ -1,10 +1,17 @@
 import calm from "calm-tools.js";
 import skate from "skatejs";
 
+import "els/calm-card.js";
+
 export default skate("calm-drawer", {
 	properties: {
-		nodim: { attr: true },
-		shown: { attr: true },
+		nodim: {
+			attr: true,
+		},
+
+		shown: {
+			attr: true,
+		},
 	},
 
 	prototype: {
@@ -38,15 +45,13 @@ export default skate("calm-drawer", {
 				width: inherit;
 
 				visibility: hidden;
-				background: #fff;
-				box-shadow: ${calm.shadow[2]};
 				overflow: auto;
+				border-radius: 0;
 
-				transition: transform ${calm.time.long} ${calm.ease.out}, visibility ${calm.time.long} linear;
-				will-change: transform, visibility;
+				transition-property: transform, visibility;
+				transition-duration: ${calm.time.long};
+				transition-timing-function: ${calm.ease.out};
 			}
-
-			::content > calm-menu { width: 100%; }
 
 			#overlay {
 				position: fixed;
@@ -60,7 +65,9 @@ export default skate("calm-drawer", {
 				background: #000;
 				visibility: hidden;
 
-				transition: opacity ${calm.time.long} ${calm.ease.out}, visibility ${calm.time.long} linear;
+				transition-property: opacity, visibility;
+				transition-duration: ${calm.time.long};
+				transition-timing-function: ${calm.ease.out};
 			}
 
 			:host([shown]) #drawer {
@@ -73,10 +80,15 @@ export default skate("calm-drawer", {
 				visibility: visible;
 			}
 
-			:host([nodim]) #overlay { background: transparent; }
+			:host([nodim]) #overlay {
+				background: transparent;
+			}
 		</style>
 
-		<div id="drawer"><content></content></div>
+		<calm-card z="2" id="drawer">
+			<content></content>
+		</calm-card>
+
 		<div id="overlay"></div>
 	`),
 
