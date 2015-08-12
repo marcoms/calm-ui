@@ -6,47 +6,43 @@ export default skate("calm-selection", {
 		selected: {
 			attr: true,
 			set(name) {
-				calm.ready(() => {
-					if(name === this._existingName) return;
+				if(name === this._existingName) return;
 
-					let selectables = Array.from(this._selectables.getDistributedNodes());
+				let selectables = Array.from(this._selectables.getDistributedNodes());
 
-					let targetNode, prevSelected;
-					for(let selectable of selectables) {
-						if(selectable.selected === "") prevSelected = selectable;
-						if(selectable.name === name) targetNode = selectable;
+				let targetNode, prevSelected;
+				for(let selectable of selectables) {
+					if(selectable.selected === "") prevSelected = selectable;
+					if(selectable.name === name) targetNode = selectable;
 
-						if(name === undefined && prevSelected) break;
-						if(targetNode && prevSelected) break;
-					}
+					if(name === undefined && prevSelected) break;
+					if(targetNode && prevSelected) break;
+				}
 
-					if(!targetNode && name !== undefined) return;
+				if(!targetNode && name !== undefined) return;
 
-					if(prevSelected) prevSelected.selected = undefined;
-					if(targetNode) {
-						this.selectedNode = targetNode;
-						this._existingName = targetNode.name;
-						targetNode.selected = "";
+				if(prevSelected) prevSelected.selected = undefined;
+				if(targetNode) {
+					this.selectedNode = targetNode;
+					this._existingName = targetNode.name;
+					targetNode.selected = "";
 
-						calm.emit(this, "select", { detail: {
-							name,
-							node: targetNode,
-						} });
-					}
-				});
+					calm.emit(this, "select", { detail: {
+						name,
+						node: targetNode,
+					}});
+				}
 			},
 		},
 
 		tapselect: {
 			attr: true,
 			set(value) {
-				calm.ready(() => {
-					if(value === "") {
-						this.addEventListener("click", this._tapListener);
-					} else {
-						this.removeEventListener("click", this._tapListener);
-					}
-				});
+				if(value === "") {
+					this.addEventListener("click", this._onTap);
+				} else {
+					this.removeEventListener("click", this._onTap);
+				}
 			},
 		},
 
@@ -54,14 +50,11 @@ export default skate("calm-selection", {
 
 		_selectables: {},
 		_existingName: {},
-		_tapListener: {
-			init() {
-				return (evt) => {
-					this.selected = evt.target.name;
-				};
-			},
+	},
 
-			set(val) { return; }
+	prototype: {
+		_onTap(evt) {
+			this.selected = evt.target.name;
 		},
 	},
 

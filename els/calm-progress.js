@@ -6,15 +6,13 @@ export default skate("calm-progress", {
 		value: {
 			attr: true,
 			set(value) {
-				calm.ready(() => {
-					if(this.indeterminate === "") return;
+				if(this.indeterminate === "") return;
 
-					value = Number.parseFloat(value, 10);
-					let max = Number.parseFloat(this.max, 10);
-					if(value < 0 || value > max) return;
+				value = Number.parseFloat(value, 10);
+				let max = Number.parseFloat(this.max, 10);
+				if(value < 0 || value > max) return;
 
-					this._progress.style.width = `${(value / max) * 100}%`;
-				});
+				this._progress.style.width = `${(value / max) * 100}%`;
 			},
 		},
 
@@ -23,7 +21,9 @@ export default skate("calm-progress", {
 			init: 100,
 		},
 
-		indeterminate: { attr: true },
+		indeterminate: {
+			attr: true,
+		},
 
 		_progress: {},
 	},

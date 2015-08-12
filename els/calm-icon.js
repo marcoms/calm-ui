@@ -9,10 +9,7 @@ export default skate("calm-icon", {
 			attr: true,
 			set(icon) {
 				if(!window.calmIcons) window.calmIcons = document.createElement("calm-icons");
-
-				calm.ready(() => {
-					this._frame.replaceChild(window.calmIcons.getIcon(icon), this._frame.children[0]);
-				});
+				this._frame.replaceChild(window.calmIcons.getIcon(icon), this._frame.children[0]);
 			},
 		},
 

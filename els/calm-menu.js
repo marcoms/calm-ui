@@ -9,24 +9,20 @@ export default skate("calm-menu", {
 		selected: {
 			attr: true,
 			set(name) {
-				calm.ready(() => {
-					if(this._noSelect === "") return;
-					this._selection.selected = name;
-				});
+				if(this._noSelect === "") return;
+				this._selection.selected = name;
 			},
 		},
 
 		noselect: {
 			attr: true,
 			set(value) {
-				calm.ready(() => {
-					if(value === "") {
-						this._selection.tapselect = undefined;
-						this.selected = undefined;
-					} else {
-						this._selection.tapselect = "";
-					}
-				});
+				if(value === "") {
+					this._selection.tapselect = undefined;
+					this.selected = undefined;
+				} else {
+					this._selection.tapselect = "";
+				}
 			},
 		},
 
@@ -37,7 +33,6 @@ export default skate("calm-menu", {
 		<style>
 			:host {
 				display: block;
-				width: 256px;
 				padding: 8px 0;
 			}
 		</style>
@@ -53,5 +48,10 @@ export default skate("calm-menu", {
 			this.selected = evt.detail.name;
 			calm.emit(this, "select", { detail: evt.detail });
 		});
+
+		if(this.selected) calm.emit(this, "select", { detail: {
+			name: this.selected,
+			node: this._selection.selectedNode,
+		}});
 	},
 });

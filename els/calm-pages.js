@@ -9,9 +9,7 @@ export default skate("calm-pages", {
 		selected: {
 			attr: true,
 			set(name) {
-				calm.ready(() => {
-					this._selection.selected = name;
-				});
+				this._selection.selected = name;
 			},
 		},
 

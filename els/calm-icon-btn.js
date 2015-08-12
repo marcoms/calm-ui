@@ -9,18 +9,14 @@ export default skate("calm-icon-btn", {
 		icon: {
 			attr: true,
 			set(icon) {
-				calm.ready(() => {
-					this._icon.icon = icon;
-				});
+				this._icon.icon = icon;
 			},
 		},
 
 		darkbg: {
 			attr: true,
 			set(value) {
-				calm.ready(() => {
-					this._btn.darkbg = value;
-				});
+				this._btn.darkbg = value;
 			},
 		},
 

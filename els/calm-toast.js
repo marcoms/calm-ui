@@ -3,7 +3,10 @@ import skate from "skatejs";
 
 export default skate("calm-toast", {
 	properties: {
-		shown: { attr: true },
+		shown: {
+			attr: true,
+		},
+
 		duration: {
 			attr: true,
 			init: 3200,
@@ -23,14 +26,14 @@ export default skate("calm-toast", {
 			this._clearPendingHide();
 		},
 
-		toggle() { (this.shown === "" ? this.hide() : this.show()); },
+		toggle() {
+			(this.shown === "" ? this.hide() : this.show());
+		},
 
 		_setPendingHide() {
-			calm.ready(() => {
-				this._pendingHide = window.setTimeout(() => {
-					this.hide();
-				}, Number.parseInt(this.duration, 10));
-			});
+			this._pendingHide = window.setTimeout(() => {
+				this.hide();
+			}, Number.parseInt(this.duration, 10));
 		},
 
 		_clearPendingHide() {
@@ -88,14 +91,16 @@ export default skate("calm-toast", {
 			}
 
 			@media (min-width: 768px) {
-				:host { justify-content: center; }
+				:host {
+					justify-content: center;
+				}
 
 				#toast {
 					width: auto;
 					min-width: 280px;
 					max-width: 640px;
 
-					border-radius: 3px 3px 0 0;
+					border-radius: ${calm.borderRadius} ${calm.borderRadius} 0 0;
 				}
 			}
 
