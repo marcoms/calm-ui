@@ -9,13 +9,13 @@ export default skate("calm-tabs", {
 		selected: {
 			attr: true,
 			set(name) {
-				calm.ready(() => {
-					this._selection.selected = name;
-				});
+				this._selection.selected = name;
 			},
 		},
 
-		fixed: { attr: true },
+		fixed: {
+			attr: true,
+		},
 
 		_indicator: {},
 		_selection: {},
@@ -33,11 +33,12 @@ export default skate("calm-tabs", {
 				overflow-y: hidden;
 			}
 
-			:host([fixed]) ::content calm-tab { flex: 1; }
+			:host([fixed]) ::content calm-tab {
+				flex: 1;
+			}
 
 			#selection {
 				display: flex;
-				flex-direction: row;
 				height: 100%;
 			}
 
@@ -66,37 +67,48 @@ export default skate("calm-tabs", {
 	created() {
 		this._indicator = this.shadowRoot.getElementById("indicator");
 		this._selection = this.shadowRoot.getElementById("selection");
-
-		this._selection.addEventListener("select", (evt) => {
-			calm.ready(() => {
-				const { name, node } = evt.detail;
-
-				this.selected = name;
-
-				let selectedWidth, selectedLeft;
-				if(this.offsetWidth > 0) {
-					selectedWidth = node.offsetWidth;
-					selectedLeft = node.offsetLeft;
-				} else {
-					let clone = this.cloneNode(true);
-					clone.style.display = "block";
-					clone.style.position = "absolute";
-					clone.style.right = "100%";
-					document.body.appendChild(clone);
-
-					clone.selected = clone.selected;
-					let cloneSelected = clone._selection.selectedNode;
-					selectedWidth = cloneSelected.offsetWidth;
-					selectedLeft = cloneSelected.offsetLeft;
-
-					clone.remove();
-				}
-
-				this._indicator.style.width = `${selectedWidth}px`;
-				this._indicator.style.transform = `translateX(${selectedLeft}px)`;
-
-				calm.emit(this, "select", { detail: evt.detail });
-			});
-		});
 	},
+
+	attached() {
+		this._selection.addEventListener("select", (evt) => {
+			const { name } = evt.detail;
+
+			this.selected = name;
+			this._positionIndicator();
+
+			calm.emit(this, "select", { detail: evt.detail });
+		});
+
+		this._positionIndicator();
+	},
+
+	prototype: {
+		_positionIndicator() {
+			if(this.selected === undefined) return;
+
+			const node = this._selection.selectedNode;
+
+			let width, left;
+			if(this.offsetWidth > 0) {
+				width = node.offsetWidth;
+				left = node.offsetLeft;
+			} else {
+				let clone = this.cloneNode(true);
+				clone.style.position = "fixed";
+				clone.style.right = "100%";
+				clone.style.display = "block";
+				document.body.appendChild(clone);
+				clone._positionIndicator();
+
+				let cloneSelected = clone._selection.selectedNode;
+				width = cloneSelected.offsetWidth;
+				left = cloneSelected.offsetLeft;
+
+				clone.remove();
+			}
+
+			this._indicator.style.width = `${width}px`;
+			this._indicator.style.transform = `translateX(${left}px)`;
+		}
+	}
 });
