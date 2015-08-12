@@ -6,27 +6,46 @@ export default skate("calm-field", {
 		label: {
 			attr: true,
 			set(label) {
-				calm.ready(() => {
-					if(this.floatinglabel === "") {
-						this._field.removeAttribute("placeholder");
-						this._label.textContent = label;
-					} else {
-						this._label.textContent = "";
-						this._field.placeholder = label;
-					}
-				});
+				this._setLabel(label);
 			},
 		},
 
 		floatinglabel: {
 			attr: true,
 			set(value) {
-				this.label = this.label;
-			}
+				if(value === "") {
+					this._field.addEventListener("input", this._checkEmpty);
+				} else {
+					this._field.removeEventListener("input", this._checkEmpty);
+				}
+
+				this._checkEmpty();
+				this._setLabel(this.label);
+			},
 		},
 
 		_label: {},
 		_field: {},
+	},
+
+	prototype: {
+		_setLabel(label) {
+			if(this.floatinglabel === "") {
+				this._field.removeAttribute("placeholder");
+				this._label.textContent = label;
+			} else {
+				this._label.textContent = "";
+				this._field.placeholder = label;
+			}
+		},
+
+		_checkEmpty() {
+			if(this._field.value === "") {
+				this._field.classList.add("empty");
+			} else {
+				this._field.classList.remove("empty");
+			}
+		}
 	},
 
 	template: calm.shadowDom(`
@@ -76,7 +95,9 @@ export default skate("calm-field", {
 
 			:host([floatinglabel]) #field[active] ~ #label,
 			:host([floatinglabel]) #field:focus ~ #label,
-			:host([floatinglabel]) #field:not(.empty) ~ #label { transform: translateY(-100%) scale(0.75); }
+			:host([floatinglabel]) #field:not(.empty) ~ #label {
+				transform: translateY(-100%) scale(0.75);
+			}
 
 			:host([floatinglabel]) #field[active] ~ #label,
 			:host([floatinglabel]) #field:focus ~ #label {
@@ -86,20 +107,12 @@ export default skate("calm-field", {
 			}
 		</style>
 
-		<input class="empty" id="field" type="text">
+		<input id="field" type="text">
 		<div id="label"></div>
 	`),
 
 	created() {
 		this._label = this.shadowRoot.getElementById("label");
 		this._field = this.shadowRoot.getElementById("field");
-
-		this.shadowRoot.getElementById("field").addEventListener("blur", (evt) => {
-			if(evt.currentTarget.value === "") {
-				evt.currentTarget.classList.add("empty");
-			} else {
-				evt.currentTarget.classList.remove("empty");
-			}
-		});
 	},
 });
