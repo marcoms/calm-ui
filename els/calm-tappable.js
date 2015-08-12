@@ -3,8 +3,13 @@ import skate from "skatejs";
 
 export default skate("calm-tappable", {
 	properties: {
-		darkbg: { attr: true },
-		active: { attr: true },
+		darkbg: {
+			attr: true,
+		},
+
+		active: {
+			attr: true,
+		},
 	},
 
 	template: calm.shadowDom(`
@@ -14,6 +19,7 @@ export default skate("calm-tappable", {
 				align-items: center;
 
 				background: transparent;
+				outline: none;
 
 				cursor: pointer;
 				transition: background ${calm.time.short} linear;
@@ -22,7 +28,6 @@ export default skate("calm-tappable", {
 
 			:host([active]) {
 				background: rgba(0, 0, 0, 0.1) !important;
-				outline: none;
 
 				transition: none;
 			}
@@ -36,22 +41,23 @@ export default skate("calm-tappable", {
 	`),
 
 	created() {
-		function activate() {
+		function activate(evt) {
 			this.active = "";
-			this.dispatchEvent(new Event("activate"));
 		}
 
-		function deactivate() {
+		function deactivate(evt) {
 			this.active = undefined;
-			this.dispatchEvent(new Event("deactivate"));
 		}
 
 		this.addEventListener("mousedown", activate);
-		this.addEventListener("touchstart", activate);
-		this.addEventListener("touchcancel", deactivate);
-		this.addEventListener("mouseleave", deactivate);
 		this.addEventListener("mouseup", deactivate);
-		this.addEventListener("touchend", deactivate);
+		this.addEventListener("mouseleave", deactivate);
+
+		if("ontouchstart" in document) {
+			this.addEventListener("touchstart", activate);
+			this.addEventListener("touchcancel", deactivate);
+			this.addEventListener("touchend", deactivate);
+		}
 
 	},
 });
