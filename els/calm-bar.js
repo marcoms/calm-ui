@@ -22,6 +22,7 @@ export default skate("calm-bar", {
 	template: calm.shadowDom(`
 		<style>
 			:host {
+				display: block;
 				width: 100%;
 			}
 

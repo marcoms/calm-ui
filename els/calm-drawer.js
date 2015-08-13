@@ -31,8 +31,8 @@ export default skate("calm-drawer", {
 	template: calm.shadowDom(`
 		<style>
 			:host {
-				width: 320px;
 				display: block;
+				width: 320px;
 			}
 
 			#drawer {

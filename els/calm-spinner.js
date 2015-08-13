@@ -35,6 +35,10 @@ export default skate("calm-spinner", {
 				}
 			}
 
+			:host {
+				display: block;
+			}
+
 			svg, svg * {
 				transform-origin: 50% 50%;
 			}
