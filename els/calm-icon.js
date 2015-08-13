@@ -18,8 +18,13 @@ export default skate("calm-icon", {
 
 	template: calm.shadowDom(`
 		<style>
-			:host { display: inline-block; }
-			svg { vertical-align: middle; }
+			:host {
+				display: inline-block;
+			}
+
+			svg {
+				vertical-align: middle;
+			}
 		</style>
 
 		<svg id="frame" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
