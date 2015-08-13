@@ -48,8 +48,13 @@ export default skate("calm-btn", {
 				cursor: pointer;
 			}
 
-			:host([flat]) { background: transparent; }
-			:host([darkbg]) { color: #fff; }
+			:host([flat]) {
+				background: transparent;
+			}
+
+			:host([darkbg]) {
+				color: #fff;
+			}
 		</style>
 
 		<calm-card z="1" id="card">
