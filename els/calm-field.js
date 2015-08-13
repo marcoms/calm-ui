@@ -76,9 +76,17 @@ export default skate("calm-field", {
 				transition: none;
 			}
 
-			::-webkit-input-placeholder { color: rgba(0, 0, 0, 0.5); }
-			::-moz-placeholder { color: rgba(0, 0, 0, 0.5); }
-			:-ms-input-placeholder { color: rgba(0, 0, 0, 0.5); }
+			::-webkit-input-placeholder {
+				color: rgba(0, 0, 0, 0.5);
+			}
+
+			::-moz-placeholder {
+				color: rgba(0, 0, 0, 0.5);
+			}
+
+			:-ms-input-placeholder {
+				color: rgba(0, 0, 0, 0.5);
+			}
 
 			:host([floatinglabel]) #label {
 				position: absolute;

@@ -16,15 +16,22 @@ export default skate("calm-item", {
 
 	template: calm.shadowDom(`
 		<style>
-			:host { display: block; }
+			:host {
+				display: block;
+			}
 
 			#item {
 				padding: 0 16px;
 				height: 48px;
 			}
 
-			::content > calm-icon { margin-right: 16px; }
-			:host([selected]) #item { background: rgba(0, 0, 0, 0.1); }
+			::content > calm-icon {
+				margin-right: 16px;
+			}
+
+			:host([selected]) #item {
+				background: rgba(0, 0, 0, 0.1);
+			}
 		</style>
 
 		<calm-tappable id="item"><content></content></calm-tappable>

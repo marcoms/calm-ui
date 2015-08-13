@@ -14,7 +14,9 @@ export default skate("calm-page", {
 
 	template: calm.shadowDom(`
 		<style>
-			:host(:not([selected])) { display: none; }
+			:host(:not([selected])) {
+				display: none;
+			}
 		</style>
 
 		<content></content>
