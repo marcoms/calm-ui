@@ -90,25 +90,22 @@ export default skate("calm-tabs", {
 
 			let width, left;
 			if(this.offsetWidth > 0) {
-				width = node.offsetWidth;
-				left = node.offsetLeft;
+				({ offsetWidth: width, offsetLeft: left } = node);
 			} else {
 				let clone = this.cloneNode(true);
 				clone.style.position = "fixed";
 				clone.style.right = "100%";
 				clone.style.display = "block";
 				document.body.appendChild(clone);
-				clone._positionIndicator();
 
 				let cloneSelected = clone._selection.selectedNode;
-				width = cloneSelected.offsetWidth;
-				left = cloneSelected.offsetLeft;
+				({ offsetWidth: width, offsetLeft: left } = cloneSelected);
 
 				clone.remove();
 			}
 
 			this._indicator.style.width = `${width}px`;
 			this._indicator.style.transform = `translateX(${left}px)`;
-		}
-	}
+		},
+	},
 });
