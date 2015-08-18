@@ -9,7 +9,7 @@ export default skate("calm-tabs", {
 		selected: {
 			attr: true,
 			set(name) {
-				this._selection.selected = name;
+				if(name !== this._selection.selected) this._selection.selected = name;
 			},
 		},
 
@@ -67,9 +67,7 @@ export default skate("calm-tabs", {
 	created() {
 		this._indicator = this.shadowRoot.getElementById("indicator");
 		this._selection = this.shadowRoot.getElementById("selection");
-	},
 
-	attached() {
 		this._selection.addEventListener("select", (evt) => {
 			const { name } = evt.detail;
 
@@ -89,19 +87,27 @@ export default skate("calm-tabs", {
 			const node = this._selection.selectedNode;
 
 			let width, left;
-			if(this.offsetWidth > 0) {
+
+			if(this.offsetWidth === 0) {
+				// store positional info to know where to put the element back
+				const parent = this.parentNode;
+				const nextSibling = this.nextSibling;
+
+				// put the element inside body to determine the size of the selected tab (hope no-one notices)
+
+				const prevDisplay = this.style.display;
+				this.style.display = "block";
+				document.body.appendChild(this);
 				({ offsetWidth: width, offsetLeft: left } = node);
+				this.style.display = prevDisplay;
+
+				if(nextSibling) {
+					parent.insertBefore(this, nextSibling);
+				} else {
+					parent.appendChild(this);
+				}
 			} else {
-				let clone = this.cloneNode(true);
-				clone.style.position = "fixed";
-				clone.style.right = "100%";
-				clone.style.display = "block";
-				document.body.appendChild(clone);
-
-				let cloneSelected = clone._selection.selectedNode;
-				({ offsetWidth: width, offsetLeft: left } = cloneSelected);
-
-				clone.remove();
+				({ offsetWidth: width, offsetLeft: left } = node);
 			}
 
 			this._indicator.style.width = `${width}px`;
