@@ -1,7 +1,18 @@
 export default {
-	shadowDom(html) { return function() {
-		this.createShadowRoot().innerHTML = html;
-	}; },
+	shadowDom(html, cacheIds=true) {
+		return function() {
+			const root = this.createShadowRoot();
+			root.innerHTML = html;
+
+			if(cacheIds) {
+				this.$ = {};
+				const elsWithIds = Array.from(root.querySelectorAll("[id]"));
+				for(const el of elsWithIds) {
+					this.$[el.id] = el;
+				}
+			}
+		};
+	},
 
 	// -quart easings
 

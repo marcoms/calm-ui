@@ -93,6 +93,6 @@ export default skate("calm-drawer", {
 	`),
 
 	created() {
-		this.shadowRoot.getElementById("overlay").addEventListener("click", () => this.hide());
+		this.$["overlay"].addEventListener("click", () => this.hide());
 	},
 });

@@ -23,29 +23,26 @@ export default skate("calm-field", {
 				this._setLabel(this.label);
 			},
 		},
-
-		_label: {},
-		_field: {},
 	},
 
 	prototype: {
 		_setLabel(label) {
 			if(this.floatinglabel === "") {
-				this._field.removeAttribute("placeholder");
-				this._label.textContent = label;
+				this.$["field"].removeAttribute("placeholder");
+				this.$["label"].textContent = label;
 			} else {
-				this._label.textContent = "";
-				this._field.placeholder = label;
+				this.$["label"].textContent = "";
+				this.$["field"].placeholder = label;
 			}
 		},
 
 		_checkEmpty() {
-			if(this._field.value === "") {
-				this._field.classList.add("empty");
+			if(this.$["field"].value === "") {
+				this.$["field"].classList.add("empty");
 			} else {
-				this._field.classList.remove("empty");
+				this.$["field"].classList.remove("empty");
 			}
-		}
+		},
 	},
 
 	template: calm.shadowDom(`
@@ -118,9 +115,4 @@ export default skate("calm-field", {
 		<input id="field" type="text">
 		<div id="label"></div>
 	`),
-
-	created() {
-		this._label = this.shadowRoot.getElementById("label");
-		this._field = this.shadowRoot.getElementById("field");
-	},
 });

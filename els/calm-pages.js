@@ -9,11 +9,9 @@ export default skate("calm-pages", {
 		selected: {
 			attr: true,
 			set(name) {
-				this._selection.selected = name;
+				this.$["selection"].selected = name;
 			},
 		},
-
-		_selection: {},
 	},
 
 	template: calm.shadowDom(`
@@ -29,8 +27,7 @@ export default skate("calm-pages", {
 	`),
 
 	created() {
-		this._selection = this.shadowRoot.getElementById("selection");
-		this._selection.addEventListener("select", (evt) => {
+		this.$["selection"].addEventListener("select", (evt) => {
 			calm.emit(this, "select", { detail: evt.detail });
 		});
 	}

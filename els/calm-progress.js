@@ -12,7 +12,7 @@ export default skate("calm-progress", {
 				let max = Number.parseFloat(this.max, 10);
 				if(value < 0 || value > max) return;
 
-				this._progress.style.width = `${(value / max) * 100}%`;
+				this.$["progress"].style.width = `${(value / max) * 100}%`;
 			},
 		},
 
@@ -24,8 +24,6 @@ export default skate("calm-progress", {
 		indeterminate: {
 			attr: true,
 		},
-
-		_progress: {},
 	},
 
 	template: calm.shadowDom(`
@@ -80,8 +78,4 @@ export default skate("calm-progress", {
 		<div id="bar"></div>
 		<div id="progress"></div>
 	`),
-
-	created() {
-		this._progress = this.shadowRoot.getElementById("progress");
-	}
 });

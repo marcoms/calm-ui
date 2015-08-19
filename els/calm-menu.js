@@ -10,7 +10,7 @@ export default skate("calm-menu", {
 			attr: true,
 			set(name) {
 				if(this._noSelect === "") return;
-				this._selection.selected = name;
+				this.$["selection"].selected = name;
 			},
 		},
 
@@ -18,15 +18,13 @@ export default skate("calm-menu", {
 			attr: true,
 			set(value) {
 				if(value === "") {
-					this._selection.tapselect = undefined;
+					this.$["selection"].tapselect = undefined;
 					this.selected = undefined;
 				} else {
-					this._selection.tapselect = "";
+					this.$["selection"].tapselect = "";
 				}
 			},
 		},
-
-		_selection: {},
 	},
 
 	template: calm.shadowDom(`
@@ -43,15 +41,14 @@ export default skate("calm-menu", {
 	`),
 
 	created() {
-		this._selection = this.shadowRoot.getElementById("selection");
-		this._selection.addEventListener("select", (evt) => {
+		this.$["selection"].addEventListener("select", (evt) => {
 			this.selected = evt.detail.name;
 			calm.emit(this, "select", { detail: evt.detail });
 		});
 
 		if(this.selected) calm.emit(this, "select", { detail: {
 			name: this.selected,
-			node: this._selection.selectedNode,
+			node: this.$["selection"].selectedNode,
 		}});
 	},
 });

@@ -9,19 +9,16 @@ export default skate("calm-btn", {
 		flat: {
 			attr: true,
 			set(value) {
-				this._card.z = (value !== undefined ? 0 : 1);
+				this.$["card"].z = (value !== undefined ? 0 : 1);
 			},
 		},
 
 		darkbg: {
 			attr: true,
 			set(value) {
-				this._btn.darkbg = (value === "" ? "" : undefined);
+				this.$["btn"].darkbg = (value === "" ? "" : undefined);
 			},
 		},
-
-		_btn: {},
-		_card: {},
 	},
 
 	template: calm.shadowDom(`
@@ -61,9 +58,4 @@ export default skate("calm-btn", {
 			<calm-tappable id="btn"><content></content></calm-tappable>
 		</calm-card>
 	`),
-
-	created() {
-		this._btn = this.shadowRoot.getElementById("btn");
-		this._card = this.shadowRoot.getElementById("card");
-	},
 });

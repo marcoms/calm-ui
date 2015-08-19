@@ -9,16 +9,13 @@ export default skate("calm-tabs", {
 		selected: {
 			attr: true,
 			set(name) {
-				if(name !== this._selection.selected) this._selection.selected = name;
+				if(name !== this.$["selection"].selected) this.$["selection"].selected = name;
 			},
 		},
 
 		fixed: {
 			attr: true,
 		},
-
-		_indicator: {},
-		_selection: {},
 	},
 
 	template: calm.shadowDom(`
@@ -65,10 +62,7 @@ export default skate("calm-tabs", {
 	`),
 
 	created() {
-		this._indicator = this.shadowRoot.getElementById("indicator");
-		this._selection = this.shadowRoot.getElementById("selection");
-
-		this._selection.addEventListener("select", (evt) => {
+		this.$["selection"].addEventListener("select", (evt) => {
 			const { name } = evt.detail;
 
 			this.selected = name;
@@ -84,7 +78,7 @@ export default skate("calm-tabs", {
 		_positionIndicator() {
 			if(this.selected === undefined) return;
 
-			const node = this._selection.selectedNode;
+			const node = this.$["selection"].selectedNode;
 
 			let width, left;
 
@@ -110,8 +104,8 @@ export default skate("calm-tabs", {
 				({ offsetWidth: width, offsetLeft: left } = node);
 			}
 
-			this._indicator.style.width = `${width}px`;
-			this._indicator.style.transform = `translateX(${left}px)`;
+			this.$["indicator"].style.width = `${width}px`;
+			this.$["indicator"].style.transform = `translateX(${left}px)`;
 		},
 	},
 });

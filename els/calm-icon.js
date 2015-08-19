@@ -9,11 +9,9 @@ export default skate("calm-icon", {
 			attr: true,
 			set(icon) {
 				if(!window.calmIcons) window.calmIcons = document.createElement("calm-icons");
-				this._frame.replaceChild(window.calmIcons.getIcon(icon), this._frame.children[0]);
+				this.$["frame"].replaceChild(window.calmIcons.getIcon(icon), this.$["frame"].children[0]);
 			},
 		},
-
-		_frame: {},
 	},
 
 	template: calm.shadowDom(`
@@ -31,8 +29,4 @@ export default skate("calm-icon", {
 			<g></g>
 		</svg>
 	`),
-
-	created() {
-		this._frame = this.shadowRoot.getElementById("frame");
-	},
 });

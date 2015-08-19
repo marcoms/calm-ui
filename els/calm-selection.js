@@ -8,7 +8,7 @@ export default skate("calm-selection", {
 			set(name) {
 				if(name === this._existingName) return;
 
-				let selectables = Array.from(this._selectables.getDistributedNodes());
+				let selectables = Array.from(this.$["selectables"].getDistributedNodes());
 
 				let targetNode, prevSelected;
 				for(let selectable of selectables) {
@@ -48,7 +48,6 @@ export default skate("calm-selection", {
 
 		selectedNode: {},
 
-		_selectables: {},
 		_existingName: {},
 	},
 
@@ -69,8 +68,4 @@ export default skate("calm-selection", {
 
 		<content id="selectables" select="*"></content>
 	`),
-
-	created() {
-		this._selectables = this.shadowRoot.getElementById("selectables");
-	},
 })

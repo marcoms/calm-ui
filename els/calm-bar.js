@@ -12,11 +12,9 @@ export default skate("calm-bar", {
 		flat: {
 			attr: true,
 			set(value) {
-				this._bar.z = (value !== undefined ? 0 : 1);
+				this.$["bar"].z = (value !== undefined ? 0 : 1);
 			},
 		},
-
-		_bar: {},
 	},
 
 	template: calm.shadowDom(`
@@ -63,8 +61,4 @@ export default skate("calm-bar", {
 			<content></content>
 		</calm-card>
 	`),
-
-	created() {
-		this._bar = this.shadowRoot.getElementById("bar");
-	}
 });
