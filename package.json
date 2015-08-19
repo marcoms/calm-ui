@@ -15,7 +15,7 @@
     },
     "overrides": {
       "github:skatejs/skatejs@master": {
-        "main": "lib/index.js"
+        "main": "src/index.js"
       }
     }
   }
