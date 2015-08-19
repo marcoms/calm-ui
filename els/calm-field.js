@@ -14,9 +14,9 @@ export default skate("calm-field", {
 			attr: true,
 			set(value) {
 				if(value === "") {
-					this._field.addEventListener("input", this._checkEmpty);
+					this.addEventListener("input", this._checkEmpty);
 				} else {
-					this._field.removeEventListener("input", this._checkEmpty);
+					this.removeEventListener("input", this._checkEmpty);
 				}
 
 				this._checkEmpty();
