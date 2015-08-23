@@ -22,7 +22,7 @@ export default skate("calm-tappable", {
 				outline: none;
 
 				cursor: pointer;
-				transition: background ${calm.time.short} linear;
+				transition: background ${calm.durations.short} linear;
 				-webkit-tap-highlight-color: transparent;
 			}
 

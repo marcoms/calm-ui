@@ -63,7 +63,7 @@ export default skate("calm-field", {
 				color: inherit;
 				background: transparent;
 
-				transition: box-shadow ${calm.time.short} linear;
+				transition: box-shadow ${calm.durations.short} linear;
 			}
 
 			#field[active],
@@ -95,7 +95,7 @@ export default skate("calm-field", {
 				transform: none;
 				transform-origin: top left;
 
-				transition: transform ${calm.time.med} ${calm.ease.out}, color ${calm.time.med} linear;
+				transition: transform ${calm.durations.med} ${calm.easings.out}, color ${calm.durations.med} linear;
 			}
 
 			:host([floatinglabel]) #field[active] ~ #label,
@@ -108,7 +108,7 @@ export default skate("calm-field", {
 			:host([floatinglabel]) #field:focus ~ #label {
 				color: ${calm.color};
 
-				transition: transform ${calm.time.med} ${calm.ease.out}, color 0ms linear;
+				transition: transform ${calm.durations.med} ${calm.easings.out}, color 0ms linear;
 			}
 		</style>
 

@@ -14,14 +14,6 @@ export default {
 		};
 	},
 
-	// -quart easings
-
-	ease: {
-		out: "cubic-bezier(0.165, 0.84, 0.44, 1)",
-		in: "cubic-bezier(0.895, 0.03, 0.685, 0.22)",
-		inOut: "cubic-bezier(0.77, 0, 0.175, 1)",
-	},
-
 	ready(fn) {
 		if(document.readyState === "interactive" || document.readyState === "complete") {
 			fn();
@@ -34,9 +26,17 @@ export default {
 		this.ready(() => src.dispatchEvent(new CustomEvent(name, opts)));
 	},
 
+	// -quart easings
+
+	easings: {
+		out: "cubic-bezier(0.165, 0.84, 0.44, 1)",
+		in: "cubic-bezier(0.895, 0.03, 0.685, 0.22)",
+		inOut: "cubic-bezier(0.77, 0, 0.175, 1)",
+	},
+
 	// durations for transitions
 
-	time: {
+	durations: {
 		short: "160ms",
 		med: "320ms",
 		long: "420ms",
@@ -45,7 +45,7 @@ export default {
 
 	// box-shadow parameters for different elevation levels
 
-	shadow: {
+	shadows: {
 		1: "0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
 		2: "0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)",
 		3: "0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23)",

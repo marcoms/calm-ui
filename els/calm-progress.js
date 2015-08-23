@@ -52,7 +52,7 @@ export default skate("calm-progress", {
 			:host([indeterminate]) #progress {
 				width: 100%;
 
-				animation: indeterminate ${calm.time.extreme} ${calm.ease.inOut} infinite;
+				animation: indeterminate ${calm.durations.extreme} ${calm.easings.inOut} infinite;
 			}
 
 			#bar {
@@ -71,7 +71,7 @@ export default skate("calm-progress", {
 
 				background: currentColor;
 
-				transition: width ${calm.time.long} ${calm.ease.out};
+				transition: width ${calm.durations.long} ${calm.easings.out};
 			}
 		</style>
 

@@ -49,8 +49,8 @@ export default skate("calm-drawer", {
 				border-radius: 0;
 
 				transition-property: transform, visibility;
-				transition-duration: ${calm.time.long};
-				transition-timing-function: ${calm.ease.out};
+				transition-duration: ${calm.durations.long};
+				transition-timing-function: ${calm.easings.out};
 			}
 
 			#overlay {
@@ -66,8 +66,8 @@ export default skate("calm-drawer", {
 				visibility: hidden;
 
 				transition-property: opacity, visibility;
-				transition-duration: ${calm.time.long};
-				transition-timing-function: ${calm.ease.out};
+				transition-duration: ${calm.durations.long};
+				transition-timing-function: ${calm.easings.out};
 			}
 
 			:host([shown]) #drawer {
