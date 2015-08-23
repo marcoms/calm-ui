@@ -49,7 +49,7 @@ export default skate("calm-tabs", {
 				background: currentColor;
 
 				transition-property: transform, width;
-				transition-duration: ${calm.durations.med};
+				transition-duration: ${calm.durations.medium};
 				transition-timing-function: ${calm.easings.out};
 			}
 		</style>
