@@ -26,6 +26,14 @@ export default {
 		this.ready(() => src.dispatchEvent(new CustomEvent(name, opts)));
 	},
 
+	breakpoints: {
+		xsmall: "0",
+		small: "600px",
+		medium: "1024px",
+		large: "1440px",
+		xlarge: "1920px",
+	},
+
 	// -quart easings
 
 	easings: {
@@ -38,7 +46,7 @@ export default {
 
 	durations: {
 		short: "160ms",
-		med: "320ms",
+		medium: "320ms",
 		long: "420ms",
 		extreme: "920ms",
 	},

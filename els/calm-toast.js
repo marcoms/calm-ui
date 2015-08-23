@@ -90,7 +90,7 @@ export default skate("calm-toast", {
 				color: #4dd0e1;
 			}
 
-			@media (min-width: 768px) {
+			@media (min-width: ${calm.breakpoints.small}) {
 				:host {
 					justify-content: center;
 				}
