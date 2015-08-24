@@ -33,8 +33,10 @@ export default skate("calm-btn", {
 			}
 
 			#card {
-				background: inherit;
 				overflow: hidden;
+
+				border-radius: inherit;
+				background: inherit;
 			}
 
 			#btn {
