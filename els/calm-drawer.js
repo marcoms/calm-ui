@@ -5,26 +5,30 @@ import "els/calm-card.js";
 
 export default skate("calm-drawer", {
 	properties: {
-		nodim: {
+		shown: {
 			attr: true,
 		},
 
-		shown: {
-			attr: true,
+		wideLayout: {
+			set(value) {
+				calm.emit(this, "layoutchange", { detail: {
+					wideLayout: value,
+				}});
+			}
 		},
 	},
 
 	prototype: {
 		show() {
-			this.shown = "";
+			if(!this.wideLayout) this.shown = "";
 		},
 
 		hide() {
-			this.shown = undefined;
+			if(!this.wideLayout) this.shown = undefined;
 		},
 
 		toggle() {
-			this.shown = (this.shown === "" ? undefined : "");
+			if(!this.wideLayout) this.shown = (this.shown === "" ? undefined : "");
 		},
 	},
 
@@ -33,6 +37,7 @@ export default skate("calm-drawer", {
 			:host {
 				display: block;
 				width: 320px;
+				height: 100%;
 			}
 
 			#drawer {
@@ -80,8 +85,20 @@ export default skate("calm-drawer", {
 				visibility: visible;
 			}
 
-			:host([nodim]) #overlay {
-				background: transparent;
+			@media (min-width: ${calm.breakpoints.medium}) {
+				#drawer {
+					position: initial;
+
+					visibility: visible;
+				}
+
+				#overlay {
+					display: none;
+				}
+
+				:host([shown]) #drawer {
+					transform: none;
+				}
 			}
 		</style>
 
@@ -92,7 +109,18 @@ export default skate("calm-drawer", {
 		<div id="overlay"></div>
 	`),
 
-	created() {
-		this.$["overlay"].addEventListener("click", () => this.hide());
+	created() {{}
+		this.$["overlay"].addEventListener("click", () => {
+			this.hide();
+		});
+
+		const mq = window.matchMedia(`(min-width: ${calm.breakpoints.medium})`);
+		this.wideLayout = mq.matches;
+		mq.addListener((mq) => {
+			this.wideLayout = mq.matches;
+			if(this.wideLayout && this.shown === "") {
+				this.shown = undefined;
+			}
+		});
 	},
 });
