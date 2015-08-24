@@ -22,6 +22,7 @@ export default skate("calm-bar", {
 			:host {
 				display: block;
 				width: 100%;
+				height: 56px;
 			}
 
 			#bar {
@@ -44,10 +45,9 @@ export default skate("calm-bar", {
 				margin: 0 -4px;
 			}
 
-			:host([sticky]) {
+			:host([sticky]) #bar {
 				position: fixed;
 				top: 0;
-				left: 0;
 				z-index: 97;
 			}
 
