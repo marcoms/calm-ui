@@ -101,6 +101,7 @@
 					<calm-item name="bar">calm-bar</calm-item>
 					<calm-item name="btn">calm-btn</calm-item>
 					<calm-item name="card">calm-card</calm-item>
+					<calm-item name="dialog">calm-dialog</calm-item>
 					<calm-item name="drawer">calm-drawer</calm-item>
 					<calm-item name="fab">calm-fab</calm-item>
 					<calm-item name="field">calm-field</calm-item>
@@ -170,6 +171,12 @@
 
 					<code class="tag-snippet">calm-card z="5"</code>
 					<calm-card z="5">z=5</calm-card>
+				</calm-page>
+
+				<calm-page name="dialog">
+					<code class="tag-snippet">calm-dialog</code>
+
+					<calm-btn id="dialog-show">show dialog</calm-btn>
 				</calm-page>
 
 				<calm-page name="drawer">
@@ -294,6 +301,14 @@
 				</calm-page>
 			</calm-pages>
 
+			<calm-dialog id="dialog">
+				<header>Dialog</header>
+
+				<span>Example content</span>
+
+				<calm-btn id="dialog-hide" flat>hide dialog</calm-btn>
+			</calm-dialog>
+
 			<calm-toast id="toast">Toast notification<calm-btn flat darkbg>ok</calm-btn></calm-toast>
 		</calm-app>
 
@@ -301,9 +316,12 @@
 			var $ = document.querySelector.bind(document), $$ = document.querySelectorAll.bind(document);
 			Node.prototype.on = Node.prototype.addEventListener;
 
+			var dialog = $("#dialog");
 			var drawer = $("#drawer");
 			var nav = $("#nav");
 			var pages = $("#pages");
+			var dialogShow = $("#dialog-show");
+			var dialogHide = $("#dialog-hide");
 			var drawerShow = $("#drawer-show");
 			var drawerHide = $("#drawer-hide");
 			var demoDrawerToggle = $("#demo-drawer-toggle");
@@ -312,6 +330,14 @@
 			var demoPagesTabs = $("#demo-pages-tabs");
 			var toast = $("#toast");
 			var title = $("#title");
+
+			dialogShow.on("click", function() {
+				dialog.show();
+			});
+
+			dialogHide.on("click", function() {
+				dialog.hide();
+			});
 
 			drawerShow.on("click", function() {
 				drawer.show();
