@@ -2,6 +2,7 @@ import "els/calm-app.js";
 import "els/calm-drawer";
 import "els/calm-bar";
 import "els/calm-btn";
+import "els/calm-dialog";
 import "els/calm-icon-btn";
 import "els/calm-field";
 import "els/calm-icon";
