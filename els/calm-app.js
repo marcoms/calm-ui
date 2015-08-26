@@ -26,10 +26,7 @@ export default skate("calm-app", {
 			}
 
 			@media (min-width: ${calm.breakpoints.medium}) {
-				#bar::content [data-drawerctrl] {
-					display: none;
-				}
-
+				#bar::content [data-drawerctrl],
 				#drawer::content [data-drawerctrl] {
 					display: none;
 				}
