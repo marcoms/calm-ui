@@ -34,12 +34,10 @@ export default {
 		xlarge: "1920px",
 	},
 
-	// -quart easings
-
 	easings: {
-		out: "cubic-bezier(0.165, 0.84, 0.44, 1)",
-		in: "cubic-bezier(0.895, 0.03, 0.685, 0.22)",
-		inOut: "cubic-bezier(0.77, 0, 0.175, 1)",
+		out: "cubic-bezier(0.165, 0.84, 0.44, 1)",  // quart
+		in: "cubic-bezier(0.55, 0.055, 0.675, 0.19)",  // cubic
+		inOut: "cubic-bezier(0.77, 0, 0.175, 1)",  // cubic
 	},
 
 	// durations for transitions
