@@ -4,66 +4,366 @@
 		<meta charset="utf-8">
 		<title>Calm UI</title>
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-		<link rel="import" href="bower_components/polymer/polymer.html">
-		<link rel="import" href="calm-ui.html">
 		<style>
-			::selection {
-				background: rgba(0, 0, 0, 0.5);
-			}
-
-			html, body {
-				height: 100%;
-				margin: 0;
-				padding: 0;
+			:root {
+				font-size: 16px;
+				font-family: roboto, sans-serif;
+				color: #212121;
 			}
 
 			body {
-				font-family: roboto, sans;
-				color: #212121;
-				display: flex;
-				flex-direction: row;
-				-webkit-tap-highlight-color: transparent;
+				margin: 0;
 			}
 
-			body > * {
-				flex: 1;
-				padding: 2rem;
-			}
-
-			#dark {
-				background: #444;
+			calm-bar {
+				background: #00bcd4;
 				color: #fff;
-				text-shadow: 0 -1px #000;
+				fill: currentColor;
 			}
 
-			section > *:not(:last-child) {
-				margin-bottom: 2rem;
-				display: block;
+			calm-page {
+				display: flex;
+				align-items: flex-start;
+				flex-direction: column;
 			}
 
-			@media (max-width: 600px) {
-				body {
-					display: initial;
-				}
+			calm-page > * {
+				margin-bottom: 16px;
+			}
+
+			.tag-snippet {
+				display: inline-block;
+				background: #eee;
+				padding: 4px;
+				border-radius: 4px;
+				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+			}
+
+			.tag-snippet::before {
+				content: "<";
+			}
+
+			.tag-snippet::after {
+				content: ">";
+			}
+
+			.spacer {
+				flex-grow: 1;
+			}
+
+			calm-page[name="card"] > calm-card {
+				display: flex;
+				width: 512px;
+				height: 256px;
+
+				justify-content: center;
+				align-items: center;
+			}
+
+			#bars {
+				width: 768px;
+			}
+
+			#bars > * {
+				margin-bottom: 16px;
+			}
+
+			#bar-flat {
+				background: transparent;
+				color: #212121;
+			}
+
+			#btn-custom-bg {
+				background: #836;
+			}
+
+			#tabs-fixed {
+				width: 768px;
+			}
+
+			#drawer-bar {
+				background: transparent;
+				color: #212121;
 			}
 		</style>
+
+		<script src="bundle.js"></script>
 	</head>
+	<body>
+		<calm-app>
+			<calm-drawer id="drawer">
+				<calm-bar id="drawer-bar" flat>
+					<calm-icon-btn data-drawerctrl icon="arrow-back" id="drawer-hide"></calm-icon-btn>
+					<header>Calm UI</header>
+				</calm-bar>
 
-	<body unresolved>
-		<section id="dark">
-			<header><h1>Calm UI</h1></header>
+				<calm-menu id="nav" selected="pages">
+					<calm-item name="bar">calm-bar</calm-item>
+					<calm-item name="btn">calm-btn</calm-item>
+					<calm-item name="card">calm-card</calm-item>
+					<calm-item name="dialog">calm-dialog</calm-item>
+					<calm-item name="drawer">calm-drawer</calm-item>
+					<calm-item name="fab">calm-fab</calm-item>
+					<calm-item name="field">calm-field</calm-item>
+					<calm-item name="icon-btn">calm-icon-btn</calm-item>
+					<calm-item name="icon">calm-icon</calm-item>
+					<calm-item name="menu">calm-menu</calm-item>
+					<calm-item name="pages">calm-pages</calm-item>
+					<calm-item name="progress">calm-progress</calm-item>
+					<calm-item name="spinner">calm-spinner</calm-item>
+					<calm-item name="tabs">calm-tabs</calm-item>
+					<calm-item name="tappable">calm-tappable</calm-item>
+					<calm-item name="toast">calm-toast</calm-item>
+				</calm-menu>
+			</calm-drawer>
 
-			<h2>Dark</h2>
+			<calm-bar sticky>
+				<calm-icon-btn data-drawerctrl icon="menu" darkbg id="drawer-show"></calm-icon-btn>
+				<header id="title">Demo</header>
+			</calm-bar>
 
-			<calm-button>Button</calm-button>
-			<calm-input>Input</calm-input>
-		</section>
+			<calm-pages id="pages">
+				<calm-page name="bar">
+					<div id="bars">
+						<code class="tag-snippet">calm-bar</code>
 
-		<section id="light">
-			<h2>Light</h2>
+						<calm-bar>
+							<calm-icon-btn darkbg icon="menu"></calm-icon-btn>
+							<header>Regular bar</header>
+							<div class="spacer"></div>
+							<calm-icon-btn darkbg icon="more-vert"></calm-icon-btn>
+						</calm-bar>
 
-			<calm-button>Button</calm-button>
-			<calm-input>Input</calm-input>
-		</section>
+						<code class="tag-snippet">calm-bar flat style="color: #212121"</code>
+
+						<calm-bar id="bar-flat" flat>
+							<calm-icon-btn icon="menu"></calm-icon-btn>
+							<header>Flat bar</header>
+							<div class="spacer"></div>
+							<calm-icon-btn icon="more-vert"></calm-icon-btn>
+						</calm-bar>
+					</div>
+				</calm-page>
+
+				<calm-page name="btn">
+					<code class="tag-snippet">calm-btn</code>
+					<calm-btn>Button</calm-btn>
+
+					<code class="tag-snippet">calm-btn flat</code>
+					<calm-btn flat>Flat button</calm-btn>
+
+					<code class="tag-snippet">calm-btn style="background: #836"</code>
+					<calm-btn id="btn-custom-bg" darkbg>Styled button</calm-btn>
+				</calm-page>
+
+				<calm-page name="card">
+					<code class="tag-snippet">calm-card z="1"</code>
+					<calm-card z="1">z=1</calm-card>
+
+					<code class="tag-snippet">calm-card z="2"</code>
+					<calm-card z="2">z=2</calm-card>
+
+					<code class="tag-snippet">calm-card z="3"</code>
+					<calm-card z="3">z=3</calm-card>
+
+					<code class="tag-snippet">calm-card z="4"</code>
+					<calm-card z="4">z=4</calm-card>
+
+					<code class="tag-snippet">calm-card z="5"</code>
+					<calm-card z="5">z=5</calm-card>
+				</calm-page>
+
+				<calm-page name="dialog">
+					<code class="tag-snippet">calm-dialog</code>
+
+					<calm-btn id="dialog-show">show dialog</calm-btn>
+				</calm-page>
+
+				<calm-page name="drawer">
+					<calm-btn id="demo-drawer-toggle">Toggle drawer</calm-btn>
+
+					<code class="tag-snippet">calm-drawer</code>
+				</calm-page>
+
+				<calm-page name="fab">
+					<code class="tag-snippet">calm-fab icon="add"</code>
+					<calm-fab darkbg icon="add"></calm-fab>
+				</calm-page>
+
+				<calm-page name="field">
+					<code class="tag-snippet">calm-field label="Text field"</code>
+					<calm-field label="Text field"></calm-field>
+
+					<code class="tag-snippet">calm-field label="Text field" floatinglabel</code>
+					<calm-field label="Floating label" floatinglabel></calm-field>
+				</calm-page>
+
+				<calm-page name="icon-btn">
+					<code class="tag-snippet">calm-icon-btn icon="star"</code>
+					<calm-icon-btn icon="star"></calm-icon-btn>
+				</calm-page>
+
+				<calm-page name="icon">
+					<code class="tag-snippet">calm-icon icon="favorite"</code>
+					<calm-icon icon="favorite"></calm-icon>
+				</calm-page>
+
+				<calm-page name="menu">
+					<h2>Selectable menu</h2>
+
+					<code class="tag-snippet">calm-menu selected="1"</code>
+
+					<calm-menu selected="1">
+						<calm-item name="1">Item one</calm-item>
+						<calm-item name="2">Item two</calm-item>
+						<calm-item name="3">Item three</calm-item>
+						<calm-item name="4">Item four</calm-item>
+					</calm-menu>
+
+					<h2>Non-selectable menu</h2>
+
+					<code class="tag-snippet">calm-menu noselect</code>
+
+					<calm-menu noselect>
+						<calm-item name="1">Item one</calm-item>
+						<calm-item name="2">Item two</calm-item>
+						<calm-item name="3">Item three</calm-item>
+						<calm-item name="4">Item four</calm-item>
+					</calm-menu>
+				</calm-page>
+
+				<calm-page name="pages">
+					<calm-tabs id="demo-pages-tabs" selected="1">
+						<calm-tab name="1">Page one</calm-tab>
+						<calm-tab name="2">Page two</calm-tab>
+						<calm-tab name="3">Page three</calm-tab>
+						<calm-tab name="4">Page four</calm-tab>
+					</calm-tabs>
+
+					<code class="tag-snippet">calm-pages selected="1"</code>
+
+					<calm-pages id="demo-pages">
+						<calm-page name="1">Page one</calm-page>
+						<calm-page name="2">Page two</calm-page>
+						<calm-page name="3">Page three</calm-page>
+						<calm-page name="4">Page four</calm-page>
+					</calm-pages>
+				</calm-page>
+
+				<calm-page name="progress">
+					<h2>Regular progress bar</h2>
+
+					<code class="tag-snippet">calm-progress</code>
+					<calm-progress></calm-progress>
+
+					<h2>Indeterminate progress bar</h2>
+
+					<code class="tag-snippet">calm-progress indeterminate</code>
+					<calm-progress indeterminate></calm-progress>
+				</calm-page>
+
+				<calm-page name="spinner">
+					<code class="tag-snippet">calm-spinner</code>
+					<calm-spinner></calm-spinner>
+				</calm-page>
+
+				<calm-page name="tabs">
+					<h2>Regular tabs</h2>
+
+					<code class="tag-snippet">calm-tabs selected="1"</code>
+					<calm-tabs selected="1">
+						<calm-tab name="1">Tab one</calm-tab>
+						<calm-tab name="2">Tab number two</calm-tab>
+						<calm-tab name="3">Tab 3</calm-tab>
+						<calm-tab name="4">The final tab</calm-tab>
+					</calm-tabs>
+
+					<h2>Fixed tabs</h2>
+
+					<code class="tag-snippet">calm-tabs fixed selected="1"</code>
+					<calm-tabs id="tabs-fixed" fixed selected="1">
+						<calm-tab name="1">Tab one</calm-tab>
+						<calm-tab name="2">Second tab</calm-tab>
+						<calm-tab name="3">Tab 3</calm-tab>
+						<calm-tab name="4">The final tab</calm-tab>
+					</calm-tabs>
+				</calm-page>
+
+				<calm-page name="tappable">
+					<code class="tag-snippet">calm-tappable</code>
+					<calm-tappable>Tappable area</calm-tappable>
+				</calm-page>
+
+				<calm-page name="toast">
+					<code class="tag-snippet">calm-toast</code>
+
+					<calm-btn id="toast-toggle" id="toast-toggle">Toggle toast</calm-btn>
+				</calm-page>
+			</calm-pages>
+
+			<calm-dialog id="dialog">
+				<header>Dialog</header>
+
+				<span>Example content</span>
+
+				<calm-btn id="dialog-hide" flat>hide dialog</calm-btn>
+			</calm-dialog>
+
+			<calm-toast id="toast">Toast notification<calm-btn flat darkbg>ok</calm-btn></calm-toast>
+		</calm-app>
+
+		<script>
+			var $ = document.querySelector.bind(document), $$ = document.querySelectorAll.bind(document);
+			Node.prototype.on = Node.prototype.addEventListener;
+
+			var dialog = $("#dialog");
+			var drawer = $("#drawer");
+			var nav = $("#nav");
+			var pages = $("#pages");
+			var dialogShow = $("#dialog-show");
+			var dialogHide = $("#dialog-hide");
+			var drawerShow = $("#drawer-show");
+			var drawerHide = $("#drawer-hide");
+			var demoDrawerToggle = $("#demo-drawer-toggle");
+			var toastToggle = $("#toast-toggle");
+			var demoPages = $("#demo-pages");
+			var demoPagesTabs = $("#demo-pages-tabs");
+			var toast = $("#toast");
+			var title = $("#title");
+
+			dialogShow.on("click", function() {
+				dialog.show();
+			});
+
+			dialogHide.on("click", function() {
+				dialog.hide();
+			});
+
+			drawerShow.on("click", function() {
+				drawer.show();
+			});
+
+			drawerHide.on("click", function() {
+				drawer.hide();
+			});
+
+			demoDrawerToggle.on("click", function() {
+				drawer.toggle();
+			});
+
+			nav.on("select", function() {
+				pages.selected = nav.selected;
+				title.textContent = nav.querySelector("[selected]").textContent;
+				drawer.hide();
+			});
+
+			demoPagesTabs.on("select", function() {
+				demoPages.selected = demoPagesTabs.selected;
+			});
+
+			toastToggle.on("click", function() {
+				toast.toggle();
+			});
+		</script>
 	</body>
 </html>
