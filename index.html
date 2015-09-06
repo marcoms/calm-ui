@@ -254,7 +254,7 @@
 					<h2>Regular progress bar</h2>
 
 					<code class="tag-snippet">calm-progress</code>
-					<calm-progress></calm-progress>
+					<calm-progress id="progress"></calm-progress>
 
 					<h2>Indeterminate progress bar</h2>
 
@@ -330,6 +330,7 @@
 			var demoPagesTabs = $("#demo-pages-tabs");
 			var toast = $("#toast");
 			var title = $("#title");
+			var progress = $("#progress");
 
 			dialogShow.on("click", function() {
 				dialog.show();
@@ -364,6 +365,11 @@
 			toastToggle.on("click", function() {
 				toast.toggle();
 			});
+
+			progress.value = 0;
+			window.setInterval(function() {
+				progress.value = (progress.value + 10) % 100;
+			}, 1000);
 		</script>
 	</body>
 </html>
