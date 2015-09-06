@@ -7,10 +7,12 @@ export default skate("calm-tab", {
 	properties: {
 		name: {
 			attr: true,
+			type: calm.propType(String),
 		},
 
 		selected: {
 			attr: true,
+			type: Boolean,
 		},
 	},
 

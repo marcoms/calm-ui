@@ -61,4 +61,11 @@ export default {
 
 	borderRadius: "3px",
 	color: "#00bcd4",
+
+	propType(type) {
+		return (value) => {
+			if(value === undefined || value === null) return value;
+			return type(value);
+		};
+	},
 };

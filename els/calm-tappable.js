@@ -5,10 +5,12 @@ export default skate("calm-tappable", {
 	properties: {
 		darkbg: {
 			attr: true,
+			type: Boolean,
 		},
 
 		active: {
 			attr: true,
+			type: Boolean,
 		},
 	},
 
@@ -42,7 +44,7 @@ export default skate("calm-tappable", {
 
 	created() {
 		function activate(evt) {
-			this.active = "";
+			this.active = true;
 		}
 
 		function deactivate(evt) {

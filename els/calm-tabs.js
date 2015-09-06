@@ -8,6 +8,7 @@ export default skate("calm-tabs", {
 	properties: {
 		selected: {
 			attr: true,
+			type: calm.propType(String),
 			set(name) {
 				if(name !== this.$["selection"].selected) this.$["selection"].selected = name;
 			},
@@ -15,6 +16,7 @@ export default skate("calm-tabs", {
 
 		fixed: {
 			attr: true,
+			type: Boolean,
 		},
 	},
 

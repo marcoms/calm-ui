@@ -8,15 +8,17 @@ export default skate("calm-btn", {
 	properties: {
 		flat: {
 			attr: true,
+			type: Boolean,
 			set(value) {
-				this.$["card"].z = (value !== undefined ? 0 : 1);
+				this.$["card"].z = (value ? 0 : 1);
 			},
 		},
 
 		darkbg: {
 			attr: true,
+			type: Boolean,
 			set(value) {
-				this.$["btn"].darkbg = (value === "" ? "" : undefined);
+				this.$["btn"].darkbg = value;
 			},
 		},
 	},

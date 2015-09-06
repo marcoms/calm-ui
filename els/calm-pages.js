@@ -8,6 +8,7 @@ export default skate("calm-pages", {
 	properties: {
 		selected: {
 			attr: true,
+			type: calm.propType(String),
 			set(name) {
 				this.$["selection"].selected = name;
 			},

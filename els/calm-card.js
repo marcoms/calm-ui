@@ -5,6 +5,7 @@ export default skate("calm-card", {
 	properties: {
 		z: {
 			attr: true,
+			type: calm.propType(Number),
 		},
 	},
 

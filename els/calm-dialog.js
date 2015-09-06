@@ -5,12 +5,13 @@ export default skate("calm-dialog", {
 	properties: {
 		shown: {
 			attr: true,
+			type: Boolean,
 		},
 	},
 
 	prototype: {
 		show() {
-			this.shown = "";
+			this.shown = true;
 		},
 
 		hide() {
@@ -18,7 +19,7 @@ export default skate("calm-dialog", {
 		},
 
 		toggle() {
-			this.shown = (this.shown === "" ? undefined : "");
+			this.shown = !this.shown;
 		},
 	},
 

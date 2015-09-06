@@ -7,9 +7,11 @@ export default skate("calm-drawer", {
 	properties: {
 		shown: {
 			attr: true,
+			type: Boolean,
 		},
 
 		wideLayout: {
+			type: Boolean,
 			set(value) {
 				calm.emit(this, "layoutchange", { detail: {
 					wideLayout: value,
@@ -20,7 +22,7 @@ export default skate("calm-drawer", {
 
 	prototype: {
 		show() {
-			if(!this.wideLayout) this.shown = "";
+			if(!this.wideLayout) this.shown = true;
 		},
 
 		hide() {
@@ -28,7 +30,7 @@ export default skate("calm-drawer", {
 		},
 
 		toggle() {
-			if(!this.wideLayout) this.shown = (this.shown === "" ? undefined : "");
+			if(!this.wideLayout) this.shown = !this.shown;
 		},
 	},
 
@@ -118,7 +120,7 @@ export default skate("calm-drawer", {
 		this.wideLayout = mq.matches;
 		mq.addListener((mq) => {
 			this.wideLayout = mq.matches;
-			if(this.wideLayout && this.shown === "") {
+			if(this.wideLayout && this.shown) {
 				this.shown = undefined;
 			}
 		});

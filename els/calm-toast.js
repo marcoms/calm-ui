@@ -5,10 +5,12 @@ export default skate("calm-toast", {
 	properties: {
 		shown: {
 			attr: true,
+			type: Boolean,
 		},
 
 		duration: {
 			attr: true,
+			type: calm.propType(Number),
 			init: 3200,
 		},
 
@@ -17,7 +19,7 @@ export default skate("calm-toast", {
 
 	prototype: {
 		show() {
-			this.shown = "";
+			this.shown = true;
 			this._setPendingHide();
 		},
 
@@ -27,13 +29,13 @@ export default skate("calm-toast", {
 		},
 
 		toggle() {
-			(this.shown === "" ? this.hide() : this.show());
+			(this.shown ? this.hide() : this.show());
 		},
 
 		_setPendingHide() {
 			this._pendingHide = window.setTimeout(() => {
 				this.hide();
-			}, Number.parseInt(this.duration, 10));
+			}, this.duration);
 		},
 
 		_clearPendingHide() {

@@ -8,6 +8,7 @@ export default skate("calm-fab", {
 	properties: {
 		icon: {
 			attr: true,
+			type: calm.propType(String),
 			set(icon) {
 				this.$["btn"].icon = icon;
 			},
@@ -15,6 +16,7 @@ export default skate("calm-fab", {
 
 		darkbg: {
 			attr: true,
+			type: Boolean,
 			set(value) {
 				this.$["btn"].darkbg = value;
 			},

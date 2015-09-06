@@ -7,12 +7,14 @@ export default skate("calm-bar", {
 	properties: {
 		sticky: {
 			attr: true,
+			type: Boolean,
 		},
 
 		flat: {
 			attr: true,
+			type: Boolean,
 			set(value) {
-				this.$["bar"].z = (value !== undefined ? 0 : 1);
+				this.$["bar"].z = (value ? 0 : 1);
 			},
 		},
 	},
@@ -45,11 +47,11 @@ export default skate("calm-bar", {
 				margin: 0 -4px;
 			}
 
-			:host([sticky]) #bar {
+			/*:host([sticky]) #bar {
 				position: fixed;
 				top: 0;
 				z-index: 97;
-			}
+			}*/
 
 			/* TODO: add auto-raising attribute */
 			:host([flat]) #bar {

@@ -7,6 +7,7 @@ export default skate("calm-icon", {
 	properties: {
 		icon: {
 			attr: true,
+			type: calm.propType(String),
 			set(icon) {
 				if(!window.calmIcons) window.calmIcons = document.createElement("calm-icons");
 				this.$["frame"].replaceChild(window.calmIcons.getIcon(icon), this.$["frame"].children[0]);

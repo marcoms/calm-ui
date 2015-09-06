@@ -5,6 +5,7 @@ export default skate("calm-selection", {
 	properties: {
 		selected: {
 			attr: true,
+			type: calm.propType(String),
 			set(name) {
 				if(name === this._existingName) return;
 
@@ -12,7 +13,7 @@ export default skate("calm-selection", {
 
 				let targetNode, prevSelected;
 				for(let selectable of selectables) {
-					if(selectable.selected === "") prevSelected = selectable;
+					if(selectable.selected) prevSelected = selectable;
 					if(selectable.name === name) targetNode = selectable;
 
 					if(name === undefined && prevSelected) break;
@@ -25,7 +26,7 @@ export default skate("calm-selection", {
 				if(targetNode) {
 					this.selectedNode = targetNode;
 					this._existingName = targetNode.name;
-					targetNode.selected = "";
+					targetNode.selected = true;
 
 					calm.emit(this, "select", { detail: {
 						name,
@@ -37,8 +38,9 @@ export default skate("calm-selection", {
 
 		tapselect: {
 			attr: true,
+			type: Boolean,
 			set(value) {
-				if(value === "") {
+				if(value) {
 					this.addEventListener("click", this._onTap);
 				} else {
 					this.removeEventListener("click", this._onTap);

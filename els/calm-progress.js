@@ -5,11 +5,12 @@ export default skate("calm-progress", {
 	properties: {
 		value: {
 			attr: true,
+			type: calm.propType(Number),
 			set(value) {
-				if(this.indeterminate === "") return;
+				if(this.indeterminate) return;
 
-				value = Number.parseFloat(value, 10);
-				let max = Number.parseFloat(this.max, 10);
+				value = value;
+				let max = this.max;
 				if(value < 0 || value > max) return;
 
 				this.$["progress"].style.width = `${(value / max) * 100}%`;
@@ -18,11 +19,13 @@ export default skate("calm-progress", {
 
 		max: {
 			attr: true,
+			type: calm.propType(Number),
 			init: 100,
 		},
 
 		indeterminate: {
 			attr: true,
+			type: Boolean,
 		},
 	},
 

@@ -5,6 +5,7 @@ export default skate("calm-spinner", {
 	properties: {
 		small: {
 			attr: true,
+			type: Boolean,
 		},
 	},
 

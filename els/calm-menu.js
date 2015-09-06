@@ -8,20 +8,22 @@ export default skate("calm-menu", {
 	properties: {
 		selected: {
 			attr: true,
+			type: calm.propType(String),
 			set(name) {
-				if(this._noSelect === "") return;
+				if(this.noselect) return;
 				this.$["selection"].selected = name;
 			},
 		},
 
 		noselect: {
 			attr: true,
+			type: Boolean,
 			set(value) {
-				if(value === "") {
+				if(value) {
 					this.$["selection"].tapselect = undefined;
 					this.selected = undefined;
 				} else {
-					this.$["selection"].tapselect = "";
+					this.$["selection"].tapselect = true;
 				}
 			},
 		},

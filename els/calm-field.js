@@ -5,6 +5,7 @@ export default skate("calm-field", {
 	properties: {
 		label: {
 			attr: true,
+			type: calm.propType(String),
 			set(label) {
 				this._setLabel(label);
 			},
@@ -12,8 +13,9 @@ export default skate("calm-field", {
 
 		floatinglabel: {
 			attr: true,
+			type: Boolean,
 			set(value) {
-				if(value === "") {
+				if(value) {
 					this.addEventListener("input", this._checkEmpty);
 				} else {
 					this.removeEventListener("input", this._checkEmpty);
@@ -27,7 +29,7 @@ export default skate("calm-field", {
 
 	prototype: {
 		_setLabel(label) {
-			if(this.floatinglabel === "") {
+			if(this.floatinglabel) {
 				this.$["field"].removeAttribute("placeholder");
 				this.$["label"].textContent = label;
 			} else {
