@@ -3,15 +3,53 @@ import skate from "skatejs";
 
 export default skate("calm-spinner", {
 	properties: {
+		shown: {
+			attr: true,
+			type: Boolean,
+		},
+
 		small: {
 			attr: true,
 			type: Boolean,
 		},
 	},
 
+	prototype: {
+		show() {
+			this.shown = true;
+		},
+
+		hide() {
+			this.shown = false;
+		},
+
+		toggle() {
+			this.shown = (this.shown ? false : true);
+		},
+	},
+
 	// the following template is adapted from throbber.svg (BSD licensed) by the Chromium project
 	template: calm.shadowDom(`
 		<style>
+			@keyframes exit {
+				0% {
+					transform: none;
+					opacity: 1;
+				}
+			}
+
+			@keyframes enter {
+				0% {
+					transform: translateY(100%);
+					opacity: 0;
+				}
+
+				100% {
+					transform: none;
+					opacity: 1;
+				}
+			}
+
 			@keyframes fill-unfill {
 				0% {
 					stroke-dashoffset: 58.8;
@@ -27,10 +65,6 @@ export default skate("calm-spinner", {
 			}
 
 			@keyframes rotate {
-				0% {
-					transform: none;
-				}
-
 				100% {
 					transform: rotate(360deg);
 				}
@@ -38,6 +72,11 @@ export default skate("calm-spinner", {
 
 			:host {
 				display: block;
+
+				transform: translateY(-100%);
+				opacity: 0;
+
+				animation: exit ${calm.durations.extreme} ${calm.easings.in};
 			}
 
 			svg, svg * {
@@ -60,6 +99,10 @@ export default skate("calm-spinner", {
 				animation-iteration-count: infinite;
 				animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1), steps(4);
 				animation-direction: normal, reverse;
+			}
+
+			:host([shown]) {
+				animation: enter ${calm.durations.extreme} ${calm.easings.out} forwards;
 			}
 		</style>
 
