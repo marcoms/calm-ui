@@ -313,24 +313,26 @@
 		</calm-app>
 
 		<script>
-			var $ = document.querySelector.bind(document), $$ = document.querySelectorAll.bind(document);
+			"use strict";
+
+			const $ = document.querySelector.bind(document), $$ = document.querySelectorAll.bind(document);
 			Node.prototype.on = Node.prototype.addEventListener;
 
-			var dialog = $("#dialog");
-			var drawer = $("#drawer");
-			var nav = $("#nav");
-			var pages = $("#pages");
-			var dialogShow = $("#dialog-show");
-			var dialogHide = $("#dialog-hide");
-			var drawerShow = $("#drawer-show");
-			var drawerHide = $("#drawer-hide");
-			var demoDrawerToggle = $("#demo-drawer-toggle");
-			var toastToggle = $("#toast-toggle");
-			var demoPages = $("#demo-pages");
-			var demoPagesTabs = $("#demo-pages-tabs");
-			var toast = $("#toast");
-			var title = $("#title");
-			var progress = $("#progress");
+			const dialog = $("#dialog");
+			const drawer = $("#drawer");
+			const nav = $("#nav");
+			const pages = $("#pages");
+			const dialogShow = $("#dialog-show");
+			const dialogHide = $("#dialog-hide");
+			const drawerShow = $("#drawer-show");
+			const drawerHide = $("#drawer-hide");
+			const demoDrawerToggle = $("#demo-drawer-toggle");
+			const toastToggle = $("#toast-toggle");
+			const demoPages = $("#demo-pages");
+			const demoPagesTabs = $("#demo-pages-tabs");
+			const toast = $("#toast");
+			const title = $("#title");
+			const progress = $("#progress");
 
 			dialogShow.on("click", () => {
 				dialog.show();
