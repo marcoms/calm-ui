@@ -7,11 +7,6 @@ export default skate("calm-spinner", {
 			attr: true,
 			type: Boolean,
 		},
-
-		small: {
-			attr: true,
-			type: Boolean,
-		},
 	},
 
 	prototype: {
