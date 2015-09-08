@@ -332,42 +332,42 @@
 			var title = $("#title");
 			var progress = $("#progress");
 
-			dialogShow.on("click", function() {
+			dialogShow.on("click", () => {
 				dialog.show();
 			});
 
-			dialogHide.on("click", function() {
+			dialogHide.on("click", () => {
 				dialog.hide();
 			});
 
-			drawerShow.on("click", function() {
+			drawerShow.on("click", () => {
 				drawer.show();
 			});
 
-			drawerHide.on("click", function() {
+			drawerHide.on("click", () => {
 				drawer.hide();
 			});
 
-			demoDrawerToggle.on("click", function() {
+			demoDrawerToggle.on("click", () => {
 				drawer.toggle();
 			});
 
-			nav.on("select", function() {
+			nav.on("select", () => {
 				pages.selected = nav.selected;
 				title.textContent = nav.querySelector("[selected]").textContent;
 				drawer.hide();
 			});
 
-			demoPagesTabs.on("select", function() {
+			demoPagesTabs.on("select", () => {
 				demoPages.selected = demoPagesTabs.selected;
 			});
 
-			toastToggle.on("click", function() {
+			toastToggle.on("click", () => {
 				toast.toggle();
 			});
 
 			progress.value = 0;
-			window.setInterval(function() {
+			window.setInterval(() => {
 				progress.value = (progress.value + 10) % 100;
 			}, 1000);
 		</script>

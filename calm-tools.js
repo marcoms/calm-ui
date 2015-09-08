@@ -1,5 +1,6 @@
 export default {
 	shadowDom(html, cacheIds=true) {
+		// regular function expr to use correct `this` value
 		return function() {
 			const root = this.createShadowRoot();
 			root.innerHTML = html;
