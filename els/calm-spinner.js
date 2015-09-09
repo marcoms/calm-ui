@@ -38,11 +38,6 @@ export default skate("calm-spinner", {
 					transform: translateY(100%);
 					opacity: 0;
 				}
-
-				100% {
-					transform: none;
-					opacity: 1;
-				}
 			}
 
 			@keyframes fill-unfill {
@@ -97,7 +92,10 @@ export default skate("calm-spinner", {
 			}
 
 			:host([shown]) {
-				animation: enter ${calm.durations.extreme} ${calm.easings.out} forwards;
+				transform: none;
+				opacity: 1;
+
+				animation: enter ${calm.durations.extreme} ${calm.easings.out};
 			}
 		</style>
 
