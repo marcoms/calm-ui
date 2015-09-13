@@ -51,9 +51,10 @@ export default skate("calm-btn", {
 
 			:host([flat]) {
 				background: transparent;
+				color: ${calm.colors.neutral};
 			}
 
-			:host([darkbg]) {
+			:host(:not([flat])[darkbg]) {
 				color: #fff;
 			}
 		</style>

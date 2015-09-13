@@ -89,7 +89,6 @@ export default skate("calm-toast", {
 
 			::content calm-btn {
 				border-radius: 0;
-				color: #4dd0e1;
 			}
 
 			@media (min-width: ${calm.breakpoints.small}) {

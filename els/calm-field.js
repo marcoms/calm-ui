@@ -70,7 +70,7 @@ export default skate("calm-field", {
 
 			#field[active],
 			#field:focus {
-				box-shadow: inset 0 -2px #00bcd4;
+				box-shadow: inset 0 -2px ${calm.colors.neutral};
 
 				transition: none;
 			}
@@ -108,7 +108,7 @@ export default skate("calm-field", {
 
 			:host([floatinglabel]) #field[active] ~ #label,
 			:host([floatinglabel]) #field:focus ~ #label {
-				color: ${calm.color};
+				color: ${calm.colors.neutral};
 
 				transition: transform ${calm.durations.medium} ${calm.easings.out}, color 0ms linear;
 			}

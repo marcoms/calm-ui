@@ -78,7 +78,7 @@ export default skate("calm-spinner", {
 			}
 
 			#spinner {
-				stroke: ${calm.color};
+				stroke: ${calm.colors.neutral};
 				stroke-dasharray: 58.9;
 				stroke-dashoffset: 58.9;
 				stroke-width: 2.5;

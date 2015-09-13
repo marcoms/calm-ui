@@ -25,6 +25,8 @@ export default skate("calm-bar", {
 				display: block;
 				width: 100%;
 				height: 56px;
+
+				background: ${calm.colors.primary};
 			}
 
 			#bar {

@@ -31,7 +31,7 @@ export default skate("calm-fab", {
 				display: block;
 
 				border-radius: 50%;
-				background: ${calm.color};
+				background: ${calm.colors.accent};
 				fill: #fff;
 			}
 

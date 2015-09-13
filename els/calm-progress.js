@@ -49,7 +49,7 @@ export default skate("calm-progress", {
 				height: 2px;
 
 				overflow: hidden;
-				color: ${calm.color};
+				color: ${calm.colors.neutral};
 			}
 
 			:host([indeterminate]) #progress {

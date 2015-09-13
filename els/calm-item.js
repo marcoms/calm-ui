@@ -33,6 +33,9 @@ export default skate("calm-item", {
 
 			:host([selected]) #item {
 				background: rgba(0, 0, 0, 0.1);
+				color: ${calm.colors.primary};
+				fill: ${calm.colors.primary};
+
 			}
 		</style>
 

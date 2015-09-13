@@ -61,7 +61,12 @@ export default {
 	},
 
 	borderRadius: "3px",
-	color: "#00bcd4",
+	colors: {
+		primary: ((window.calm || {}).colors || {}).primary || "#2196f3",
+		primaryDark: ((window.calm || {}).colors || {}).primaryDark || "#1976d2",
+		accent: ((window.calm || {}).colors || {}).accent || "#f44336",
+		neutral: ((window.calm || {}).colors || {}).neutral || "#2196f3",
+	},
 
 	propType(type) {
 		return (value) => {
