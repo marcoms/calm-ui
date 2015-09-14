@@ -28,7 +28,7 @@ export default skate("calm-item", {
 			}
 
 			::content > calm-icon {
-				margin-right: 16px;
+				margin-right: 32px;
 			}
 
 			:host([selected]) #item {
