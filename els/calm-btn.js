@@ -27,7 +27,6 @@ export default skate("calm-btn", {
 		<style>
 			:host {
 				display: inline-flex;
-				align-items: stretch;
 
 				background: #fff;
 				color: #212121;
@@ -35,6 +34,8 @@ export default skate("calm-btn", {
 			}
 
 			#card {
+				display: flex;
+
 				overflow: hidden;
 
 				border-radius: inherit;
@@ -42,11 +43,10 @@ export default skate("calm-btn", {
 			}
 
 			#btn {
-				padding: 14px 24px;
+				padding: 10px 8px;
 
+				line-height: 1em;
 				text-transform: uppercase;
-
-				cursor: pointer;
 			}
 
 			:host([flat]) {
@@ -56,6 +56,10 @@ export default skate("calm-btn", {
 
 			:host(:not([flat])[darkbg]) {
 				color: #fff;
+			}
+
+			:host-context(calm-toast) #btn {
+				padding: 10px 24px;
 			}
 		</style>
 
