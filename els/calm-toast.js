@@ -6,6 +6,16 @@ export default skate("calm-toast", {
 		shown: {
 			attr: true,
 			type: Boolean,
+			set(value) {
+				if(value) {
+					this._pendingHide = window.setTimeout(() => {
+						this.hide();
+					}, this.duration);
+				} else {
+					window.clearTimeout(this._pendingHide);
+					this._pendingHide = undefined;
+				}
+			},
 		},
 
 		duration: {
@@ -13,34 +23,19 @@ export default skate("calm-toast", {
 			type: calm.propType(Number),
 			init: 3200,
 		},
-
-		_pendingHide: {},
 	},
 
 	prototype: {
 		show() {
 			this.shown = true;
-			this._setPendingHide();
 		},
 
 		hide() {
-			this.shown = undefined;
-			this._clearPendingHide();
+			this.shown = false;
 		},
 
 		toggle() {
-			(this.shown ? this.hide() : this.show());
-		},
-
-		_setPendingHide() {
-			this._pendingHide = window.setTimeout(() => {
-				this.hide();
-			}, this.duration);
-		},
-
-		_clearPendingHide() {
-			window.clearTimeout(this._pendingHide);
-			this._pendingHide = undefined;
+			this.shown = !this.shown;
 		},
 	},
 
