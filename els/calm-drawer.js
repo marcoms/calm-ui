@@ -26,7 +26,7 @@ export default skate("calm-drawer", {
 		},
 
 		hide() {
-			if(!this.wideLayout) this.shown = undefined;
+			if(!this.wideLayout) this.shown = false;
 		},
 
 		toggle() {
@@ -121,7 +121,7 @@ export default skate("calm-drawer", {
 		mq.addListener((mq) => {
 			this.wideLayout = mq.matches;
 			if(this.wideLayout && this.shown) {
-				this.shown = undefined;
+				this.shown = false;
 			}
 		});
 	},

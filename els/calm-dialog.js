@@ -15,7 +15,7 @@ export default skate("calm-dialog", {
 		},
 
 		hide() {
-			this.shown = undefined;
+			this.shown = false;
 		},
 
 		toggle() {

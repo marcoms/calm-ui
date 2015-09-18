@@ -78,7 +78,7 @@ export default skate("calm-tabs", {
 
 	prototype: {
 		_positionIndicator() {
-			if(this.selected === undefined) return;
+			if(!this.selected) return;
 
 			const node = this.$["selection"].selectedNode;
 

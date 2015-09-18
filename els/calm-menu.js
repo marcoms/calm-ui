@@ -20,7 +20,7 @@ export default skate("calm-menu", {
 			type: Boolean,
 			set(value) {
 				if(value) {
-					this.$["selection"].tapselect = undefined;
+					this.$["selection"].tapselect = false;
 					this.selected = undefined;
 				} else {
 					this.$["selection"].tapselect = true;

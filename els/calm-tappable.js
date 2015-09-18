@@ -48,7 +48,7 @@ export default skate("calm-tappable", {
 		}
 
 		function deactivate(evt) {
-			this.active = undefined;
+			this.active = false;
 		}
 
 		this.addEventListener("mousedown", activate);

@@ -22,7 +22,7 @@ export default skate("calm-selection", {
 
 				if(!targetNode && name !== undefined) return;
 
-				if(prevSelected) prevSelected.selected = undefined;
+				if(prevSelected) prevSelected.selected = false;
 				if(targetNode) {
 					this.selectedNode = targetNode;
 					this._existingName = targetNode.name;
