@@ -52,15 +52,15 @@
 
 			calm-page[name="card"] > calm-card {
 				display: flex;
-				width: 512px;
-				height: 256px;
+				width: 256px;
+				height: 128px;
 
 				justify-content: center;
 				align-items: center;
 			}
 
 			#bars {
-				width: 768px;
+				width: 512px;
 			}
 
 			#bars > * {
@@ -77,7 +77,11 @@
 			}
 
 			#tabs-fixed {
-				width: 768px;
+				width: 512px;
+			}
+
+			#tappable {
+				padding: 32px;
 			}
 
 			#drawer-bar {
@@ -216,7 +220,6 @@
 						<calm-item name="1">Item one</calm-item>
 						<calm-item name="2">Item two</calm-item>
 						<calm-item name="3">Item three</calm-item>
-						<calm-item name="4">Item four</calm-item>
 					</calm-menu>
 
 					<h2>Non-selectable menu</h2>
@@ -227,7 +230,6 @@
 						<calm-item name="1">Item one</calm-item>
 						<calm-item name="2">Item two</calm-item>
 						<calm-item name="3">Item three</calm-item>
-						<calm-item name="4">Item four</calm-item>
 					</calm-menu>
 				</calm-page>
 
@@ -236,7 +238,6 @@
 						<calm-tab name="1">Page one</calm-tab>
 						<calm-tab name="2">Page two</calm-tab>
 						<calm-tab name="3">Page three</calm-tab>
-						<calm-tab name="4">Page four</calm-tab>
 					</calm-tabs>
 
 					<code class="tag-snippet">calm-pages selected="1"</code>
@@ -245,7 +246,6 @@
 						<calm-page name="1">Page one</calm-page>
 						<calm-page name="2">Page two</calm-page>
 						<calm-page name="3">Page three</calm-page>
-						<calm-page name="4">Page four</calm-page>
 					</calm-pages>
 				</calm-page>
 
@@ -273,9 +273,8 @@
 
 					<code class="tag-snippet">calm-tabs selected="1"</code>
 					<calm-tabs selected="1">
-						<calm-tab name="1">Tab one</calm-tab>
-						<calm-tab name="2">Tab number two</calm-tab>
-						<calm-tab name="3">Tab 3</calm-tab>
+						<calm-tab name="1">Tab number one</calm-tab>
+						<calm-tab name="2">Tab 2</calm-tab>
 						<calm-tab name="4">The final tab</calm-tab>
 					</calm-tabs>
 
@@ -283,16 +282,15 @@
 
 					<code class="tag-snippet">calm-tabs fixed selected="1"</code>
 					<calm-tabs id="tabs-fixed" fixed selected="1">
-						<calm-tab name="1">Tab one</calm-tab>
-						<calm-tab name="2">Second tab</calm-tab>
-						<calm-tab name="3">Tab 3</calm-tab>
+						<calm-tab name="1">Tab number one</calm-tab>
+						<calm-tab name="2">Tab 2</calm-tab>
 						<calm-tab name="4">The final tab</calm-tab>
 					</calm-tabs>
 				</calm-page>
 
 				<calm-page name="tappable">
 					<code class="tag-snippet">calm-tappable</code>
-					<calm-tappable>Tappable area</calm-tappable>
+					<calm-tappable id="tappable">Tappable area</calm-tappable>
 				</calm-page>
 
 				<calm-page name="toast">
