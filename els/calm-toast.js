@@ -69,7 +69,7 @@ export default skate("calm-toast", {
 				background: #323232;
 
 				transform: translateY(100%);
-				transition: transform ${calm.durations.medium} ${calm.easings.out};
+				transition: transform ${calm.durations.medium} ${calm.easings.in};
 				touch-action: none;
 			}
 
@@ -106,6 +106,7 @@ export default skate("calm-toast", {
 
 			:host([shown]) #toast {
 				transform: none;
+				transition-timing-function: ${calm.easings.out};
 			}
 		</style>
 
