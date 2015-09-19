@@ -24,7 +24,7 @@ export default skate("calm-bar", {
 			:host {
 				display: block;
 				width: 100%;
-				height: 56px;
+				height: ${calm.increment};
 
 				background: ${calm.colors.primary};
 			}
@@ -32,7 +32,7 @@ export default skate("calm-bar", {
 			#bar {
 				display: flex;
 				width: 100%;
-				height: 56px;
+				height: ${calm.increment};
 				border-radius: 0;
 				background: inherit;
 				align-items: center;
@@ -43,10 +43,6 @@ export default skate("calm-bar", {
 				margin-left: 16px;
 
 				font-size: 20px;
-			}
-
-			::content > calm-icon-btn {
-				margin: 0 -4px;
 			}
 
 			/*:host([sticky]) #bar {

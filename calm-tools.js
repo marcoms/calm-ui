@@ -60,6 +60,8 @@ export default {
 		5: "0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22)",
 	},
 
+	// TODO: implement as CSS custom properties when support is finalised
+	increment: "56px",
 	borderRadius: "3px",
 	colors: {
 		primary: ((window.calm || {}).colors || {}).primary || "#2196f3",

@@ -27,14 +27,10 @@ export default skate("calm-icon-btn", {
 		<style>
 			:host {
 				display: inline-block;
-				width: 64px;
-				height: 64px;
+				width: ${calm.increment};
+				height: ${calm.increment};
 
 				border-radius: 50%;
-			}
-
-			:host-context(calm-bar) #btn {
-				margin: 0 -4px;
 			}
 
 			#btn {

@@ -36,8 +36,8 @@ export default skate("calm-fab", {
 			}
 
 			#card {
-				width: 64px;
-				height: 64px;
+				width: ${calm.increment};
+				height: ${calm.increment};
 
 				border-radius: 50%;
 				background: inherit;
