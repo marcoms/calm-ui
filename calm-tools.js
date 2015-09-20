@@ -30,8 +30,8 @@ export default {
 	breakpoints: {
 		xsmall: "0",
 		small: "600px",
-		medium: "1024px",
-		large: "1440px",
+		medium: "960px",
+		large: "1280px",
 		xlarge: "1920px",
 	},
 
