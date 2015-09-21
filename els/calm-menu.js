@@ -35,6 +35,11 @@ export default skate("calm-menu", {
 				display: block;
 				padding: 8px 0;
 			}
+
+			:host-context(calm-drawer:not([right]):not([bottom])) ::content [selected]{
+				color: ${calm.colors.primary};
+				fill: ${calm.colors.primary};
+			}
 		</style>
 
 		<calm-selection tapselect id="selection">
