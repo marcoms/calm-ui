@@ -120,6 +120,20 @@
 				</calm-menu>
 			</calm-drawer>
 
+			<calm-drawer right id="drawer-right">
+				Right drawer
+			</calm-drawer>
+
+			<calm-drawer bottom id="drawer-bottom">
+				<header>Select one</header>
+
+				<calm-menu id="drawer-bottom-menu">
+					<calm-item name="1">One</calm-item>
+					<calm-item name="2">Two</calm-item>
+					<calm-item name="3">Three</calm-item>
+				</calm-menu>
+			</calm-drawer>
+
 			<calm-bar sticky>
 				<calm-icon-btn data-drawerctrl icon="menu" darkbg id="drawer-show"></calm-icon-btn>
 				<header id="title">Demo</header>
@@ -184,6 +198,8 @@
 
 				<calm-page name="drawer">
 					<calm-btn id="demo-drawer-toggle">Toggle drawer</calm-btn>
+					<calm-btn id="demo-drawer-right-toggle">Toggle right drawer</calm-btn>
+					<calm-btn id="demo-drawer-bottom-toggle">Toggle bottom drawer</calm-btn>
 
 					<code class="tag-snippet">calm-drawer</code>
 				</calm-page>
@@ -319,6 +335,9 @@
 
 			const dialog = $("#dialog");
 			const drawer = $("#drawer");
+			const drawerRight = $("#drawer-right");
+			const drawerBottom = $("#drawer-bottom");
+			const drawerBottomMenu = $("#drawer-bottom-menu");
 			const nav = $("#nav");
 			const pages = $("#pages");
 			const dialogShow = $("#dialog-show");
@@ -326,6 +345,8 @@
 			const drawerShow = $("#drawer-show");
 			const drawerHide = $("#drawer-hide");
 			const demoDrawerToggle = $("#demo-drawer-toggle");
+			const demoDrawerRightToggle = $("#demo-drawer-right-toggle");
+			const demoDrawerBottomToggle = $("#demo-drawer-bottom-toggle");
 			const spinner = $("#spinner");
 			const spinnerToggle = $("#spinner-toggle");
 			const toastToggle = $("#toast-toggle");
@@ -351,8 +372,20 @@
 				drawer.hide();
 			});
 
+			drawerBottomMenu.on("select", () => {
+				drawerBottom.hide();
+			});
+
 			demoDrawerToggle.on("click", () => {
 				drawer.toggle();
+			});
+
+			demoDrawerRightToggle.on("click", () => {
+				drawerRight.toggle();
+			});
+
+			demoDrawerBottomToggle.on("click", () => {
+				drawerBottom.toggle();
 			});
 
 			nav.on("select", () => {

@@ -10,6 +10,16 @@ export default skate("calm-drawer", {
 			type: Boolean,
 		},
 
+		bottom: {
+			attr: true,
+			type: Boolean,
+		},
+
+		right: {
+			attr: true,
+			type: Boolean,
+		},
+
 		wideLayout: {
 			type: Boolean,
 			set(value) {
@@ -38,7 +48,6 @@ export default skate("calm-drawer", {
 		<style>
 			:host {
 				display: block;
-				width: 320px;
 				height: 100%;
 			}
 
@@ -49,7 +58,7 @@ export default skate("calm-drawer", {
 				z-index: 99;
 
 				height: 100%;
-				width: inherit;
+				width: 320px;
 
 				visibility: hidden;
 				overflow: auto;
@@ -60,7 +69,43 @@ export default skate("calm-drawer", {
 				transition-timing-function: ${calm.easings.out};
 			}
 
-			#overlay {
+			:host([shown]) #drawer {
+				transform: translateX(100%);
+				visibility: visible;
+			}
+
+			:host([right]) #drawer {
+				left: 100%;
+				right: auto;
+
+				transition-timing-function: ${calm.easings.in};
+			}
+
+			:host([shown][right]) #drawer {
+				transform: translateX(-100%);
+				transition-timing-function: ${calm.easings.out};
+			}
+
+			:host([bottom]) #drawer {
+				top: 100%;
+				right: auto;
+
+				width: 100%;
+				height: auto;
+
+				transition-timing-function: ${calm.easings.in};
+			}
+
+			:host([shown][bottom]) #drawer {
+				transform: translateY(-100%);
+				transition-timing-function: ${calm.easings.out};
+			}
+
+			:host([bottom]) ::content header {
+				margin: 16px 0 8px 16px;
+			}
+
+			#scrim {
 				position: fixed;
 				top: 0;
 				right: 0;
@@ -74,32 +119,43 @@ export default skate("calm-drawer", {
 
 				transition-property: opacity, visibility;
 				transition-duration: ${calm.durations.long};
-				transition-timing-function: ${calm.easings.out};
+				transition-timing-function: linear;
 			}
 
-			:host([shown]) #drawer {
-				transform: translateX(100%);
-				visibility: visible;
-			}
-
-			:host([shown]) #overlay {
+			:host([shown]) #scrim {
 				opacity: 0.25;
 				visibility: visible;
 			}
 
 			@media (min-width: ${calm.breakpoints.medium}) {
-				#drawer {
+				:host(:not([right]):not([bottom])) #drawer {
 					position: initial;
 
 					visibility: visible;
 				}
 
-				#overlay {
+				:host(:not([right]):not([bottom])) #scrim {
 					display: none;
 				}
 
-				:host([shown]) #drawer {
+				:host(:not([right]):not([bottom])[shown]) #drawer {
 					transform: none;
+				}
+
+				:host([bottom]) #drawer {
+					left: 0;
+					right: 0;
+
+					width: calc(${calm.increment} * 6);
+					margin: 0 auto;
+
+					border-radius: ${calm.borderRadius};
+				}
+			}
+
+			@media (min-width: ${calm.breakpoints.large}) {
+				:host([bottom]) #drawer {
+					width: calc(${calm.increment} * 8);
 				}
 			}
 		</style>
@@ -108,18 +164,18 @@ export default skate("calm-drawer", {
 			<content></content>
 		</calm-card>
 
-		<div id="overlay"></div>
+		<div id="scrim"></div>
 	`),
 
 	created() {{}
-		this.$["overlay"].addEventListener("click", () => {
+		this.$["scrim"].addEventListener("click", () => {
 			this.hide();
 		});
 
 		const mq = window.matchMedia(`(min-width: ${calm.breakpoints.medium})`);
-		this.wideLayout = mq.matches;
+		this.wideLayout = mq.matches && !this.right && !this.bottom;
 		mq.addListener((mq) => {
-			this.wideLayout = mq.matches;
+			this.wideLayout = mq.matches && !this.right && !this.bottom;
 			if(this.wideLayout && this.shown) {
 				this.shown = false;
 			}
