@@ -26,4 +26,5 @@ import "els/calm-tappable.js";
 import "els/calm-item.js";
 import "els/calm-page.js";
 import "els/calm-selection.js";
+import "els/calm-text.js";
 import "els/calm-card.js";
