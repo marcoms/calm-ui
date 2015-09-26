@@ -1,0 +1,83 @@
+:root {
+	font-size: 16px;
+	font-family: roboto, sans-serif;
+	color: #212121;
+}
+
+body {
+	margin: 0;
+}
+
+calm-bar {
+	color: #fff;
+	fill: currentColor;
+}
+
+calm-page {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+}
+
+calm-page > * {
+	margin-bottom: 16px;
+}
+
+.tag-snippet {
+	display: inline-block;
+	background: #eee;
+	padding: 4px;
+	border-radius: 4px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.tag-snippet::before {
+	content: "<";
+}
+
+.tag-snippet::after {
+	content: ">";
+}
+
+.spacer {
+	flex-grow: 1;
+}
+
+calm-page[name="card"] > calm-card {
+	display: flex;
+	width: 256px;
+	height: 128px;
+
+	justify-content: center;
+	align-items: center;
+}
+
+#bars {
+	width: 512px;
+}
+
+#bars > * {
+	margin-bottom: 16px;
+}
+
+#bar-flat {
+	background: transparent;
+	color: #212121;
+}
+
+#btn-custom-bg {
+	background: #836;
+}
+
+#tabs-fixed {
+	width: 512px;
+}
+
+#tappable {
+	padding: 32px;
+}
+
+#drawer-bar {
+	background: transparent;
+	color: #212121;
+}
