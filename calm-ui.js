@@ -1,10 +1,3 @@
-import calm from "calm-tools.js";
-
-const meta = document.createElement("meta");
-meta.name = "theme-color";
-meta.content = calm.colors.primary;
-document.head.appendChild(meta);
-
 import "els/calm-app.js";
 import "els/calm-drawer.js";
 import "els/calm-bar.js";
