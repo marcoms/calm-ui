@@ -271,53 +271,23 @@
 			const drawerBottomMenu = $("#drawer-bottom-menu");
 			const nav = $("#nav");
 			const pages = $("#pages");
-			const dialogShow = $("#dialog-show");
-			const dialogHide = $("#dialog-hide");
-			const drawerShow = $("#drawer-show");
-			const drawerHide = $("#drawer-hide");
-			const demoDrawerToggle = $("#demo-drawer-toggle");
-			const demoDrawerRightToggle = $("#demo-drawer-right-toggle");
-			const demoDrawerBottomToggle = $("#demo-drawer-bottom-toggle");
 			const spinner = $("#spinner");
-			const spinnerToggle = $("#spinner-toggle");
-			const toastToggle = $("#toast-toggle");
 			const demoPages = $("#demo-pages");
 			const demoPagesTabs = $("#demo-pages-tabs");
 			const toast = $("#toast");
 			const title = $("#title");
 			const progress = $("#progress");
 
-			dialogShow.on("click", () => {
-				dialog.show();
-			});
-
-			dialogHide.on("click", () => {
-				dialog.hide();
-			});
-
-			drawerShow.on("click", () => {
-				drawer.show();
-			});
-
-			drawerHide.on("click", () => {
-				drawer.hide();
-			});
-
-			drawerBottomMenu.on("select", () => {
-				drawerBottom.hide();
-			});
-
-			demoDrawerToggle.on("click", () => {
-				drawer.toggle();
-			});
-
-			demoDrawerRightToggle.on("click", () => {
-				drawerRight.toggle();
-			});
-
-			demoDrawerBottomToggle.on("click", () => {
-				drawerBottom.toggle();
-			});
+			$("#dialog-show").on("click", () => dialog.show());
+			$("#dialog-hide").on("click", () => dialog.hide());
+			$("#drawer-show").on("click", () => drawer.show());
+			$("#drawer-hide").on("click", () => drawer.hide());
+			$("#drawer-bottom-menu").on("select", () => drawerBottom.hide());
+			$("#demo-drawer-toggle").on("click", () => drawer.toggle());
+			$("#demo-drawer-right-toggle").on("click", () => drawerRight.toggle());
+			$("#demo-drawer-bottom-toggle").on("click", () => drawerBottom.toggle());
+			$("#spinner-toggle").on("click", () => spinner.toggle());
+			$("#toast-toggle").on("click", () => toast.toggle());
 
 			nav.on("select", () => {
 				pages.selected = nav.selected;
@@ -327,14 +297,6 @@
 
 			demoPagesTabs.on("select", () => {
 				demoPages.selected = demoPagesTabs.selected;
-			});
-
-			spinnerToggle.on("click", () => {
-				spinner.toggle();
-			});
-
-			toastToggle.on("click", () => {
-				toast.toggle();
 			});
 
 			progress.value = 0;
