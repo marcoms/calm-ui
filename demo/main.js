@@ -1,6 +1,7 @@
 "use strict";
 
-const $ = document.querySelector.bind(document), $$ = document.querySelectorAll.bind(document);
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
 Node.prototype.on = Node.prototype.addEventListener;
 
 const dialog = $("#dialog");
