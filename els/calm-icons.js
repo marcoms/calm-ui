@@ -4,11 +4,16 @@ import skate from "skatejs";
 export default skate("calm-icons", {
 	prototype: {
 		getIcon(icon) {
-			return this.shadowRoot.getElementById(icon).cloneNode(true);
+			if (!icon) return null;
+
+			const node = this.shadowRoot.getElementById(icon);
+			if (!node) return null;
+
+			return node.cloneNode(true);
 		},
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				display: none !important;

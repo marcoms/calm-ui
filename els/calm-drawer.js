@@ -5,46 +5,43 @@ import "els/calm-card.js";
 
 export default skate("calm-drawer", {
 	properties: {
-		shown: {
-			attr: true,
-			type: Boolean,
-		},
+		shown: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		bottom: {
-			attr: true,
-			type: Boolean,
-		},
+		bottom: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		right: {
-			attr: true,
-			type: Boolean,
-		},
+		right: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		wideLayout: {
-			type: Boolean,
-			set(value) {
-				calm.emit(this, "layoutchange", { detail: {
-					wideLayout: value,
+		wideLayout: calm.properties.boolean({
+			attribute: false,
+			set(el, {newValue: wideLayout}) {
+				calm.emit(el, "layoutchange", {detail: {
+					wideLayout,
 				}});
-			}
-		},
+			},
+		}),
 	},
 
 	prototype: {
 		show() {
-			if(!this.wideLayout) this.shown = true;
+			if (!this.wideLayout) this.shown = true;
 		},
 
 		hide() {
-			if(!this.wideLayout) this.shown = false;
+			if (!this.wideLayout) this.shown = false;
 		},
 
 		toggle() {
-			if(!this.wideLayout) this.shown = !this.shown;
+			if (!this.wideLayout) this.shown = !this.shown;
 		},
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				display: block;
@@ -165,19 +162,19 @@ export default skate("calm-drawer", {
 		</calm-card>
 
 		<div id="scrim"></div>
-	`),
+	`, "drawer"),
 
-	created() {{}
-		this.$["scrim"].addEventListener("click", () => {
-			this.hide();
+	ready(el) {
+		el.$["scrim"].addEventListener("click", () => {
+			el.hide();
 		});
 
 		const mq = window.matchMedia(`(min-width: ${calm.breakpoints.medium})`);
-		this.wideLayout = mq.matches && !this.right && !this.bottom;
-		mq.addListener((mq) => {
-			this.wideLayout = mq.matches && !this.right && !this.bottom;
-			if(this.wideLayout && this.shown) {
-				this.shown = false;
+		el.wideLayout = mq.matches && !el.right && !el.bottom;
+		mq.addListener(() => {
+			el.wideLayout = mq.matches && !el.right && !el.bottom;
+			if (el.wideLayout && el.shown) {
+				el.shown = false;
 			}
 		});
 	},

@@ -5,18 +5,16 @@ import "els/calm-tappable.js";
 
 export default skate("calm-tab", {
 	properties: {
-		name: {
-			attr: true,
-			type: calm.propType(String),
-		},
+		name: calm.properties.string({
+			attribute: true,
+		}),
 
-		selected: {
-			attr: true,
-			type: Boolean,
-		},
+		selected: calm.properties.boolean({
+			attribute: true,
+		}),
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				display: flex;
@@ -40,4 +38,9 @@ export default skate("calm-tab", {
 
 		<calm-tappable id="tab"><content></content></calm-tappable>
 	`),
+
+	ready(el) {
+		el._selectionReady = true;
+		calm.emit(el, "selectionready");
+	},
 });

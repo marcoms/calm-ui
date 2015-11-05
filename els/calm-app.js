@@ -2,7 +2,7 @@ import calm from "calm-tools.js";
 import skate from "skatejs";
 
 export default skate("calm-app", {
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				display: flex;
@@ -42,12 +42,15 @@ export default skate("calm-app", {
 		</div>
 	`),
 
-	created() {
-		const drawerContent = this.$["drawer"];
+	ready(el) {
+		const drawerContent = el.$["drawer"];
 		const drawer = drawerContent.getDistributedNodes()[0];
 		drawer.addEventListener("layoutchange", (evt) => {
-			(evt.detail.wideLayout ? drawerContent.classList.add("wide") : drawerContent.classList.remove("wide"));
+			if (evt.detail.wideLayout) {
+				drawerContent.classList.add("wide");
+			} else {
+				drawerContent.classList.remove("wide");
+			}
 		});
-
-	}
-})
+	},
+});

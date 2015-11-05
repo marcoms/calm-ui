@@ -6,30 +6,28 @@ import "els/calm-selection.js";
 
 export default skate("calm-menu", {
 	properties: {
-		selected: {
-			attr: true,
-			type: calm.propType(String),
-			set(name) {
-				if(this.noselect) return;
-				this.$["selection"].selected = name;
+		selected: calm.properties.string({
+			attribute: true,
+			set(el, {newValue: selected}) {
+				if (el.noselect) return;
+				el.$["selection"].selected = selected;
 			},
-		},
+		}),
 
-		noselect: {
-			attr: true,
-			type: Boolean,
-			set(value) {
-				if(value) {
-					this.$["selection"].tapselect = false;
-					this.selected = undefined;
+		noselect: calm.properties.boolean({
+			attribute: true,
+			set(el, {newValue: noselect}) {
+				if (noselect) {
+					el.$["selection"].tapselect = false;
+					el.selected = undefined;
 				} else {
-					this.$["selection"].tapselect = true;
+					el.$["selection"].tapselect = true;
 				}
 			},
-		},
+		}),
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				display: block;
@@ -47,15 +45,10 @@ export default skate("calm-menu", {
 		</calm-selection>
 	`),
 
-	created() {
-		this.$["selection"].addEventListener("select", (evt) => {
-			this.selected = evt.detail.name;
-			calm.emit(this, "select", { detail: evt.detail });
+	ready(el) {
+		el.$["selection"].addEventListener("select", (evt) => {
+			el.selected = evt.detail.selected;
+			calm.emit(el, "select", {detail: evt.detail});
 		});
-
-		if(this.selected) calm.emit(this, "select", { detail: {
-			name: this.selected,
-			node: this.$["selection"].selectedNode,
-		}});
 	},
 });

@@ -6,24 +6,22 @@ import "els/calm-tappable.js";
 
 export default skate("calm-icon-btn", {
 	properties: {
-		icon: {
-			attr: true,
-			type: calm.propType(String),
-			set(icon) {
-				this.$["icon"].icon = icon;
+		icon: calm.properties.string({
+			attribute: true,
+			set(el, {newValue: icon}) {
+				el.$["icon"].icon = icon;
 			},
-		},
+		}),
 
-		darkbg: {
-			attr: true,
-			type: Boolean,
-			set(value) {
-				this.$["btn"].darkbg = value;
+		darkbg: calm.properties.boolean({
+			attribute: true,
+			set(el, {newValue: darkbg}) {
+				el.$["btn"].darkbg = darkbg;
 			},
-		},
+		}),
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				display: inline-block;
@@ -47,6 +45,8 @@ export default skate("calm-icon-btn", {
 			}
 		</style>
 
-		<calm-tappable id="btn"><calm-icon id="icon"></calm-icon></calm-tappable>
+		<calm-tappable id="btn">
+			<calm-icon id="icon"></calm-icon>
+		</calm-tappable>
 	`),
 });

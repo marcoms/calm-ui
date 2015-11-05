@@ -6,21 +6,20 @@ import "els/calm-selection.js";
 
 export default skate("calm-tabs", {
 	properties: {
-		selected: {
-			attr: true,
-			type: calm.propType(String),
-			set(name) {
-				if(name !== this.$["selection"].selected) this.$["selection"].selected = name;
+		selected: calm.properties.string({
+			attribute: true,
+			set(el, {newValue: selected}) {
+				if (!selected) return;
+				if (selected !== el.$["selection"].selected) el.$["selection"].selected = selected;
 			},
-		},
+		}),
 
-		fixed: {
-			attr: true,
-			type: Boolean,
-		},
+		fixed: calm.properties.boolean({
+			attribute: true,
+		}),
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				position: relative;
@@ -63,28 +62,17 @@ export default skate("calm-tabs", {
 		<div id="indicator"></div>
 	`),
 
-	created() {
-		this.$["selection"].addEventListener("select", (evt) => {
-			const { name } = evt.detail;
-
-			this.selected = name;
-			this._positionIndicator();
-
-			calm.emit(this, "select", { detail: evt.detail });
-		});
-
-		this._positionIndicator();
-	},
-
 	prototype: {
 		_positionIndicator() {
-			if(!this.selected) return;
+			if (!this.selected) return;
 
 			const node = this.$["selection"].selectedNode;
+			if (!node) return;
 
-			let width, left;
+			let width;
+			let left;
 
-			if(this.offsetWidth === 0) {
+			if (this.offsetWidth === 0) {
 				// store positional info to know where to put the element back
 				const parent = this.parentNode;
 				const nextSibling = this.nextSibling;
@@ -94,20 +82,31 @@ export default skate("calm-tabs", {
 				const prevDisplay = this.style.display;
 				this.style.display = "block";
 				document.body.appendChild(this);
-				({ offsetWidth: width, offsetLeft: left } = node);
+				({offsetWidth: width, offsetLeft: left} = node);
 				this.style.display = prevDisplay;
 
-				if(nextSibling) {
+				if (nextSibling) {
 					parent.insertBefore(this, nextSibling);
 				} else {
 					parent.appendChild(this);
 				}
 			} else {
-				({ offsetWidth: width, offsetLeft: left } = node);
+				({offsetWidth: width, offsetLeft: left} = node);
 			}
 
 			this.$["indicator"].style.width = `${width}px`;
 			this.$["indicator"].style.transform = `translateX(${left}px)`;
 		},
+	},
+
+	ready(el) {
+		el.$["selection"].addEventListener("select", (evt) => {
+			const {selected} = evt.detail;
+
+			el.selected = selected;
+			el._positionIndicator();
+
+			calm.emit(el, "select", {detail: evt.detail});
+		});
 	},
 });

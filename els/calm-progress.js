@@ -3,33 +3,29 @@ import skate from "skatejs";
 
 export default skate("calm-progress", {
 	properties: {
-		value: {
-			attr: true,
-			type: calm.propType(Number),
-			set(value) {
-				if(this.indeterminate) return;
+		value: calm.properties.number({
+			attribute: true,
+			set(el, {newValue: value}) {
+				if (el.indeterminate) return;
 
-				value = value;
-				let max = this.max;
-				if(value < 0 || value > max) return;
+				const max = el.max;
+				if (value < 0 || value > max) return;
 
-				this.$["progress"].style.width = `${(value / max) * 100}%`;
+				el.$["progress"].style.width = `${(value / max) * 100}%`;
 			},
-		},
+		}),
 
-		max: {
-			attr: true,
-			type: calm.propType(Number),
-			init: 100,
-		},
+		max: calm.properties.number({
+			attribute: true,
+			default: "100",
+		}),
 
-		indeterminate: {
-			attr: true,
-			type: Boolean,
-		},
+		indeterminate: calm.properties.boolean({
+			attribute: true,
+		}),
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			@keyframes indeterminate {
 				from {

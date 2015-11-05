@@ -3,33 +3,31 @@ import skate from "skatejs";
 
 export default skate("calm-field", {
 	properties: {
-		label: {
-			attr: true,
-			type: calm.propType(String),
-			set(label) {
-				this._setLabel(label);
+		label: calm.properties.string({
+			attribute: true,
+			set(el, {newValue: label}) {
+				el._setLabel(label);
 			},
-		},
+		}),
 
-		floatinglabel: {
-			attr: true,
-			type: Boolean,
-			set(value) {
-				if(value) {
-					this.addEventListener("input", this._checkEmpty);
+		floatinglabel: calm.properties.boolean({
+			attribute: true,
+			set(el, {newValue: floatinglabel}) {
+				if (floatinglabel) {
+					el.addEventListener("input", el._checkEmpty);
 				} else {
-					this.removeEventListener("input", this._checkEmpty);
+					el.removeEventListener("input", el._checkEmpty);
 				}
 
-				this._checkEmpty();
-				this._setLabel(this.label);
+				el._checkEmpty();
+				el._setLabel(el.label);
 			},
-		},
+		}),
 	},
 
 	prototype: {
 		_setLabel(label) {
-			if(this.floatinglabel) {
+			if (this.floatinglabel) {
 				this.$["field"].removeAttribute("placeholder");
 				this.$["label"].textContent = label;
 			} else {
@@ -39,7 +37,7 @@ export default skate("calm-field", {
 		},
 
 		_checkEmpty() {
-			if(this.$["field"].value === "") {
+			if (this.$["field"].value === "") {
 				this.$["field"].classList.add("empty");
 			} else {
 				this.$["field"].classList.remove("empty");
@@ -47,7 +45,7 @@ export default skate("calm-field", {
 		},
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				position: relative;

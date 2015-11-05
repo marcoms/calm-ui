@@ -3,10 +3,9 @@ import skate from "skatejs";
 
 export default skate("calm-spinner", {
 	properties: {
-		shown: {
-			attr: true,
-			type: Boolean,
-		},
+		shown: calm.properties.boolean({
+			attribute: true,
+		}),
 	},
 
 	prototype: {
@@ -19,12 +18,12 @@ export default skate("calm-spinner", {
 		},
 
 		toggle() {
-			this.shown = (this.shown ? false : true);
+			this.shown = !this.shown;
 		},
 	},
 
-	// the following template is adapted from throbber.svg (BSD licensed) by the Chromium project
-	template: calm.shadowDom(`
+	// the following code is adapted from throbber.svg (BSD licensed) by the Chromium project
+	render: calm.shadowDom(`
 		<style>
 			@keyframes exit {
 				0% {

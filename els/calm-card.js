@@ -3,13 +3,12 @@ import skate from "skatejs";
 
 export default skate("calm-card", {
 	properties: {
-		z: {
-			attr: true,
-			type: calm.propType(Number),
-		},
+		z: calm.properties.number({
+			attribute: true,
+		}),
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				display: block;

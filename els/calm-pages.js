@@ -6,16 +6,15 @@ import "els/calm-selection.js";
 
 export default skate("calm-pages", {
 	properties: {
-		selected: {
-			attr: true,
-			type: calm.propType(String),
-			set(name) {
-				this.$["selection"].selected = name;
+		selected: calm.properties.string({
+			attribute: true,
+			set(el, {newValue: selected}) {
+				el.$["selection"].selected = selected;
 			},
-		},
+		}),
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				display: block;
@@ -27,9 +26,9 @@ export default skate("calm-pages", {
 		</calm-selection>
 	`),
 
-	created() {
-		this.$["selection"].addEventListener("select", (evt) => {
-			calm.emit(this, "select", { detail: evt.detail });
+	ready(el) {
+		el.$["selection"].addEventListener("select", (evt) => {
+			calm.emit(el, "select", {detail: evt.detail});
 		});
-	}
+	},
 });

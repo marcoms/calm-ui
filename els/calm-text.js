@@ -3,68 +3,56 @@ import skate from "skatejs";
 
 export default skate("calm-text", {
 	properties: {
-		darkbg: {
-			attr: true,
-			type: Boolean,
-		},
+		darkbg: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		display4: {
-			attr: true,
-			type: Boolean,
-		},
+		display4: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		display3: {
-			attr: true,
-			type: Boolean,
-		},
+		display3: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		display2: {
-			attr: true,
-			type: Boolean,
-		},
+		display2: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		display1: {
-			attr: true,
-			type: Boolean,
-		},
+		display1: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		headline: {
-			attr: true,
-			type: Boolean,
-		},
+		headline: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		title: {
-			attr: true,
-			type: Boolean,
-		},
+		title: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		subheading: {
-			attr: true,
-			type: Boolean,
-		},
+		subheading: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		body2: {
-			attr: true,
-			type: Boolean,
-		},
+		body2: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		body1: {
-			attr: true,
-			type: Boolean,
-		},
+		body1: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		caption: {
-			attr: true,
-			type: Boolean,
-		},
+		caption: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		button: {
-			attr: true,
-			type: Boolean,
-		},
+		button: calm.properties.boolean({
+			attribute: true,
+		}),
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				display: inline;

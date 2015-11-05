@@ -3,10 +3,9 @@ import skate from "skatejs";
 
 export default skate("calm-dialog", {
 	properties: {
-		shown: {
-			attr: true,
-			type: Boolean,
-		},
+		shown: calm.properties.boolean({
+			attribute: true,
+		}),
 	},
 
 	prototype: {
@@ -23,7 +22,7 @@ export default skate("calm-dialog", {
 		},
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			#wrapper {
 				position: fixed;

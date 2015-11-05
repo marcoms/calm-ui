@@ -5,17 +5,19 @@ import "els/calm-icons.js";
 
 export default skate("calm-icon", {
 	properties: {
-		icon: {
-			attr: true,
-			type: calm.propType(String),
-			set(icon) {
-				if(!window.calmIcons) window.calmIcons = document.createElement("calm-icons");
-				this.$["frame"].replaceChild(window.calmIcons.getIcon(icon), this.$["frame"].children[0]);
+		icon: calm.properties.string({
+			attribute: true,
+			set(el, {newValue: icon}) {
+				if (!window.calmIcons) window.calmIcons = document.createElement("calm-icons");
+				const iconNode = window.calmIcons.getIcon(icon);
+				if (!iconNode) return;
+
+				el.$["frame"].replaceChild(iconNode, el.$["frame"].children[0]);
 			},
-		},
+		}),
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				display: inline-block;

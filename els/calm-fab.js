@@ -6,29 +6,29 @@ import "els/calm-icon-btn.js";
 
 export default skate("calm-fab", {
 	properties: {
-		icon: {
-			attr: true,
-			type: calm.propType(String),
-			set(icon) {
-				this.$["btn"].icon = icon;
+		icon: calm.properties.string({
+			attribute: true,
+			set(el, {newValue: icon}) {
+				el.$["btn"].icon = icon;
 			},
-		},
+		}),
 
-		darkbg: {
-			attr: true,
-			type: Boolean,
-			set(value) {
-				this.$["btn"].darkbg = value;
+		darkbg: calm.properties.boolean({
+			attribute: true,
+			set(el, {newValue: darkbg}) {
+				el.$["btn"].darkbg = darkbg;
 			},
-		},
+		}),
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				z-index: 97;
 
 				display: block;
+				width: ${calm.increment};
+				height: ${calm.increment};
 
 				border-radius: 50%;
 				background: ${calm.colors.accent};

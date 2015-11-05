@@ -3,18 +3,16 @@ import skate from "skatejs";
 
 export default skate("calm-page", {
 	properties: {
-		selected: {
-			attr: true,
-			type: Boolean,
-		},
+		selected: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		name: {
-			attr: true,
-			type: calm.propType(String),
-		},
+		name: calm.properties.string({
+			attribute: true,
+		}),
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host(:not([selected])) {
 				display: none !important;
@@ -23,4 +21,9 @@ export default skate("calm-page", {
 
 		<content></content>
 	`),
+
+	ready(el) {
+		el._selectionReady = true;
+		calm.emit(el, "selectionready");
+	},
 });

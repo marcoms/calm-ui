@@ -3,26 +3,24 @@ import skate from "skatejs";
 
 export default skate("calm-toast", {
 	properties: {
-		shown: {
-			attr: true,
-			type: Boolean,
-			set(value) {
-				if(value) {
-					this._pendingHide = window.setTimeout(() => {
-						this.hide();
-					}, this.duration);
+		shown: calm.properties.boolean({
+			attribute: true,
+			set(el, {newValue: shown}) {
+				if (shown) {
+					el._pendingHide = window.setTimeout(() => {
+						el.hide();
+					}, el.duration);
 				} else {
-					window.clearTimeout(this._pendingHide);
-					this._pendingHide = undefined;
+					window.clearTimeout(el._pendingHide);
+					el._pendingHide = undefined;
 				}
 			},
-		},
+		}),
 
-		duration: {
-			attr: true,
-			type: calm.propType(Number),
-			init: 3200,
-		},
+		duration: calm.properties.number({
+			attribute: true,
+			default: 3200,
+		}),
 	},
 
 	prototype: {
@@ -39,7 +37,7 @@ export default skate("calm-toast", {
 		},
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				position: fixed;
@@ -111,16 +109,15 @@ export default skate("calm-toast", {
 		</style>
 
 		<div id="toast">
-		` /* layout is reversed since an empty <content> will include <calm-btn> before anything afterwards */ + `
 			<div id="btns"><content select="calm-btn"></content></div>
 			<div id="spacer"></div>
 			<div id="text"><content></content></div>
 		</div>
 	`),
 
-	created() {
-		this.addEventListener("click", (evt) => {
-			if(evt.target.tagName === "CALM-BTN") this.hide();
+	ready(el) {
+		el.addEventListener("click", (evt) => {
+			if (evt.target.tagName === "CALM-BTN") el.hide();
 		});
 	},
 });

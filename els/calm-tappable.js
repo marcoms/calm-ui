@@ -3,18 +3,16 @@ import skate from "skatejs";
 
 export default skate("calm-tappable", {
 	properties: {
-		darkbg: {
-			attr: true,
-			type: Boolean,
-		},
+		darkbg: calm.properties.boolean({
+			attribute: true,
+		}),
 
-		active: {
-			attr: true,
-			type: Boolean,
-		},
+		active: calm.properties.boolean({
+			attribute: true,
+		}),
 	},
 
-	template: calm.shadowDom(`
+	render: calm.shadowDom(`
 		<style>
 			:host {
 				display: flex;
@@ -42,24 +40,23 @@ export default skate("calm-tappable", {
 		<content></content>
 	`),
 
-	created() {
+	ready(el) {
 		function activate(evt) {
-			this.active = true;
+			el.active = true;
 		}
 
 		function deactivate(evt) {
-			this.active = false;
+			el.active = false;
 		}
 
-		this.addEventListener("mousedown", activate);
-		this.addEventListener("mouseup", deactivate);
-		this.addEventListener("mouseleave", deactivate);
+		el.addEventListener("mousedown", activate);
+		el.addEventListener("mouseup", deactivate);
+		el.addEventListener("mouseleave", deactivate);
 
-		if("ontouchstart" in document) {
-			this.addEventListener("touchstart", activate);
-			this.addEventListener("touchcancel", deactivate);
-			this.addEventListener("touchend", deactivate);
+		if ("ontouchstart" in document) {
+			el.addEventListener("touchstart", activate);
+			el.addEventListener("touchcancel", deactivate);
+			el.addEventListener("touchend", deactivate);
 		}
-
 	},
 });

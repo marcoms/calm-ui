@@ -1,22 +1,23 @@
+import skate from "skatejs";
+
 export default {
 	shadowDom(html, cacheIds=true) {
-		// regular function expr to use correct `this` value
-		return function() {
-			const root = this.createShadowRoot();
+		return function shadowRender(el) {
+			const root = el.shadowRoot || el.createShadowRoot();
 			root.innerHTML = html;
 
-			if(cacheIds) {
-				this.$ = {};
-				const elsWithIds = Array.from(root.querySelectorAll("[id]"));
-				for(const el of elsWithIds) {
-					this.$[el.id] = el;
+			if (cacheIds) {
+				el.$ = {};
+				const elsWithIds = [...root.querySelectorAll("[id]")];
+				for (const elWithId of elsWithIds) {
+					el.$[elWithId.id] = elWithId;
 				}
 			}
 		};
 	},
 
 	ready(fn) {
-		if(document.readyState === "interactive" || document.readyState === "complete") {
+		if (document.readyState === "interactive" || document.readyState === "complete") {
 			fn();
 		} else {
 			document.addEventListener("DOMContentLoaded", fn);
@@ -36,9 +37,14 @@ export default {
 	},
 
 	easings: {
-		out: "cubic-bezier(0.165, 0.84, 0.44, 1)",  // quart
-		in: "cubic-bezier(0.55, 0.055, 0.675, 0.19)",  // cubic
-		inOut: "cubic-bezier(0.645, 0.045, 0.355, 1)",  // cubic
+		// quart
+		out: "cubic-bezier(0.165, 0.84, 0.44, 1)",
+
+		// cubic
+		in: "cubic-bezier(0.55, 0.055, 0.675, 0.19)",
+
+		// cubic
+		inOut: "cubic-bezier(0.645, 0.045, 0.355, 1)",
 	},
 
 	// durations for transitions
@@ -60,7 +66,7 @@ export default {
 		5: "0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22)",
 	},
 
-	// TODO: implement as CSS custom properties when support is finalised
+	// TODO: implement as CSS custom properties when support is finalised... Come on https://codereview.chromium.org/1192983003/!
 	increment: "56px",
 	borderRadius: "3px",
 	colors: {
@@ -70,10 +76,17 @@ export default {
 		neutral: ((window.calm || {}).colors || {}).neutral || "#2196f3",
 	},
 
-	propType(type) {
-		return (value) => {
-			if(value === undefined || value === null) return value;
-			return type(value);
-		};
+	properties: {
+		boolean(obj={}) {
+			return Object.assign(Object.assign({}, skate.properties.boolean), obj);
+		},
+
+		string(obj={}) {
+			return Object.assign(Object.assign({}, skate.properties.string), obj);
+		},
+
+		number(obj={}) {
+			return Object.assign(Object.assign({}, skate.properties.number), obj);
+		},
 	},
 };
