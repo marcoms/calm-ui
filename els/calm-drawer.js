@@ -102,6 +102,11 @@ export default skate("calm-drawer", {
 				margin: 16px 0 8px 16px;
 			}
 
+			::content calm-menu {
+				font-family: roboto;
+				font-weight: 500;
+			}
+
 			#scrim {
 				position: fixed;
 				top: 0;
