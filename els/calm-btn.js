@@ -45,6 +45,10 @@ export default skate("calm-btn", {
 
 				line-height: 1em;
 				text-transform: uppercase;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-o-user-select: none;
+				-ms-user-select: none;
 			}
 
 			:host([flat]) {

@@ -31,10 +31,15 @@ export default skate("calm-bar", {
 				display: flex;
 				width: 100%;
 				height: ${calm.increment};
+
 				border-radius: 0;
 				background: inherit;
 				align-items: center;
 				overflow: hidden;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-o-user-select: none;
+				-ms-user-select: none;
 			}
 
 			::content > header {

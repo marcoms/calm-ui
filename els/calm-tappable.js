@@ -24,6 +24,10 @@ export default skate("calm-tappable", {
 				cursor: pointer;
 				transition: background ${calm.durations.short} linear;
 				-webkit-tap-highlight-color: transparent;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-o-user-select: none;
+				-ms-user-select: none;
 			}
 
 			:host([active]) {

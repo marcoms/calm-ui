@@ -73,6 +73,11 @@ export default skate("calm-toast", {
 
 			#text {
 				padding: 14px 24px;
+
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-o-user-select: none;
+				-ms-user-select: none;
 			}
 
 			#btns {
