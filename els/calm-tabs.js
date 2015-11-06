@@ -45,10 +45,12 @@ export default skate("calm-tabs", {
 				bottom: 0;
 				left: 0;
 
+				width: 100px;
 				height: 2px;
 
 				background: currentColor;
 
+				transform-origin: left;
 				transition-property: transform, width;
 				transition-duration: ${calm.durations.medium};
 				transition-timing-function: ${calm.easings.out};
@@ -94,8 +96,8 @@ export default skate("calm-tabs", {
 				({offsetWidth: width, offsetLeft: left} = node);
 			}
 
-			this.$["indicator"].style.width = `${width}px`;
-			this.$["indicator"].style.transform = `translateX(${left}px)`;
+			// uses a larger base width for accuracy when scaling
+			this.$["indicator"].style.transform = `translateX(${left}px) scaleX(${width / 100})`;
 		},
 	},
 
