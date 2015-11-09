@@ -1,5 +1,6 @@
 jspm-pkg/
 node_modules/
-bundle.js*
-build.js*
+calm-ui.*
+bundle.*
+build.*
 caddyfile
