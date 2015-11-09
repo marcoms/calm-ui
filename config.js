@@ -17,7 +17,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.29",
     "core-js": "npm:core-js@1.2.5",
     "dedent": "npm:dedent@0.4.0",
-    "skatejs": "github:skatejs/skatejs@master",
+    "skatejs": "npm:skatejs@0.14.0",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -51,15 +51,13 @@ System.config({
     "npm:process@0.11.2": {
       "assert": "github:jspm/nodelibs-assert@0.1.0"
     },
+    "npm:skatejs@0.14.0": {
+      "object-assign": "npm:object-assign@4.0.1",
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:util@0.10.3": {
       "inherits": "npm:inherits@2.0.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
     }
-},
-
-meta: {
-  'core-js/library/modules/$.global': {
-	esmExports: false
   }
-}
 });
