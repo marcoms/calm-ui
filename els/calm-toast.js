@@ -1,11 +1,16 @@
 import calm from "calm-tools.js";
 import skate from "skatejs";
 
+window.skate = skate;
+
 export default skate("calm-toast", {
 	properties: {
 		shown: skate.properties.boolean({
 			attribute: true,
 			set(el, {newValue: shown}) {
+				console.log(`[calm-toast] shown.set called with el`, el, `shown: ${shown}`);
+				console.trace();
+
 				if (shown) {
 					el._pendingHide = window.setTimeout(() => {
 						el.hide();

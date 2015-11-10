@@ -9,6 +9,9 @@ export default skate("calm-tappable", {
 
 		active: skate.properties.boolean({
 			attribute: true,
+			set(el, {newValue: active}) {
+				console.log(`[calm-tappable] active.set called with el`, el);
+			},
 		}),
 	},
 
@@ -45,11 +48,13 @@ export default skate("calm-tappable", {
 	`),
 
 	ready(el) {
-		function activate(evt) {
+		function activate() {
+			console.log(`[calm-tappable] calling activate with el`, el);
 			el.active = true;
 		}
 
-		function deactivate(evt) {
+		function deactivate() {
+			console.log(`[calm-tappable] calling deactivate with el`, el);
 			el.active = false;
 		}
 
