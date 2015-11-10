@@ -75,18 +75,4 @@ export default {
 		accent: ((window.calm || {}).colors || {}).accent || "#f44336",
 		neutral: ((window.calm || {}).colors || {}).neutral || "#2196f3",
 	},
-
-	properties: {
-		boolean(obj={}) {
-			return Object.assign(Object.assign({}, skate.properties.boolean), obj);
-		},
-
-		string(obj={}) {
-			return Object.assign(Object.assign({}, skate.properties.string), obj);
-		},
-
-		number(obj={}) {
-			return Object.assign(Object.assign({}, skate.properties.number), obj);
-		},
-	},
 };

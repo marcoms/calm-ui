@@ -6,7 +6,7 @@ import "els/calm-selection.js";
 
 export default skate("calm-pages", {
 	properties: {
-		selected: calm.properties.string({
+		selected: skate.properties.string({
 			attribute: true,
 			set(el, {newValue: selected}) {
 				el.$["selection"].selected = selected;

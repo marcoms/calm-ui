@@ -5,11 +5,11 @@ import "els/calm-tappable.js";
 
 export default skate("calm-item", {
 	properties: {
-		name: calm.properties.string({
+		name: skate.properties.string({
 			attribute: true,
 		}),
 
-		selected: calm.properties.boolean({
+		selected: skate.properties.boolean({
 			attribute: true,
 		}),
 	},

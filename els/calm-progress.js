@@ -3,7 +3,7 @@ import skate from "skatejs";
 
 export default skate("calm-progress", {
 	properties: {
-		value: calm.properties.number({
+		value: skate.properties.number({
 			attribute: true,
 			set(el, {newValue: value}) {
 				if (el.indeterminate) return;
@@ -15,12 +15,12 @@ export default skate("calm-progress", {
 			},
 		}),
 
-		max: calm.properties.number({
+		max: skate.properties.number({
 			attribute: true,
 			default: "100",
 		}),
 
-		indeterminate: calm.properties.boolean({
+		indeterminate: skate.properties.boolean({
 			attribute: true,
 		}),
 	},

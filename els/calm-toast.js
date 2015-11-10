@@ -3,7 +3,7 @@ import skate from "skatejs";
 
 export default skate("calm-toast", {
 	properties: {
-		shown: calm.properties.boolean({
+		shown: skate.properties.boolean({
 			attribute: true,
 			set(el, {newValue: shown}) {
 				if (shown) {
@@ -17,7 +17,7 @@ export default skate("calm-toast", {
 			},
 		}),
 
-		duration: calm.properties.number({
+		duration: skate.properties.number({
 			attribute: true,
 			default: 3200,
 		}),

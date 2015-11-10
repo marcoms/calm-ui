@@ -6,7 +6,7 @@ import "els/calm-selection.js";
 
 export default skate("calm-tabs", {
 	properties: {
-		selected: calm.properties.string({
+		selected: skate.properties.string({
 			attribute: true,
 			set(el, {newValue: selected}) {
 				if (!selected) return;
@@ -14,7 +14,7 @@ export default skate("calm-tabs", {
 			},
 		}),
 
-		fixed: calm.properties.boolean({
+		fixed: skate.properties.boolean({
 			attribute: true,
 		}),
 	},

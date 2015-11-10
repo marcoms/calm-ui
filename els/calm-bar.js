@@ -5,11 +5,11 @@ import "els/calm-card.js";
 
 export default skate("calm-bar", {
 	properties: {
-		sticky: calm.properties.boolean({
+		sticky: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		flat: calm.properties.boolean({
+		flat: skate.properties.boolean({
 			attribute: true,
 			set(el, {newValue: flat}) {
 				el.$["bar"].z = (flat ? 0 : 1);

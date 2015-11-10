@@ -5,19 +5,19 @@ import "els/calm-card.js";
 
 export default skate("calm-drawer", {
 	properties: {
-		shown: calm.properties.boolean({
+		shown: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		bottom: calm.properties.boolean({
+		bottom: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		right: calm.properties.boolean({
+		right: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		wideLayout: calm.properties.boolean({
+		wideLayout: skate.properties.boolean({
 			attribute: false,
 			set(el, {newValue: wideLayout}) {
 				calm.emit(el, "layoutchange", {detail: {

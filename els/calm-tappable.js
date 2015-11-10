@@ -3,11 +3,11 @@ import skate from "skatejs";
 
 export default skate("calm-tappable", {
 	properties: {
-		darkbg: calm.properties.boolean({
+		darkbg: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		active: calm.properties.boolean({
+		active: skate.properties.boolean({
 			attribute: true,
 		}),
 	},

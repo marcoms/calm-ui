@@ -6,14 +6,14 @@ import "els/calm-tappable.js";
 
 export default skate("calm-icon-btn", {
 	properties: {
-		icon: calm.properties.string({
+		icon: skate.properties.string({
 			attribute: true,
 			set(el, {newValue: icon}) {
 				el.$["icon"].icon = icon;
 			},
 		}),
 
-		darkbg: calm.properties.boolean({
+		darkbg: skate.properties.boolean({
 			attribute: true,
 			set(el, {newValue: darkbg}) {
 				el.$["btn"].darkbg = darkbg;

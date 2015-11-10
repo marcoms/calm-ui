@@ -6,14 +6,14 @@ import "els/calm-icon-btn.js";
 
 export default skate("calm-fab", {
 	properties: {
-		icon: calm.properties.string({
+		icon: skate.properties.string({
 			attribute: true,
 			set(el, {newValue: icon}) {
 				el.$["btn"].icon = icon;
 			},
 		}),
 
-		darkbg: calm.properties.boolean({
+		darkbg: skate.properties.boolean({
 			attribute: true,
 			set(el, {newValue: darkbg}) {
 				el.$["btn"].darkbg = darkbg;

@@ -6,14 +6,14 @@ import "els/calm-tappable.js";
 
 export default skate("calm-btn", {
 	properties: {
-		flat: calm.properties.boolean({
+		flat: skate.properties.boolean({
 			attribute: true,
 			set(el, {newValue: flat}) {
 				el.$["card"].z = (flat ? 0 : 1);
 			},
 		}),
 
-		darkbg: calm.properties.boolean({
+		darkbg: skate.properties.boolean({
 			attribute: true,
 			set(el, {newValue: darkbg}) {
 				el.$["btn"].darkbg = darkbg;

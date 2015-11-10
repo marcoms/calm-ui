@@ -3,7 +3,7 @@ import skate from "skatejs";
 
 export default skate("calm-card", {
 	properties: {
-		z: calm.properties.number({
+		z: skate.properties.number({
 			attribute: true,
 		}),
 	},

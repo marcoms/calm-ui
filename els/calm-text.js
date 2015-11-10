@@ -3,51 +3,51 @@ import skate from "skatejs";
 
 export default skate("calm-text", {
 	properties: {
-		darkbg: calm.properties.boolean({
+		darkbg: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		display4: calm.properties.boolean({
+		display4: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		display3: calm.properties.boolean({
+		display3: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		display2: calm.properties.boolean({
+		display2: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		display1: calm.properties.boolean({
+		display1: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		headline: calm.properties.boolean({
+		headline: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		title: calm.properties.boolean({
+		title: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		subheading: calm.properties.boolean({
+		subheading: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		body2: calm.properties.boolean({
+		body2: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		body1: calm.properties.boolean({
+		body1: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		caption: calm.properties.boolean({
+		caption: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		button: calm.properties.boolean({
+		button: skate.properties.boolean({
 			attribute: true,
 		}),
 	},

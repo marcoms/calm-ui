@@ -6,7 +6,7 @@ import "els/calm-selection.js";
 
 export default skate("calm-menu", {
 	properties: {
-		selected: calm.properties.string({
+		selected: skate.properties.string({
 			attribute: true,
 			set(el, {newValue: selected}) {
 				if (el.noselect) return;
@@ -14,7 +14,7 @@ export default skate("calm-menu", {
 			},
 		}),
 
-		noselect: calm.properties.boolean({
+		noselect: skate.properties.boolean({
 			attribute: true,
 			set(el, {newValue: noselect}) {
 				if (noselect) {

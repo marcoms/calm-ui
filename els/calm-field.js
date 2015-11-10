@@ -3,14 +3,14 @@ import skate from "skatejs";
 
 export default skate("calm-field", {
 	properties: {
-		label: calm.properties.string({
+		label: skate.properties.string({
 			attribute: true,
 			set(el, {newValue: label}) {
 				el._setLabel(label);
 			},
 		}),
 
-		floatinglabel: calm.properties.boolean({
+		floatinglabel: skate.properties.boolean({
 			attribute: true,
 			set(el, {newValue: floatinglabel}) {
 				if (floatinglabel) {

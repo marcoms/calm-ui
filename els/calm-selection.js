@@ -3,7 +3,7 @@ import skate from "skatejs";
 
 export default skate("calm-selection", {
 	properties: {
-		selected: calm.properties.string({
+		selected: skate.properties.string({
 			attribute: true,
 			set(el, {newValue: selected}) {
 				if (!selected) return;
@@ -11,7 +11,7 @@ export default skate("calm-selection", {
 			},
 		}),
 
-		tapselect: calm.properties.boolean({
+		tapselect: skate.properties.boolean({
 			attribute: true,
 			set(el, {newValue: tapselect}) {
 				if (tapselect) {

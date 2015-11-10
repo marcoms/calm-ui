@@ -5,7 +5,7 @@ import "els/calm-icons.js";
 
 export default skate("calm-icon", {
 	properties: {
-		icon: calm.properties.string({
+		icon: skate.properties.string({
 			attribute: true,
 			set(el, {newValue: icon}) {
 				if (!window.calmIcons) window.calmIcons = document.createElement("calm-icons");

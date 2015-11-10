@@ -3,11 +3,11 @@ import skate from "skatejs";
 
 export default skate("calm-page", {
 	properties: {
-		selected: calm.properties.boolean({
+		selected: skate.properties.boolean({
 			attribute: true,
 		}),
 
-		name: calm.properties.string({
+		name: skate.properties.string({
 			attribute: true,
 		}),
 	},

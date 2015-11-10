@@ -3,7 +3,7 @@ import skate from "skatejs";
 
 export default skate("calm-spinner", {
 	properties: {
-		shown: calm.properties.boolean({
+		shown: skate.properties.boolean({
 			attribute: true,
 		}),
 	},
