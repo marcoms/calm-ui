@@ -1,4 +1,4 @@
-import calm from "calm-tools.js";
+import calm from "../calm-tools";
 import skate from "skatejs";
 
 export default skate("calm-card", {

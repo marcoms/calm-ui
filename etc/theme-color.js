@@ -1,4 +1,4 @@
-import calm from "calm-tools.js";
+import calm from "../calm-tools";
 
 const meta = document.createElement("meta");
 meta.name = "theme-color";
