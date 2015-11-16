@@ -1,8 +1,8 @@
-import calm from "calm-tools.js";
+import calm from "../calm-tools";
 import skate from "skatejs";
 
-import "els/calm-card.js";
-import "els/calm-icon-btn.js";
+import "./calm-card";
+import "./calm-icon-btn";
 
 export default skate("calm-fab", {
 	properties: {
