@@ -38,7 +38,7 @@ export default skate("calm-dialog", {
 				justify-content: center;
 				transform: translateY(100%);
 
-				transition: transform ${calm.durations.long} ${calm.easings.in};
+				transition: transform ${calm.durations.medium} ${calm.easings.in};
 			}
 
 			#dialog {
@@ -81,14 +81,14 @@ export default skate("calm-dialog", {
 				visibility: hidden;
 
 				transition-property: opacity, visibility;
-				transition-duration: ${calm.durations.long};
+				transition-duration: ${calm.durations.medium};
 				transition-timing-function: linear;
 			}
 
 			:host([shown]) #wrapper {
 				transform: none;
 
-				transition: transform ${calm.durations.long} ${calm.easings.out};
+				transition: transform ${calm.durations.medium} ${calm.easings.out};
 			}
 
 			:host([shown]) #overlay {
