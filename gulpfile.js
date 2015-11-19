@@ -61,6 +61,6 @@ gulp.task("build-debug", () => {
 	});
 });
 
-gulp.task("clear", () => {
+gulp.task("clean", () => {
 	return del("calm-ui.*");
-})
+});
