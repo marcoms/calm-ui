@@ -18,7 +18,16 @@ const toast = $("#toast");
 const title = $("#title");
 const progress = $("#progress");
 
-$("#dialog-show").on("click", () => dialog.show());
+$("#dialog-show").on("click", () => {
+	dialog.modal = false;
+	dialog.show();
+});
+
+$("#modal-dialog-show").on("click", () => {
+	dialog.modal = true;
+	dialog.show();
+});
+
 $("#dialog-hide").on("click", () => dialog.hide());
 $("#drawer-show").on("click", () => drawer.show());
 $("#drawer-hide").on("click", () => drawer.hide());

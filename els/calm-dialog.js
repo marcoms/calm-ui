@@ -6,6 +6,18 @@ export default skate("calm-dialog", {
 		shown: skate.properties.boolean({
 			attribute: true,
 		}),
+
+		modal: skate.properties.boolean({
+			attribute: true,
+			default: false,
+			set(el, {newValue: modal}) {
+				if (modal) {
+					el.$["overlay"].removeEventListener("click", el._onOverlayClick);
+				} else {
+					el.$["overlay"].addEventListener("click", el._onOverlayClick);
+				}
+			},
+		}),
 	},
 
 	prototype: {
@@ -19,6 +31,10 @@ export default skate("calm-dialog", {
 
 		toggle() {
 			this.shown = !this.shown;
+		},
+
+		_onOverlayClick() {
+			this.hide();
 		},
 	},
 
@@ -38,6 +54,7 @@ export default skate("calm-dialog", {
 				justify-content: center;
 				transform: translateY(100%);
 
+				pointer-events: none;
 				transition: transform ${calm.durations.medium} ${calm.easings.in};
 			}
 
@@ -47,6 +64,8 @@ export default skate("calm-dialog", {
 				min-width: 280px;
 
 				flex-direction: column-reverse;
+
+				pointer-events: all;
 			}
 
 			#content {
@@ -83,6 +102,7 @@ export default skate("calm-dialog", {
 				transition-property: opacity, visibility;
 				transition-duration: ${calm.durations.medium};
 				transition-timing-function: linear;
+				cursor: pointer;
 			}
 
 			:host([shown]) #wrapper {
@@ -94,6 +114,10 @@ export default skate("calm-dialog", {
 			:host([shown]) #overlay {
 				opacity: 0.25;
 				visibility: visible;
+			}
+
+			:host([modal]) #overlay {
+				cursor: auto;
 			}
 		</style>
 
@@ -111,4 +135,9 @@ export default skate("calm-dialog", {
 
 		<div id="overlay"></div>
 	`),
+
+	created(el) {
+		// hack to access hide()
+		el._onOverlayClick = el._onOverlayClick.bind(el);
+	},
 });
