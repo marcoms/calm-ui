@@ -6,6 +6,10 @@ export default skate("calm-card", {
 		z: skate.properties.number({
 			attribute: true,
 		}),
+
+		fullwidth: skate.properties.boolean({
+			attribute: true,
+		}),
 	},
 
 	render: calm.shadowDom(`
@@ -38,6 +42,12 @@ export default skate("calm-card", {
 
 			:host([z="5"]) {
 				box-shadow: ${calm.shadows[5]};
+			}
+
+			:host([fullwidth]) {
+				width: 100%;
+
+				border-radius: 0;
 			}
 		</style>
 
