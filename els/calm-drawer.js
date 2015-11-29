@@ -3,6 +3,8 @@ import skate from "skatejs";
 
 import "./calm-card";
 
+// TODO: make a seperate component for bottom sheets
+
 export default skate("calm-drawer", {
 	properties: {
 		shown: skate.properties.boolean({
@@ -131,17 +133,13 @@ export default skate("calm-drawer", {
 
 			@media (min-width: ${calm.breakpoints.medium}) {
 				:host(:not([right]):not([bottom])) #drawer {
-					position: initial;
+					transform: translateX(100%);
 
 					visibility: visible;
 				}
 
 				:host(:not([right]):not([bottom])) #scrim {
 					display: none;
-				}
-
-				:host(:not([right]):not([bottom])[shown]) #drawer {
-					transform: none;
 				}
 
 				:host([bottom]) #drawer {
@@ -167,7 +165,7 @@ export default skate("calm-drawer", {
 		</calm-card>
 
 		<div id="scrim"></div>
-	`, "drawer"),
+	`),
 
 	ready(el) {
 		el.$["scrim"].addEventListener("click", () => {

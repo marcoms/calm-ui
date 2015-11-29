@@ -9,7 +9,7 @@
 		<script src="/etc/roboto.js"></script>
 	</head>
 	<body>
-		<calm-app>
+		<calm-layout fixed>
 			<calm-drawer id="drawer">
 				<calm-bar id="drawer-bar" flat>
 					<calm-icon-btn data-drawerctrl icon="arrow-back" id="drawer-hide"></calm-icon-btn>
@@ -51,7 +51,7 @@
 				</calm-menu>
 			</calm-drawer>
 
-			<calm-bar sticky>
+			<calm-bar>
 				<calm-icon-btn data-drawerctrl icon="menu" darkbg id="drawer-show"></calm-icon-btn>
 				<header id="title">Demo</header>
 			</calm-bar>
@@ -258,7 +258,7 @@
 			</calm-dialog>
 
 			<calm-toast id="toast">Toast notification<calm-btn flat darkbg>ok</calm-btn></calm-toast>
-		</calm-app>
+		</calm-layout>
 
 		<script src="main.js"></script>
 	</body>
