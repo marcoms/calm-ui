@@ -61,6 +61,11 @@ gulp.task("build-debug", () => {
 	});
 });
 
+gulp.task("watch", () => {
+	console.log("watching for changes...");
+	gulp.watch("*", ["build"]);
+});
+
 gulp.task("clean", () => {
 	return del("calm-ui.*");
 });
