@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+/* eslint-env node */
 /* eslint no-console: 0 */
 
 const fs = require("fs");
@@ -48,7 +49,7 @@ gulp.task("build-release", () => {
 	}).then((result) => {
 		const minified = uglify.minify(result.code, {fromString: true});
 		fs.writeFileSync("calm-ui.min.js", minified.code);
-	})
+	});
 });
 
 gulp.task("build-debug", () => {
