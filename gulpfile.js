@@ -62,7 +62,7 @@ gulp.task("build-debug", () => {
 	});
 });
 
-gulp.task("watch", () => {
+gulp.task("watch", ["build"], () => {
 	console.log("watching for changes...");
 	gulp.watch("**/*", ["build"]);
 });
