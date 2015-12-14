@@ -64,7 +64,7 @@ gulp.task("build-debug", () => {
 
 gulp.task("watch", () => {
 	console.log("watching for changes...");
-	gulp.watch("*", ["build"]);
+	gulp.watch("**/*", ["build"]);
 });
 
 gulp.task("clean", () => {
