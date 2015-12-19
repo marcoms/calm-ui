@@ -4,11 +4,10 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 Node.prototype.on = Node.prototype.addEventListener;
 
+const bottomSheet = $("#bottom-sheet");
 const dialog = $("#dialog");
 const drawer = $("#drawer");
 const drawerRight = $("#drawer-right");
-const drawerBottom = $("#drawer-bottom");
-const drawerBottomMenu = $("#drawer-bottom-menu");
 const nav = $("#nav");
 const pages = $("#pages");
 const spinner = $("#spinner");
@@ -28,13 +27,18 @@ $("#modal-dialog-show").on("click", () => {
 	dialog.show();
 });
 
+$("#bottom-sheet-show").on("click", () => bottomSheet.show());
+$("#bottom-sheet-menu").on("click", (evt) => {
+	if (evt.target.localName === "calm-item") {
+		bottomSheet.hide();
+	}
+});
+
 $("#dialog-hide").on("click", () => dialog.hide());
 $("#drawer-show").on("click", () => drawer.show());
 $("#drawer-hide").on("click", () => drawer.hide());
-$("#drawer-bottom-menu").on("select", () => drawerBottom.hide());
 $("#demo-drawer-toggle").on("click", () => drawer.toggle());
 $("#demo-drawer-right-toggle").on("click", () => drawerRight.toggle());
-$("#demo-drawer-bottom-toggle").on("click", () => drawerBottom.toggle());
 $("#spinner-toggle").on("click", () => spinner.toggle());
 $("#toast-toggle").on("click", () => toast.toggle());
 

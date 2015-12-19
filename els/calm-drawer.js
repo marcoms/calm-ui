@@ -3,15 +3,9 @@ import skate from "skatejs";
 
 import "./calm-card";
 
-// TODO: make a seperate component for bottom sheets
-
 export default skate("calm-drawer", {
 	properties: {
 		shown: skate.properties.boolean({
-			attribute: true,
-		}),
-
-		bottom: skate.properties.boolean({
 			attribute: true,
 		}),
 
@@ -85,25 +79,6 @@ export default skate("calm-drawer", {
 				transition-timing-function: ${calm.easings.out};
 			}
 
-			:host([bottom]) #drawer {
-				top: 100%;
-				right: auto;
-
-				width: 100%;
-				height: auto;
-
-				transition-timing-function: ${calm.easings.in};
-			}
-
-			:host([shown][bottom]) #drawer {
-				transform: translateY(-100%);
-				transition-timing-function: ${calm.easings.out};
-			}
-
-			:host([bottom]) ::content header {
-				margin: 16px 0 8px 16px;
-			}
-
 			::content calm-menu {
 				font-family: roboto;
 				font-weight: 500;
@@ -132,30 +107,14 @@ export default skate("calm-drawer", {
 			}
 
 			@media (min-width: ${calm.breakpoints.medium}) {
-				:host(:not([right]):not([bottom])) #drawer {
+				:host(:not([right])) #drawer {
 					transform: translateX(100%);
 
 					visibility: visible;
 				}
 
-				:host(:not([right]):not([bottom])) #scrim {
+				:host(:not([right])) #scrim {
 					display: none;
-				}
-
-				:host([bottom]) #drawer {
-					left: 0;
-					right: 0;
-
-					width: calc(${calm.increment} * 6);
-					margin: 0 auto;
-
-					border-radius: ${calm.borderRadius};
-				}
-			}
-
-			@media (min-width: ${calm.breakpoints.large}) {
-				:host([bottom]) #drawer {
-					width: calc(${calm.increment} * 8);
 				}
 			}
 		</style>
@@ -173,9 +132,9 @@ export default skate("calm-drawer", {
 		});
 
 		const mq = window.matchMedia(`(min-width: ${calm.breakpoints.medium})`);
-		el.wideLayout = mq.matches && !el.right && !el.bottom;
+		el.wideLayout = mq.matches && !el.right;
 		mq.addListener(() => {
-			el.wideLayout = mq.matches && !el.right && !el.bottom;
+			el.wideLayout = mq.matches && !el.right;
 			if (el.wideLayout && el.shown) {
 				el.shown = false;
 			}
