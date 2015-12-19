@@ -41,7 +41,7 @@ export default skate("calm-menu", {
 		</style>
 
 		<calm-selection tapselect id="selection">
-			<content select="calm-item"></content>
+			<content></content>
 		</calm-selection>
 	`),
 

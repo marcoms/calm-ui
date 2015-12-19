@@ -14,6 +14,12 @@ export default skate("calm-item", {
 		}),
 	},
 
+	prototype: {
+		get supportsSelection() {
+			return true;
+		},
+	},
+
 	render: calm.shadowDom(`
 		<style>
 			:host {

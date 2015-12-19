@@ -12,6 +12,12 @@ export default skate("calm-page", {
 		}),
 	},
 
+	prototype: {
+		get supportsSelection() {
+			return true;
+		},
+	},
+
 	render: calm.shadowDom(`
 		<style>
 			:host(:not([selected])) {

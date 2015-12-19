@@ -27,7 +27,11 @@ export default skate("calm-selection", {
 		_setSelected(selected) {
 			if (selected === this._existingSelected) return;
 
-			const choices = [...this.$["choices"].getDistributedNodes()];
+			const nodes = [...this.$["choices"].getDistributedNodes()];
+			const choices = nodes.filter((node) => {
+				return node.supportsSelection;
+			});
+
 			const notReady = choices.filter((choice) => {
 				return !choice._selectionReady;
 			});
