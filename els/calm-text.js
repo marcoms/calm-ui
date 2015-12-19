@@ -35,6 +35,10 @@ export default skate("calm-text", {
 			attribute: true,
 		}),
 
+		subheader: skate.properties.boolean({
+			attribute: true,
+		}),
+
 		body2: skate.properties.boolean({
 			attribute: true,
 		}),
@@ -55,7 +59,7 @@ export default skate("calm-text", {
 	render: calm.shadowDom(`
 		<style>
 			:host {
-				display: inline;
+				display: block;
 			}
 
 			:host([display4]) {
@@ -121,6 +125,19 @@ export default skate("calm-text", {
 
 			:host([darkbg][subheading]) {
 				color: rgba(255, 255, 255, 0.87);
+			}
+
+			:host([subheader]) {
+				/* (48 - 14) / 2 */
+				padding: 7px 16px;
+
+				color: rgba(0, 0, 0, 0.54);
+				font-weight: 500;
+				font-size: 14px;
+			}
+
+			:host([darkbg][subheader]) {
+				color: rgba(255, 255, 255, 0.54);
 			}
 
 			:host([body2]) {
