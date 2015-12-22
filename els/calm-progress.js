@@ -7,11 +7,9 @@ export default skate("calm-progress", {
 			attribute: true,
 			set(el, {newValue: value}) {
 				if (el.indeterminate) return;
+				if (value < 0 || value > el.max) return;
 
-				const max = el.max;
-				if (value < 0 || value > max) return;
-
-				el.$["progress"].style.width = `${(value / max) * 100}%`;
+				el.$["progress"].style.width = `${(value / el.max) * 100}%`;
 			},
 		}),
 
