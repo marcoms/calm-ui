@@ -34,7 +34,7 @@ export default skate("calm-menu", {
 				padding: 8px 0;
 			}
 
-			:host-context(calm-drawer:not([right]):not([bottom])) ::content [selected]{
+			:host-context(calm-drawer:not([right])) ::content [selected]{
 				color: ${calm.colors.primary};
 				fill: ${calm.colors.primary};
 			}
