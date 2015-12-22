@@ -16,7 +16,7 @@ export default skate("calm-fab", {
 		darkbg: skate.properties.boolean({
 			attribute: true,
 			set(el, {newValue: darkbg}) {
-				el.$["btn"].darkbg = darkbg;
+				el.$["button"].darkbg = darkbg;
 			},
 		}),
 	},
@@ -46,7 +46,7 @@ export default skate("calm-fab", {
 		</style>
 
 		<calm-card z="2" id="card">
-			<calm-icon-btn id="btn"></calm-icon-btn>
+			<calm-icon-button id="button"></calm-icon-button>
 		</calm-card>
 	`),
 });
