@@ -10,20 +10,20 @@
 		<calm-layout fixed>
 			<calm-drawer id="drawer">
 				<calm-bar id="drawer-bar" flat>
-					<calm-icon-btn data-drawerctrl icon="arrow-back" id="drawer-hide"></calm-icon-btn>
+					<calm-icon-button data-drawerctrl icon="arrow-back" id="drawer-hide"></calm-icon-button>
 					<header>Calm UI</header>
 				</calm-bar>
 
 				<calm-menu id="nav" selected="bar">
 					<calm-item name="bar">calm-bar</calm-item>
 					<calm-item name="bottom-sheet">calm-bottom-sheet</calm-item>
-					<calm-item name="btn">calm-btn</calm-item>
+					<calm-item name="button">calm-button</calm-item>
 					<calm-item name="card">calm-card</calm-item>
 					<calm-item name="dialog">calm-dialog</calm-item>
 					<calm-item name="drawer">calm-drawer</calm-item>
 					<calm-item name="fab">calm-fab</calm-item>
 					<calm-item name="field">calm-field</calm-item>
-					<calm-item name="icon-btn">calm-icon-btn</calm-item>
+					<calm-item name="icon-button">calm-icon-button</calm-item>
 					<calm-item name="icon">calm-icon</calm-item>
 					<calm-item name="menu">calm-menu</calm-item>
 					<calm-item name="pages">calm-pages</calm-item>
@@ -41,7 +41,7 @@
 			</calm-drawer>
 
 			<calm-bar>
-				<calm-icon-btn data-drawerctrl icon="menu" darkbg id="drawer-show"></calm-icon-btn>
+				<calm-icon-button data-drawerctrl icon="menu" darkbg id="drawer-show"></calm-icon-button>
 				<header id="title">Demo</header>
 			</calm-bar>
 
@@ -51,36 +51,36 @@
 						<code class="tag-snippet">calm-bar</code>
 
 						<calm-bar>
-							<calm-icon-btn darkbg icon="menu"></calm-icon-btn>
+							<calm-icon-button darkbg icon="menu"></calm-icon-button>
 							<header>Regular bar</header>
 							<div class="spacer"></div>
-							<calm-icon-btn darkbg icon="more-vert"></calm-icon-btn>
+							<calm-icon-button darkbg icon="more-vert"></calm-icon-button>
 						</calm-bar>
 
 						<code class="tag-snippet">calm-bar flat style="color: #212121"</code>
 
 						<calm-bar id="bar-flat" flat>
-							<calm-icon-btn icon="menu"></calm-icon-btn>
+							<calm-icon-button icon="menu"></calm-icon-button>
 							<header>Flat bar</header>
 							<div class="spacer"></div>
-							<calm-icon-btn icon="more-vert"></calm-icon-btn>
+							<calm-icon-button icon="more-vert"></calm-icon-button>
 						</calm-bar>
 					</div>
 				</calm-page>
 
 				<calm-page name="bottom-sheet">
-					<calm-btn id="bottom-sheet-show">show</calm-btn>
+					<calm-button id="bottom-sheet-show">show</calm-button>
 				</calm-page>
 
-				<calm-page name="btn">
-					<code class="tag-snippet">calm-btn</code>
-					<calm-btn>Button</calm-btn>
+				<calm-page name="button">
+					<code class="tag-snippet">calm-button</code>
+					<calm-button>Button</calm-button>
 
-					<code class="tag-snippet">calm-btn flat</code>
-					<calm-btn flat>Flat button</calm-btn>
+					<code class="tag-snippet">calm-button flat</code>
+					<calm-button flat>Flat button</calm-button>
 
-					<code class="tag-snippet">calm-btn style="background: #836"</code>
-					<calm-btn id="btn-custom-bg" darkbg>Styled button</calm-btn>
+					<code class="tag-snippet">calm-button style="background: #836"</code>
+					<calm-button id="button-custom-bg" darkbg>Styled button</calm-button>
 				</calm-page>
 
 				<calm-page name="card">
@@ -104,13 +104,13 @@
 					<code class="tag-snippet">calm-dialog</code>
 					<code class="tag-snippet">calm-dialog modal</code>
 
-					<calm-btn id="dialog-show">show dialog</calm-btn>
-					<calm-btn id="modal-dialog-show">show modal dialog</calm-btn>
+					<calm-button id="dialog-show">show dialog</calm-button>
+					<calm-button id="modal-dialog-show">show modal dialog</calm-button>
 				</calm-page>
 
 				<calm-page name="drawer">
-					<calm-btn id="demo-drawer-toggle">Toggle drawer</calm-btn>
-					<calm-btn id="demo-drawer-right-toggle">Toggle right drawer</calm-btn>
+					<calm-button id="demo-drawer-toggle">Toggle drawer</calm-button>
+					<calm-button id="demo-drawer-right-toggle">Toggle right drawer</calm-button>
 
 					<code class="tag-snippet">calm-drawer</code>
 				</calm-page>
@@ -128,9 +128,9 @@
 					<calm-field label="Floating label" floatinglabel></calm-field>
 				</calm-page>
 
-				<calm-page name="icon-btn">
-					<code class="tag-snippet">calm-icon-btn icon="star"</code>
-					<calm-icon-btn icon="star"></calm-icon-btn>
+				<calm-page name="icon-button">
+					<code class="tag-snippet">calm-icon-button icon="star"</code>
+					<calm-icon-button icon="star"></calm-icon-button>
 				</calm-page>
 
 				<calm-page name="icon">
@@ -192,7 +192,7 @@
 					<code class="tag-snippet">calm-spinner</code>
 					<calm-spinner id="spinner" shown></calm-spinner>
 
-					<calm-btn id="spinner-toggle">toggle spinner</calm-btn>
+					<calm-button id="spinner-toggle">toggle spinner</calm-button>
 				</calm-page>
 
 				<calm-page name="tabs">
@@ -237,7 +237,7 @@
 				<calm-page name="toast">
 					<code class="tag-snippet">calm-toast</code>
 
-					<calm-btn id="toast-toggle" id="toast-toggle">Toggle toast</calm-btn>
+					<calm-button id="toast-toggle" id="toast-toggle">Toggle toast</calm-button>
 				</calm-page>
 			</calm-pages>
 
@@ -246,10 +246,10 @@
 
 				<span>Example content</span>
 
-				<calm-btn id="dialog-hide" flat>hide dialog</calm-btn>
+				<calm-button id="dialog-hide" flat>hide dialog</calm-button>
 			</calm-dialog>
 
-			<calm-toast id="toast">Toast notification<calm-btn flat darkbg>ok</calm-btn></calm-toast>
+			<calm-toast id="toast">Toast notification<calm-button flat darkbg>ok</calm-button></calm-toast>
 		</calm-layout>
 
 		<calm-bottom-sheet id="bottom-sheet">

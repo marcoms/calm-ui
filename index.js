@@ -1,12 +1,12 @@
 import "./els/calm-bar";
 import "./els/calm-bottom-sheet";
-import "./els/calm-btn";
+import "./els/calm-button";
 import "./els/calm-card";
 import "./els/calm-dialog";
 import "./els/calm-drawer";
 import "./els/calm-fab";
 import "./els/calm-field";
-import "./els/calm-icon-btn";
+import "./els/calm-icon-button";
 import "./els/calm-icon";
 import "./els/calm-icons";
 import "./els/calm-item";

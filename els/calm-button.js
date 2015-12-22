@@ -4,7 +4,7 @@ import skate from "skatejs";
 import "./calm-card";
 import "./calm-tappable";
 
-export default skate("calm-btn", {
+export default skate("calm-button", {
 	properties: {
 		flat: skate.properties.boolean({
 			attribute: true,
@@ -16,7 +16,7 @@ export default skate("calm-btn", {
 		darkbg: skate.properties.boolean({
 			attribute: true,
 			set(el, {newValue: darkbg}) {
-				el.$["btn"].darkbg = darkbg;
+				el.$["button"].darkbg = darkbg;
 				el.$["text"].darkbg = darkbg;
 			},
 		}),
@@ -41,7 +41,7 @@ export default skate("calm-btn", {
 				background: inherit;
 			}
 
-			#btn {
+			#button {
 				padding: 10px 8px;
 
 				line-height: 1em;
@@ -64,13 +64,13 @@ export default skate("calm-btn", {
 				color: #fff;
 			}
 
-			:host-context(calm-toast) #btn {
+			:host-context(calm-toast) #button {
 				padding: 10px 24px;
 			}
 		</style>
 
 		<calm-card z="1" id="card">
-			<calm-tappable id="btn">
+			<calm-tappable id="button">
 				<calm-text button id="text">
 					<content></content>
 				</calm-text>

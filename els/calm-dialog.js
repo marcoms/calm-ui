@@ -124,7 +124,7 @@ export default skate("calm-dialog", {
 		<div id="wrapper">
 			<calm-card id="dialog" z="3">
 				<div id="actions">
-					<content select="calm-btn"></content>
+					<content select="calm-button"></content>
 				</div>
 
 				<div id="content">

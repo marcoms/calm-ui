@@ -80,12 +80,12 @@ export default skate("calm-toast", {
 				-ms-user-select: none;
 			}
 
-			#btns {
+			#buttons {
 				display: flex;
 				align-items: stretch;
 			}
 
-			::content calm-btn {
+			::content calm-button {
 				border-radius: 0;
 			}
 
@@ -114,7 +114,7 @@ export default skate("calm-toast", {
 		</style>
 
 		<div id="toast">
-			<div id="btns"><content select="calm-btn"></content></div>
+			<div id="buttons"><content select="calm-button"></content></div>
 			<div id="spacer"></div>
 			<div id="text"><content></content></div>
 		</div>
@@ -122,7 +122,7 @@ export default skate("calm-toast", {
 
 	ready(el) {
 		el.addEventListener("click", (evt) => {
-			if (evt.target.tagName === "CALM-BTN") el.hide();
+			if (evt.target.tagName === "CALM-BUTTON") el.hide();
 		});
 	},
 });

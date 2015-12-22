@@ -2,14 +2,14 @@ import calm from "../calm-tools";
 import skate from "skatejs";
 
 import "./calm-card";
-import "./calm-icon-btn";
+import "./calm-icon-button";
 
 export default skate("calm-fab", {
 	properties: {
 		icon: skate.properties.string({
 			attribute: true,
 			set(el, {newValue: icon}) {
-				el.$["btn"].icon = icon;
+				el.$["button"].icon = icon;
 			},
 		}),
 

@@ -4,7 +4,7 @@ import skate from "skatejs";
 import "./calm-icon";
 import "./calm-tappable";
 
-export default skate("calm-icon-btn", {
+export default skate("calm-icon-button", {
 	properties: {
 		icon: skate.properties.string({
 			attribute: true,
@@ -16,7 +16,7 @@ export default skate("calm-icon-btn", {
 		darkbg: skate.properties.boolean({
 			attribute: true,
 			set(el, {newValue: darkbg}) {
-				el.$["btn"].darkbg = darkbg;
+				el.$["button"].darkbg = darkbg;
 			},
 		}),
 	},
@@ -31,7 +31,7 @@ export default skate("calm-icon-btn", {
 				border-radius: 50%;
 			}
 
-			#btn {
+			#button {
 				height: 100%;
 				width: 100%;
 				justify-content: center;
@@ -45,7 +45,7 @@ export default skate("calm-icon-btn", {
 			}
 		</style>
 
-		<calm-tappable id="btn">
+		<calm-tappable id="button">
 			<calm-icon id="icon"></calm-icon>
 		</calm-tappable>
 	`),
