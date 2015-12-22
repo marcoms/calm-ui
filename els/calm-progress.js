@@ -5,22 +5,35 @@ export default skate("calm-progress", {
 	properties: {
 		value: skate.properties.number({
 			attribute: true,
-			set(el, {newValue: value}) {
-				if (el.indeterminate) return;
-				if (value < 0 || value > el.max) return;
-
-				el.$["progress"].style.width = `${(value / el.max) * 100}%`;
+			set(el) {
+				el._calculateWidth();
 			},
 		}),
 
 		max: skate.properties.number({
 			attribute: true,
 			default: "100",
+			set(el) {
+				el._calculateWidth();
+			},
 		}),
 
 		indeterminate: skate.properties.boolean({
 			attribute: true,
 		}),
+	},
+
+	prototype: {
+		_calculateWidth() {
+			if (this.indeterminate) return;
+
+			const value = this.value;
+			const max = this.max;
+
+			if (value < 0 || value > max) return;
+
+			this.$["progress"].style.width = `${(value / max) * 100}%`;
+		},
 	},
 
 	render: calm.shadowDom(`
