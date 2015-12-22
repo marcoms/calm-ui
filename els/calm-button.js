@@ -71,7 +71,7 @@ export default skate("calm-button", {
 
 		<calm-card z="1" id="card">
 			<calm-tappable id="button">
-				<calm-text button id="text">
+				<calm-text type="button" id="text">
 					<content></content>
 				</calm-text>
 			</calm-tappable>
