@@ -17,6 +17,7 @@ export default skate("calm-btn", {
 			attribute: true,
 			set(el, {newValue: darkbg}) {
 				el.$["btn"].darkbg = darkbg;
+				el.$["text"].darkbg = darkbg;
 			},
 		}),
 	},
@@ -53,6 +54,9 @@ export default skate("calm-btn", {
 
 			:host([flat]) {
 				background: transparent;
+			}
+
+			:host([flat]) #text {
 				color: ${calm.colors.neutral};
 			}
 
@@ -66,7 +70,11 @@ export default skate("calm-btn", {
 		</style>
 
 		<calm-card z="1" id="card">
-			<calm-tappable id="btn"><content></content></calm-tappable>
+			<calm-tappable id="btn">
+				<calm-text button id="text">
+					<content></content>
+				</calm-text>
+			</calm-tappable>
 		</calm-card>
 	`),
 });
