@@ -53,7 +53,7 @@ export default skate("calm-progress", {
 
 				display: block;
 				width: 256px;
-				height: 2px;
+				height: 3px;
 
 				overflow: hidden;
 				color: ${calm.colors.neutral};
