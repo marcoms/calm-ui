@@ -39,11 +39,6 @@ export default skate("calm-drawer", {
 
 	render: calm.shadowDom(`
 		<style>
-			:host {
-				display: block;
-				height: 100%;
-			}
-
 			#drawer {
 				position: fixed;
 				top: 0;
@@ -56,6 +51,7 @@ export default skate("calm-drawer", {
 				visibility: hidden;
 				overflow: auto;
 				border-radius: 0;
+				transform: translateX(0);
 
 				transition-property: transform, visibility;
 				transition-duration: ${calm.durations.long};
