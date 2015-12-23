@@ -139,5 +139,3 @@ export default skate("calm-text", {
 		<content></content>
 	`),
 });
-
-console.log("calm-text");
