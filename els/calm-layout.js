@@ -11,6 +11,7 @@ export default skate("calm-layout", {
 	render: calm.shadowDom(`
 		<style>
 			:host {
+				display: block;
 				width: 100vw;
 				height: 100vh;
 			}
@@ -26,10 +27,6 @@ export default skate("calm-layout", {
 				padding-top: ${calm.increment};
 			}
 
-			#main {
-				transition: transform ${calm.durations.long} ${calm.easings.out};
-			}
-
 			#content {
 				/* keep height constant when padding is applied */
 				box-sizing: border-box;
@@ -39,7 +36,7 @@ export default skate("calm-layout", {
 			@media (min-width: ${calm.breakpoints.medium}) {
 				#main {
 					width: calc(100% - 320px);
-					transform: translateX(320px);
+					margin-left: 320px;
 				}
 
 				::content [data-drawerctrl] {
