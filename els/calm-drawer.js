@@ -39,40 +39,53 @@ export default skate("calm-drawer", {
 
 	render: calm.shadowDom(`
 		<style>
-			#drawer {
+			:host {
 				position: fixed;
 				top: 0;
-				right: 100%;
+				left: 0;
 				z-index: 99;
 
+				display: flex;
+				justify-content: flex-start;
+				align-items: stretch;
+				width: 100%;
 				height: 100%;
-				width: 320px;
 
+				background: transparent;
 				visibility: hidden;
-				overflow: auto;
-				border-radius: 0;
-				transform: translateX(0);
 
-				transition-property: transform, visibility;
+				transition-property: background, visibility;
 				transition-duration: ${calm.durations.long};
 				transition-timing-function: ${calm.easings.out};
 			}
 
-			:host([shown]) #drawer {
-				transform: translateX(100%);
+			:host([right]) {
+				justify-content: flex-end;
+			}
+
+			:host([shown]) {
+				background: rgba(0, 0, 0, 0.25);
 				visibility: visible;
 			}
 
-			:host([right]) #drawer {
-				left: 100%;
-				right: auto;
+			#drawer {
+				width: 320px;
 
-				transition-timing-function: ${calm.easings.in};
+				overflow: auto;
+				border-radius: 0;
+				transform: translateX(-100%);
+
+				transition-property: transform;
+				transition-duration: ${calm.durations.long};
+				transition-timing-function: ${calm.easings.out};
 			}
 
-			:host([shown][right]) #drawer {
-				transform: translateX(-100%);
-				transition-timing-function: ${calm.easings.out};
+			:host([right]) #drawer {
+				transform: translateX(100%);
+			}
+
+			:host([shown]) #drawer {
+				transform: translateX(0);
 			}
 
 			::content calm-menu {
@@ -80,37 +93,17 @@ export default skate("calm-drawer", {
 				font-weight: 500;
 			}
 
-			#scrim {
-				position: fixed;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				z-index: 98;
-
-				opacity: 0;
-				background: #000;
-				visibility: hidden;
-
-				transition-property: opacity, visibility;
-				transition-duration: ${calm.durations.long};
-				transition-timing-function: linear;
-			}
-
-			:host([shown]) #scrim {
-				opacity: 0.25;
-				visibility: visible;
-			}
-
 			@media (min-width: ${calm.breakpoints.medium}) {
-				:host(:not([right])) #drawer {
-					transform: translateX(100%);
-
+				:host(:not([right])) {
 					visibility: visible;
+
+					pointer-events: none;
 				}
 
-				:host(:not([right])) #scrim {
-					display: none;
+				:host(:not([right])) #drawer {
+					transform: translateX(0);
+
+					pointer-events: auto;
 				}
 			}
 		</style>
@@ -118,13 +111,15 @@ export default skate("calm-drawer", {
 		<calm-card z="2" id="drawer">
 			<content></content>
 		</calm-card>
-
-		<div id="scrim"></div>
 	`),
 
 	ready(el) {
-		el.$["scrim"].addEventListener("click", () => {
+		el.addEventListener("click", () => {
 			el.hide();
+		});
+
+		el.$["drawer"].addEventListener("click", (evt) => {
+			evt.stopPropagation();
 		});
 
 		const mq = window.matchMedia(`(min-width: ${calm.breakpoints.medium})`);
