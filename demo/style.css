@@ -43,7 +43,7 @@ calm-page > * {
 	flex-grow: 1;
 }
 
-calm-page[name="card"] > calm-card {
+calm-card {
 	display: flex;
 	width: 256px;
 	height: 128px;
