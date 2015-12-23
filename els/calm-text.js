@@ -6,6 +6,10 @@ export default skate("calm-text", {
 		type: skate.properties.string({
 			attribute: true,
 		}),
+
+		darkbg: skate.properties.boolean({
+			attribute: true,
+		}),
 	},
 
 	render: calm.shadowDom(`
@@ -135,3 +139,5 @@ export default skate("calm-text", {
 		<content></content>
 	`),
 });
+
+console.log("calm-text");
