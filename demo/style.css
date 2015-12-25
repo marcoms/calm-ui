@@ -20,7 +20,11 @@ calm-page {
 }
 
 calm-page > * {
-	margin-bottom: 16px;
+	margin: 16px 0 0 16px;
+}
+
+calm-page > calm-card[fullwidth] {
+	margin: 16px 0 0 0;
 }
 
 .spacer {
