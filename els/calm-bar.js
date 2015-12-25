@@ -27,6 +27,14 @@ export default skate("calm-bar", {
 
 				line-height: ${calm.sizes.increment};
 			}
+
+			::content > calm-icon-button:first-child {
+				margin-left: 4px;
+			}
+
+			::content > calm-icon-button:last-child {
+				margin-right: 4px;
+			}
 		</style>
 
 		<content></content>
