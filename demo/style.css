@@ -23,22 +23,6 @@ calm-page > * {
 	margin-bottom: 16px;
 }
 
-.tag-snippet {
-	display: inline-block;
-	background: #eee;
-	padding: 4px;
-	border-radius: 4px;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-}
-
-.tag-snippet::before {
-	content: "<";
-}
-
-.tag-snippet::after {
-	content: ">";
-}
-
 .spacer {
 	flex-grow: 1;
 }
