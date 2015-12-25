@@ -7,6 +7,13 @@ export default skate("calm-drawer", {
 	properties: {
 		shown: skate.properties.boolean({
 			attribute: true,
+			set(el) {
+				if (el.shown) {
+					el.$["drawer"].style.willChange = "transform";
+				} else {
+					el.$["drawer"].addEventListener("transitionend", el._removeHint);
+				}
+			},
 		}),
 
 		right: skate.properties.boolean({
@@ -34,6 +41,11 @@ export default skate("calm-drawer", {
 
 		toggle() {
 			if (!this.wideLayout) this.shown = !this.shown;
+		},
+
+		_removeHint() {
+			this.$["drawer"].style.willChange = "";
+			this.$["drawer"].removeEventListener("transitionend", this._removeHint);
 		},
 	},
 
@@ -116,6 +128,10 @@ export default skate("calm-drawer", {
 			<content></content>
 		</calm-card>
 	`),
+
+	created(el) {
+		el._removeHint = el._removeHint.bind(el);
+	},
 
 	ready(el) {
 		el.addEventListener("click", () => {
