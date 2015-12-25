@@ -47,6 +47,12 @@ export default {
 
 		// cubic
 		inOut: "cubic-bezier(0.645, 0.045, 0.355, 1)",
+
+		light: {
+			out: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+			in: "cubic-bezier(0.55, 0.085, 0.68, 0.53)",
+			inOut: "cubic-bezier(0.455, 0.03, 0.515, 0.955)",
+		},
 	},
 
 	// durations for transitions
