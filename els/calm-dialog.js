@@ -12,9 +12,9 @@ export default skate("calm-dialog", {
 			default: false,
 			set(el, {newValue: modal}) {
 				if (modal) {
-					el.$["overlay"].removeEventListener("click", el._onOverlayClick);
+					el.$["overlay"].removeEventListener("click", el._hide);
 				} else {
-					el.$["overlay"].addEventListener("click", el._onOverlayClick);
+					el.$["overlay"].addEventListener("click", el._hide);
 				}
 			},
 		}),
@@ -33,7 +33,7 @@ export default skate("calm-dialog", {
 			this.shown = !this.shown;
 		},
 
-		_onOverlayClick() {
+		_hide() {
 			this.hide();
 		},
 	},
@@ -138,6 +138,6 @@ export default skate("calm-dialog", {
 
 	created(el) {
 		// hack to access hide()
-		el._onOverlayClick = el._onOverlayClick.bind(el);
+		el._hide = el._hide.bind(el);
 	},
 });
