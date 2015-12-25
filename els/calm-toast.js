@@ -7,10 +7,14 @@ export default skate("calm-toast", {
 			attribute: true,
 			set(el, {newValue: shown}) {
 				if (shown) {
+					el.$["toast"].style.willChange = "transform";
+
 					el._pendingHide = window.setTimeout(() => {
 						el.hide();
 					}, el.duration);
 				} else {
+					el.$["toast"].addEventListener("transitionend", el._removeHint);
+
 					window.clearTimeout(el._pendingHide);
 					el._pendingHide = undefined;
 				}
@@ -34,6 +38,11 @@ export default skate("calm-toast", {
 
 		toggle() {
 			this.shown = !this.shown;
+		},
+
+		_removeHint() {
+			this.$["toast"].style.willChange = "";
+			this.$["toast"].removeEventListener("transitionend", this._removeHint);
 		},
 	},
 
@@ -120,6 +129,10 @@ export default skate("calm-toast", {
 			<div id="text"><content></content></div>
 		</div>
 	`),
+
+	created(el) {
+		el._removeHint = el._removeHint.bind(el);
+	},
 
 	ready(el) {
 		el.addEventListener("click", (evt) => {
