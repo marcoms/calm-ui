@@ -31,6 +31,11 @@ export default skate("calm-icon-button", {
 				border-radius: 50%;
 			}
 
+			:host-context(calm-fab) {
+				width: ${calm.sizes.increment};
+				height: ${calm.sizes.increment};
+			}
+
 			#button {
 				height: 100%;
 				width: 100%;
