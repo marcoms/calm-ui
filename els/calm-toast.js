@@ -67,8 +67,14 @@ export default skate("calm-toast", {
 				background: #323232;
 
 				transform: translateY(100%);
-				transition: transform ${calm.durations.medium} ${calm.easings.in};
+				transition: transform ${calm.durations.short} ${calm.easings.light.in};
 				touch-action: none;
+			}
+
+			:host([shown]) #toast {
+				transform: none;
+				transition-duration: ${calm.durations.medium};
+				transition-timing-function: ${calm.easings.out};
 			}
 
 			#text {
@@ -89,6 +95,10 @@ export default skate("calm-toast", {
 				border-radius: 0;
 			}
 
+			#spacer {
+				flex: 1;
+			}
+
 			@media (min-width: ${calm.breakpoints.small}) {
 				:host {
 					justify-content: center;
@@ -101,15 +111,6 @@ export default skate("calm-toast", {
 
 					border-radius: ${calm.sizes.borderRadius} ${calm.sizes.borderRadius} 0 0;
 				}
-			}
-
-			#spacer {
-				flex: 1;
-			}
-
-			:host([shown]) #toast {
-				transform: none;
-				transition-timing-function: ${calm.easings.out};
 			}
 		</style>
 
