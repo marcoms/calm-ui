@@ -53,10 +53,13 @@ export default skate("calm-drawer", {
 
 				background: transparent;
 				visibility: hidden;
+				cursor: pointer;
 
 				transition-property: background, visibility;
 				transition-duration: ${calm.durations.long};
 				transition-timing-function: ${calm.easings.out};
+
+				-webkit-tap-highlight-color: transparent;
 			}
 
 			:host([right]) {
@@ -74,6 +77,7 @@ export default skate("calm-drawer", {
 				overflow: auto;
 				border-radius: 0;
 				transform: translateX(-100%);
+				cursor: auto;
 
 				transition-property: transform;
 				transition-duration: ${calm.durations.long};
