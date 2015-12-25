@@ -45,14 +45,15 @@ export default skate("calm-bottom-sheet", {
 				cursor: pointer;
 				-webkit-tap-highlight-color: transparent;
 				transition-property: background, visibility;
-				transition-duration: ${calm.durations.medium};
-				transition-timing-function: ${calm.easings.in};
+				transition-duration: ${calm.durations.short};
+				transition-timing-function: ${calm.easings.light.in};
 			}
 
 			:host([shown]) #fixture {
 				background: rgba(0, 0, 0, 0.25);
 				visibility: visible;
 
+				transition-duration: ${calm.durations.medium};
 				transition-timing-function: ${calm.easings.out};
 			}
 
@@ -63,7 +64,7 @@ export default skate("calm-bottom-sheet", {
 				transform: translateY(100%);
 
 				cursor: default;
-				transition: transform ${calm.durations.short} ${calm.easings.in};
+				transition: transform ${calm.durations.short} ${calm.easings.light.in};
 			}
 
 			:host([shown]) #content {
