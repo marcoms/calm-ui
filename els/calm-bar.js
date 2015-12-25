@@ -7,6 +7,8 @@ export default skate("calm-bar", {
 	render: calm.shadowDom(`
 		<style>
 			:host {
+				position: relative;
+
 				display: flex;
 				width: 100%;
 				height: ${calm.sizes.increment};
@@ -20,9 +22,10 @@ export default skate("calm-bar", {
 			}
 
 			::content > header {
-				margin-left: 16px;
+				position: absolute;
+				left: 72px;
 
-				font-size: 20px;
+				line-height: ${calm.sizes.increment};
 			}
 		</style>
 
