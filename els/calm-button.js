@@ -8,16 +8,16 @@ export default skate("calm-button", {
 	properties: {
 		flat: skate.properties.boolean({
 			attribute: true,
-			set(el, {newValue: flat}) {
-				el.$["card"].z = (flat ? 0 : 1);
+			set(el) {
+				el.$["card"].z = (el.flat ? 0 : 1);
 			},
 		}),
 
 		darkbg: skate.properties.boolean({
 			attribute: true,
-			set(el, {newValue: darkbg}) {
-				el.$["button"].darkbg = darkbg;
-				el.$["text"].darkbg = darkbg;
+			set(el) {
+				el.$["button"].darkbg = el.darkbg;
+				el.$["text"].darkbg = el.darkbg;
 			},
 		}),
 	},

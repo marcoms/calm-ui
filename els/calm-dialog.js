@@ -10,8 +10,8 @@ export default skate("calm-dialog", {
 		modal: skate.properties.boolean({
 			attribute: true,
 			default: false,
-			set(el, {newValue: modal}) {
-				if (modal) {
+			set(el) {
+				if (el.modal) {
 					el.$["overlay"].removeEventListener("click", el._hide);
 				} else {
 					el.$["overlay"].addEventListener("click", el._hide);

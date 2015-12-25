@@ -5,8 +5,8 @@ export default skate("calm-toast", {
 	properties: {
 		shown: skate.properties.boolean({
 			attribute: true,
-			set(el, {newValue: shown}) {
-				if (shown) {
+			set(el) {
+				if (el.shown) {
 					el.$["toast"].style.willChange = "transform";
 
 					el._pendingHide = window.setTimeout(() => {

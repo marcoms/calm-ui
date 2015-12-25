@@ -8,16 +8,16 @@ export default skate("calm-menu", {
 	properties: {
 		selected: skate.properties.string({
 			attribute: true,
-			set(el, {newValue: selected}) {
+			set(el) {
 				if (el.noselect) return;
-				el.$["selection"].selected = selected;
+				el.$["selection"].selected = el.selected;
 			},
 		}),
 
 		noselect: skate.properties.boolean({
 			attribute: true,
-			set(el, {newValue: noselect}) {
-				if (noselect) {
+			set(el) {
+				if (el.noselect) {
 					el.$["selection"].tapselect = false;
 					el.selected = undefined;
 				} else {

@@ -5,15 +5,15 @@ export default skate("calm-field", {
 	properties: {
 		label: skate.properties.string({
 			attribute: true,
-			set(el, {newValue: label}) {
-				el._setLabel(label);
+			set(el) {
+				el._setLabel(el.label);
 			},
 		}),
 
 		floatinglabel: skate.properties.boolean({
 			attribute: true,
-			set(el, {newValue: floatinglabel}) {
-				if (floatinglabel) {
+			set(el) {
+				if (el.floatinglabel) {
 					el.addEventListener("input", el._checkEmpty);
 				} else {
 					el.removeEventListener("input", el._checkEmpty);

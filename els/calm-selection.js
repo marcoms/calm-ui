@@ -5,16 +5,16 @@ export default skate("calm-selection", {
 	properties: {
 		selected: skate.properties.string({
 			attribute: true,
-			set(el, {newValue: selected}) {
-				if (!selected) return;
-				el._setSelected(selected);
+			set(el) {
+				if (!el.selected) return;
+				el._setSelected(el.selected);
 			},
 		}),
 
 		tapselect: skate.properties.boolean({
 			attribute: true,
-			set(el, {newValue: tapselect}) {
-				if (tapselect) {
+			set(el) {
+				if (el.tapselect) {
 					el.addEventListener("click", el._onTap);
 				} else {
 					el.removeEventListener("click", el._onTap);

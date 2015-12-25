@@ -8,9 +8,12 @@ export default skate("calm-tabs", {
 	properties: {
 		selected: skate.properties.string({
 			attribute: true,
-			set(el, {newValue: selected}) {
-				if (!selected) return;
-				if (selected !== el.$["selection"].selected) el.$["selection"].selected = selected;
+			set(el) {
+				if (!el.selected) return;
+
+				if (el.selected !== el.$["selection"].selected) {
+					el.$["selection"].selected = el.selected;
+				}
 			},
 		}),
 

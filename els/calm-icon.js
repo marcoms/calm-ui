@@ -7,9 +7,9 @@ export default skate("calm-icon", {
 	properties: {
 		icon: skate.properties.string({
 			attribute: true,
-			set(el, {newValue: icon}) {
+			set(el) {
 				if (!window.calmIcons) window.calmIcons = document.createElement("calm-icons");
-				const iconNode = window.calmIcons.getIcon(icon);
+				const iconNode = window.calmIcons.getIcon(el.icon);
 				if (!iconNode) return;
 
 				el.$["frame"].replaceChild(iconNode, el.$["frame"].children[0]);

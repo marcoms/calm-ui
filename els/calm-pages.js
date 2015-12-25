@@ -8,8 +8,8 @@ export default skate("calm-pages", {
 	properties: {
 		selected: skate.properties.string({
 			attribute: true,
-			set(el, {newValue: selected}) {
-				el.$["selection"].selected = selected;
+			set(el) {
+				el.$["selection"].selected = el.selected;
 			},
 		}),
 	},

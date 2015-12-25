@@ -8,15 +8,15 @@ export default skate("calm-icon-button", {
 	properties: {
 		icon: skate.properties.string({
 			attribute: true,
-			set(el, {newValue: icon}) {
-				el.$["icon"].icon = icon;
+			set(el) {
+				el.$["icon"].icon = el.icon;
 			},
 		}),
 
 		darkbg: skate.properties.boolean({
 			attribute: true,
-			set(el, {newValue: darkbg}) {
-				el.$["button"].darkbg = darkbg;
+			set(el) {
+				el.$["button"].darkbg = el.darkbg;
 			},
 		}),
 	},

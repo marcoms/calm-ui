@@ -15,9 +15,9 @@ export default skate("calm-drawer", {
 
 		wideLayout: skate.properties.boolean({
 			attribute: false,
-			set(el, {newValue: wideLayout}) {
+			set(el) {
 				calm.emit(el, "layoutchange", {detail: {
-					wideLayout,
+					wideLayout: el.wideLayout,
 				}});
 			},
 		}),
