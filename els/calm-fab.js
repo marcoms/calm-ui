@@ -27,8 +27,8 @@ export default skate("calm-fab", {
 				z-index: 97;
 
 				display: block;
-				width: ${calm.increment};
-				height: ${calm.increment};
+				width: ${calm.sizes.increment};
+				height: ${calm.sizes.increment};
 
 				border-radius: 50%;
 				background: ${calm.colors.accent};
@@ -36,8 +36,8 @@ export default skate("calm-fab", {
 			}
 
 			#card {
-				width: ${calm.increment};
-				height: ${calm.increment};
+				width: ${calm.sizes.increment};
+				height: ${calm.sizes.increment};
 
 				border-radius: 50%;
 				background: inherit;

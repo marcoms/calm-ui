@@ -28,6 +28,8 @@ export default {
 		this.ready(() => src.dispatchEvent(new CustomEvent(name, opts)));
 	},
 
+	// TODO: implement as CSS custom properties when support is finalised... Come on https://codereview.chromium.org/1192983003/!
+
 	breakpoints: {
 		xsmall: "0",
 		small: "600px",
@@ -66,9 +68,12 @@ export default {
 		5: "0 16px 42px rgba(0, 0, 0, 0.5)",
 	},
 
-	// TODO: implement as CSS custom properties when support is finalised... Come on https://codereview.chromium.org/1192983003/!
-	increment: "56px",
-	borderRadius: "3px",
+	sizes: {
+		increment: "56px",
+		borderRadius: "3px",
+		touchTarget: "48px",
+	},
+
 	colors: {
 		primary: ((window.calm || {}).colors || {}).primary || "#2196f3",
 		primaryDark: ((window.calm || {}).colors || {}).primaryDark || "#1976d2",

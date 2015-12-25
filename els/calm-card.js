@@ -18,7 +18,7 @@ export default skate("calm-card", {
 				display: block;
 
 				background: #fff;
-				border-radius: ${calm.borderRadius};
+				border-radius: ${calm.sizes.borderRadius};
 				overflow: auto;
 
 				transition: box-shadow ${calm.durations.short} linear;

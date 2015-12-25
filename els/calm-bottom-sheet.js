@@ -75,15 +75,15 @@ export default skate("calm-bottom-sheet", {
 
 			@media (min-width: ${calm.breakpoints.medium}) {
 				#content {
-					width: calc(${calm.increment} * 6);
+					width: calc(${calm.sizes.increment} * 6);
 
-					border-radius: ${calm.borderRadius} ${calm.borderRadius} 0 0;
+					border-radius: ${calm.sizes.borderRadius} ${calm.sizes.borderRadius} 0 0;
 				}
 			}
 
 			@media (min-width: ${calm.breakpoints.large}) {
 				#content {
-					width: calc(${calm.increment} * 8);
+					width: calc(${calm.sizes.increment} * 8);
 				}
 			}
 		</style>

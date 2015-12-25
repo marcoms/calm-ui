@@ -9,7 +9,7 @@ export default skate("calm-bar", {
 			:host {
 				display: flex;
 				width: 100%;
-				height: ${calm.increment};
+				height: ${calm.sizes.increment};
 
 				background: ${calm.colors.primary};
 				align-items: center;

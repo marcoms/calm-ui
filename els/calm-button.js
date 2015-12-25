@@ -29,7 +29,7 @@ export default skate("calm-button", {
 
 				background: #fff;
 				color: #212121;
-				border-radius: ${calm.borderRadius};
+				border-radius: ${calm.sizes.borderRadius};
 			}
 
 			#card {

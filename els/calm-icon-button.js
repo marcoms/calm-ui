@@ -25,8 +25,8 @@ export default skate("calm-icon-button", {
 		<style>
 			:host {
 				display: inline-block;
-				width: ${calm.increment};
-				height: ${calm.increment};
+				width: ${calm.sizes.touchTarget};
+				height: ${calm.sizes.touchTarget};
 
 				border-radius: 50%;
 			}

@@ -99,7 +99,7 @@ export default skate("calm-toast", {
 					min-width: 280px;
 					max-width: 640px;
 
-					border-radius: ${calm.borderRadius} ${calm.borderRadius} 0 0;
+					border-radius: ${calm.sizes.borderRadius} ${calm.sizes.borderRadius} 0 0;
 				}
 			}
 

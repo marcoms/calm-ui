@@ -24,7 +24,7 @@ export default skate("calm-layout", {
 			}
 
 			:host([fixed]) #content {
-				padding-top: ${calm.increment};
+				padding-top: ${calm.sizes.increment};
 			}
 
 			#content {

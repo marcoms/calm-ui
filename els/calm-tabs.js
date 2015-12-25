@@ -25,7 +25,7 @@ export default skate("calm-tabs", {
 				position: relative;
 
 				display: block;
-				height: ${calm.increment};
+				height: ${calm.sizes.touchTarget};
 
 				overflow-x: auto;
 				overflow-y: hidden;
