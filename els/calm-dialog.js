@@ -137,7 +137,6 @@ export default skate("calm-dialog", {
 	`),
 
 	created(el) {
-		// hack to access hide()
 		el._hide = el._hide.bind(el);
 	},
 });
