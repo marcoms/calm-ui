@@ -7,6 +7,13 @@ export default skate("calm-bottom-sheet", {
 	properties: {
 		shown: skate.properties.boolean({
 			attribute: true,
+			set(el, diff) {
+				if (el.shown) {
+					el.$["card"].style.willChange = "transform";
+				} else if (diff.oldValue) {
+					el.$["card"].addEventListener("transitionend", el._removeHint);
+				}
+			},
 		}),
 	},
 
@@ -21,6 +28,11 @@ export default skate("calm-bottom-sheet", {
 
 		toggle() {
 			this.shown = !this.shown;
+		},
+
+		_removeHint() {
+			this.$["card"].style.willChange = "";
+			this.$["card"].removeEventListener("transitionend", this._removeHint);
 		},
 	},
 
@@ -93,6 +105,10 @@ export default skate("calm-bottom-sheet", {
 			<content></content>
 		</calm-card>
 	`),
+
+	created(el) {
+		el._removeHint = el._removeHint.bind(el);
+	},
 
 	ready(el) {
 		el.addEventListener("click", (evt) => {
