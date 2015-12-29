@@ -5,7 +5,7 @@ export default skate("calm-toast", {
 	properties: {
 		shown: skate.properties.boolean({
 			attribute: true,
-			set(el) {
+			set(el, diff) {
 				if (el.shown) {
 					el.$["toast"].style.willChange = "transform";
 
@@ -13,7 +13,9 @@ export default skate("calm-toast", {
 						el.hide();
 					}, el.duration);
 				} else {
-					el.$["toast"].addEventListener("transitionend", el._removeHint);
+					if (diff.oldValue) {
+						el.$["toast"].addEventListener("transitionend", el._removeHint);
+					}
 
 					window.clearTimeout(el._pendingHide);
 					el._pendingHide = undefined;

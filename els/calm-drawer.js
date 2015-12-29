@@ -7,10 +7,10 @@ export default skate("calm-drawer", {
 	properties: {
 		shown: skate.properties.boolean({
 			attribute: true,
-			set(el) {
+			set(el, diff) {
 				if (el.shown) {
 					el.$["drawer"].style.willChange = "transform";
-				} else {
+				} else if (diff.oldValue) {
 					el.$["drawer"].addEventListener("transitionend", el._removeHint);
 				}
 			},
