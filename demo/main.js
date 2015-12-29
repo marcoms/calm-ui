@@ -54,5 +54,5 @@ demoPagesTabs.on("select", () => {
 
 progress.value = 0;
 window.setInterval(() => {
-	progress.value = (progress.value + 10) % 100;
+	progress.value = (progress.value >= 99.9 ? 0 : progress.value + 10);
 }, 1000);
