@@ -26,7 +26,7 @@ export default skate("calm-bottom-sheet", {
 
 	render: calm.shadowDom(`
 		<style>
-			#fixture {
+			:host {
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -49,7 +49,7 @@ export default skate("calm-bottom-sheet", {
 				transition-timing-function: ${calm.easings.light.in};
 			}
 
-			:host([shown]) #fixture {
+			:host([shown]) {
 				background: rgba(0, 0, 0, 0.25);
 				visibility: visible;
 
@@ -57,7 +57,7 @@ export default skate("calm-bottom-sheet", {
 				transition-timing-function: ${calm.easings.out};
 			}
 
-			#content {
+			#card {
 				width: 100%;
 
 				border-radius: 0;
@@ -67,7 +67,7 @@ export default skate("calm-bottom-sheet", {
 				transition: transform ${calm.durations.short} ${calm.easings.light.in};
 			}
 
-			:host([shown]) #content {
+			:host([shown]) #card {
 				transform: none;
 
 				transition-timing-function: ${calm.easings.out};
@@ -75,7 +75,7 @@ export default skate("calm-bottom-sheet", {
 			}
 
 			@media (min-width: ${calm.breakpoints.medium}) {
-				#content {
+				#card {
 					width: calc(${calm.sizes.increment} * 6);
 
 					border-radius: ${calm.sizes.borderRadius} ${calm.sizes.borderRadius} 0 0;
@@ -83,25 +83,23 @@ export default skate("calm-bottom-sheet", {
 			}
 
 			@media (min-width: ${calm.breakpoints.large}) {
-				#content {
+				#card {
 					width: calc(${calm.sizes.increment} * 8);
 				}
 			}
 		</style>
 
-		<div id="fixture">
-			<calm-card z="2" id="content">
-				<content></content>
-			</calm-card>
-		</div>
+		<calm-card z="2" id="card">
+			<content></content>
+		</calm-card>
 	`),
 
 	ready(el) {
-		el.$["fixture"].addEventListener("click", (evt) => {
+		el.addEventListener("click", (evt) => {
 			el.hide();
 		});
 
-		el.$["content"].addEventListener("click", (evt) => {
+		el.$["card"].addEventListener("click", (evt) => {
 			evt.stopPropagation();
 		});
 	},
