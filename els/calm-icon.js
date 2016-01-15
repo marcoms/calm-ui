@@ -8,6 +8,8 @@ export default skate("calm-icon", {
 		icon: skate.properties.string({
 			attribute: true,
 			set(el, diff) {
+				if (!el.icon) return;
+
 				if (!window.calmIcons) window.calmIcons = document.createElement("calm-icons");
 
 				const iconNode = window.calmIcons.getIcon(el.icon);
