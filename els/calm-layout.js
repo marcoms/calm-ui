@@ -2,12 +2,6 @@ import calm from "../calm-tools";
 import skate from "skatejs";
 
 export default skate("calm-layout", {
-	properties: {
-		fixed: skate.properties.boolean({
-			attribute: true,
-		}),
-	},
-
 	render: calm.shadowDom(`
 		<style>
 			:host {
@@ -16,7 +10,7 @@ export default skate("calm-layout", {
 				height: 100%;
 			}
 
-			:host([fixed]) #bar-wrapper {
+			#bar-wrapper {
 				position: fixed;
 				top: 0;
 
@@ -25,12 +19,6 @@ export default skate("calm-layout", {
 
 			:host([fixed]) #content {
 				padding-top: ${calm.sizes.increment};
-			}
-
-			#content {
-				/* keep height constant when padding is applied */
-				box-sizing: border-box;
-				min-height: 100vh;
 			}
 
 			@media (min-width: ${calm.breakpoints.medium}) {
