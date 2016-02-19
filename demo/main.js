@@ -16,6 +16,7 @@ const demoPagesTabs = $("#demo-pages-tabs");
 const toast = $("#toast");
 const title = $("#title");
 const progress = $("#progress");
+const animatedIcon = $("#animated-icon");
 
 $("#dialog-show").on("click", () => {
 	dialog.modal = false;
@@ -41,6 +42,10 @@ $("#demo-drawer-toggle").on("click", () => drawer.toggle());
 $("#demo-drawer-right-toggle").on("click", () => drawerRight.toggle());
 $("#spinner-toggle").on("click", () => spinner.toggle());
 $("#toast-toggle").on("click", () => toast.toggle());
+
+$("#animated-icon-change").on("click", () => {
+	animatedIcon.icon = (animatedIcon.icon === "menu" ? "arrow-back" : "menu");
+});
 
 nav.on("select", () => {
 	pages.selected = nav.selected;
