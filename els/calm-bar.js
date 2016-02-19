@@ -7,8 +7,6 @@ export default skate("calm-bar", {
 	render: calm.shadowDom(`
 		<style>
 			:host {
-				position: relative;
-
 				display: flex;
 				width: 100%;
 				height: ${calm.sizes.increment};
@@ -22,18 +20,11 @@ export default skate("calm-bar", {
 			}
 
 			::content > header {
-				position: absolute;
-				left: 72px;
-
 				line-height: ${calm.sizes.increment};
 			}
 
-			::content > calm-icon-button:first-child {
-				margin-left: 4px;
-			}
-
-			::content > calm-icon-button:last-child {
-				margin-right: 4px;
+			::content > calm-icon-button {
+				margin: 0 4px;
 			}
 		</style>
 
